@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>议题 4.2 活动二 | Week 9 - 学生工作纸</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page { size: A4; margin: 18mm 20mm; }
+
+  body {
+    font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    font-size: 11pt;
+    line-height: 1.7;
+    color: #1a1a1a;
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 20mm;
+    background: #fff;
+  }
+
+  .header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #1a3a5c;
+    padding-bottom: 6px;
+    margin-bottom: 16px;
+    font-size: 9pt;
+    color: #1a3a5c;
+    font-weight: 500;
+  }
+
+  /* ===== PRINT / PDF STYLES ===== */
+  @media print {
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      max-width: none;
+      width: 100%;
+      font-size: 10.5pt;
+    }
+
+    .page-break {
+      page-break-before: always;
+      break-before: page;
+    }
+    .no-print { display: none; }
+
+    .header-bar {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+    .header-bar > span:first-child {
+      display: table-cell;
+      text-align: left;
+      width: 60%;
+    }
+    .header-bar > span:last-child {
+      display: table-cell;
+      text-align: right;
+      width: 40%;
+    }
+
+    .info-fields {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+    .info-fields .field {
+      display: table-cell;
+      padding-right: 16px;
+    }
+
+    h2, h3 {
+      page-break-after: avoid;
+      break-after: avoid;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Small containers: keep together */
+    .title-box,
+    .info-fields {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Large containers: allow page breaks inside, content flows naturally */
+    .info-box,
+    .discussion,
+    .device-card,
+    .teel-box {
+      page-break-inside: auto;
+      break-inside: auto;
+    }
+
+    table {
+      page-break-inside: auto;
+      break-inside: auto;
+    }
+    thead { display: table-header-group; }
+    tr {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .writing-line { height: 28px; }
+    .writing-lines {
+      page-break-inside: auto;
+      break-inside: auto;
+    }
+
+    .footer {
+      page-break-before: avoid;
+      break-before: avoid;
+    }
+
+    table {
+      width: 100% !important;
+      max-width: 100%;
+    }
+    td, th {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    }
+  }
+
+  .title-box {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 18px 24px;
+    border-radius: 4px;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .title-box h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20pt;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .title-box .subtitle {
+    font-size: 11pt;
+    color: #c9d6e3;
+    font-weight: 300;
+  }
+  .title-box .activity {
+    font-size: 13pt;
+    color: #f0c75e;
+    font-weight: 500;
+    margin-top: 6px;
+  }
+
+  .info-fields {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 18px;
+    font-size: 10pt;
+  }
+  .info-fields .field {
+    flex: 1;
+    border-bottom: 1px solid #999;
+    padding-bottom: 4px;
+  }
+  .info-fields .field label {
+    font-weight: 600;
+    color: #1a3a5c;
+  }
+
+  h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14pt;
+    color: #1a3a5c;
+    border-left: 4px solid #f0c75e;
+    padding-left: 12px;
+    margin: 28px 0 14px 0;
+  }
+  h2 .en {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10pt;
+    color: #666;
+    font-weight: 400;
+    display: block;
+  }
+
+  h3 {
+    font-size: 12pt;
+    color: #2c5282;
+    margin: 18px 0 10px 0;
+    font-weight: 600;
+  }
+
+  .info-box {
+    background: #f0f5fa;
+    border: 1px solid #c9d6e3;
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin: 12px 0;
+    font-size: 10.5pt;
+  }
+  .info-box.objectives {
+    background: #f0f5fa;
+    border-left: 4px solid #1a3a5c;
+  }
+  .info-box.tips {
+    background: #fdf8e8;
+    border-left: 4px solid #f0c75e;
+  }
+  .info-box.tee {
+    background: #f0f8f0;
+    border-left: 4px solid #48bb78;
+  }
+  .info-box.poem-ref {
+    background: #fafaf5;
+    border: 1px solid #d4c89a;
+    font-family: 'Noto Serif SC', serif;
+    line-height: 2.0;
+    padding: 12px 20px;
+    font-size: 10.5pt;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 10.5pt;
+  }
+  th {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 10pt;
+  }
+  td {
+    border: 1px solid #ccc;
+    padding: 9px 12px;
+    vertical-align: top;
+  }
+  tr:nth-child td {
+    background: #f8f9fa;
+  }
+
+  .writing-lines { margin: 10px 0; padding: 8px 0; }
+  .writing-line { border-bottom: 1px solid #bbb; height: 32px; margin-bottom: 2px; }
+
+  .discussion {
+    background: #f0f8f0;
+    border-left: 4px solid #48bb78;
+    padding: 12px 16px;
+    margin: 10px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .footer {
+    border-top: 1px solid #ccc;
+    padding-top: 8px;
+    margin-top: 30px;
+    font-size: 8pt;
+    color: #888;
+    text-align: center;
+  }
+
+  .num-circle {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #1a3a5c;
+    color: #fff;
+    text-align: center;
+    line-height: 22px;
+    font-size: 9pt;
+    margin-right: 6px;
+  }
+
+  .device-card {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin: 10px 0;
+    background: #fafafa;
+  }
+  .device-card h4 {
+    color: #1a3a5c;
+    font-size: 11.5pt;
+    margin-bottom: 8px;
+    border-bottom: 2px solid #f0c75e;
+    padding-bottom: 4px;
+  }
+  .device-card .example {
+    font-family: 'Noto Serif SC', serif;
+    color: #555;
+    margin: 6px 0;
+    padding-left: 12px;
+    border-left: 2px solid #ddd;
+  }
+
+  .teel-box {
+    border: 2px solid #48bb78;
+    border-radius: 6px;
+    padding: 16px;
+    margin: 12px 0;
+    background: #f0faf0;
+  }
+  .teel-box .teel-label {
+    display: inline-block;
+    background: #48bb78;
+    color: #fff;
+    padding: 2px 10px;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 10pt;
+    margin-right: 8px;
+  }
+
+  .vocab-table td:first-child {
+    font-weight: 600;
+    width: 30%;
+  }
+  .vocab-table td:nth-child(2) {
+    width: 30%;
+    color: #555;
+  }
+
+  ol, ul { margin-left: 20px; margin-bottom: 10px; }
+  li { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header-bar">
+  <span>Year 11 Chinese &amp; Literature</span>
+  <span>议题 4.2 活动二 | Week 9</span>
+
+</div>
+
+<!-- TITLE BOX -->
+<div class="title-box">
+  <h1>议题 4.2：国际社会对华语国家/地区的影响及其产生的冲击</h1>
+  <div class="subtitle">The Impact of International Influences on Chinese-Speaking Communities</div>
+  <div class="activity">活动二：深入《那时》——修辞手法与议题论证</div>
+</div>
+
+<!-- INFO FIELDS -->
+<div class="info-fields">
+  <div class="field"><label>姓名 Name：</label></div>
+  <div class="field"><label>日期 Date：</label></div>
+  <div class="field"><label>班级 Class：</label></div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="info-box objectives">
+  <strong>📋 学习目标 Learning Objectives</strong><br><br>
+  <span class="num-circle">①</span> 掌握《那时》中五种核心修辞手法：象征、比喻、借代、反复、反问<br>
+  <span class="num-circle">②</span> 运用TEE（Technique-Example-Effect）模型分析诗歌中的语言技巧<br>
+  <span class="num-circle">③</span> 系统梳理诗歌如何论证Issue 4.2"国际影响与冲击"的核心考点<br>
+  <span class="num-circle">④</span> 完成一个完整的TEEL段落练习，为HSC写作打下基础
+</div>
+
+<!-- ========== PART A ========== -->
+<h2>A 第一部分：修辞手法深度解析 <span class="en">Part A: Literary Devices Analysis</span></h2>
+
+<div class="info-box tips">
+  🎯 <strong>HSC考试重点提醒：</strong>在HSC Chinese and Literature考试中，分析语言技巧（写作手法）是高分的关键。你不仅要<strong>识别</strong>手法，更要<strong>解释</strong>它如何帮助诗人表达主题。掌握TEE模型是核心技能。
+</div>
+
+<!-- Device 1: Symbolism -->
+<div class="device-card">
+  <h4>1. 象征手法 Symbolism</h4>
+  <p><strong>定义：</strong>以具体的事物来代表或暗示某种抽象的意义或深层的情感。</p>
+  <div class="example">
+    「觉得既然醒了，就不该关着<strong>阴暗的门窗</strong>」<br>
+    「要跳出<strong>窒闷的家庭</strong>，要舍弃<strong>狭窄的家乡</strong>」<br>
+    「就应该放进<strong>窗外的光明</strong>」
+  </div>
+</div>
+
+<p>完成下表，分析诗中象征手法的含义：</p>
+
+<table>
+  <tr>
+    <th style="width:25%">象征物 Symbol</th>
+    <th style="width:35%">表面含义 Literal Meaning</th>
+    <th style="width:40%">象征含义 Symbolic Meaning</th>
+  </tr>
+  <tr>
+    <td><strong>阴暗的门窗</strong></td>
+    <td>紧闭的、没有阳光的门和窗户</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><strong>窗外的光明</strong></td>
+    <td>窗户外面照进来的阳光</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><strong>窒闷的家庭</strong></td>
+    <td>让人透不过气的家</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><strong>歧途与分手</strong></td>
+    <td>走错路、彼此分离</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><strong>死亡与杀戮</strong></td>
+    <td>人的死亡和暴力行为</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><strong>五月的阳光</strong></td>
+    <td>五月份明媚的阳光</td>
+    <td></td>
+  </tr>
+</table>
+
+<!-- Device 2: Metaphor -->
+<div class="device-card">
+  <h4>2. 比喻手法 Metaphor</h4>
+  <p><strong>定义：</strong>通过将一个事物比作另一个事物，使抽象的概念变得具体形象。</p>
+  <div class="example">
+    「那时象离开马棚的<strong>小马</strong>，第一次望见<strong>平原</strong>」<br>
+    「那时象离开鸟巢的<strong>小鸟</strong>，第一次望见<strong>天空</strong>」<br>
+    「前面是<strong>旷远</strong>。前面是<strong>清明</strong>。」
+  </div>
+</div>
+
+<table>
+  <tr>
+    <th style="width:20%">比喻</th>
+    <th style="width:25%">本体 (被比喻的)</th>
+    <th style="width:25%">喻体 (比喻成的)</th>
+    <th style="width:30%">效果：为什么这样比？</th>
+  </tr>
+  <tr>
+    <td><strong>小马/小鸟</strong></td>
+    <td></td>
+    <td>离开马棚的小马；离开鸟巢的小鸟</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><strong>平原/天空</strong></td>
+    <td></td>
+    <td>广阔的平原；无边的天空</td>
+    <td></td>
+  </tr>
+</table>
+
+<!-- Device 3: Metonymy -->
+<div class="device-card">
+  <h4>3. 借代手法 Metonymy</h4>
+  <p><strong>定义：</strong>不直接说出事物的名称，而用与之相关的事物来代替，使表达更含蓄。</p>
+  <div class="example">
+    「我们爱谈论<strong>历史上新发现的诗人</strong>」<br>
+    「我们相信<strong>俄国的革命者</strong>」
+  </div>
+</div>
+
+<table>
+  <tr>
+    <th style="width:30%">借代语 (诗中的表达)</th>
+    <th style="width:35%">实际指代的是什么？</th>
+    <th style="width:35%">与Issue 4.2的联系</th>
+  </tr>
+  <tr>
+    <td><strong>"历史上新发现的诗人"</strong></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><strong>"俄国的革命者"</strong></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+<div class="page-break"></div>
+
+<div class="header-bar">
+  <span>Year 11 Chinese &amp; Literature</span>
+  <span>议题 4.2 活动二 | Week 9</span>
+
+</div>
+
+<!-- Device 4: Repetition -->
+<div class="device-card">
+  <h4>4. 反复手法 Repetition</h4>
+  <p><strong>定义：</strong>有意重复使用同一词语或句式，以加强语气、突出主题、增强旋律感。</p>
+  <div class="example">
+    「<strong>那时</strong>觉得既然醒了……<strong>那时</strong>象离开马棚的小马……<strong>那时</strong>我们抛下……」<br>
+    「如今的<strong>平原和天空</strong>，依然照映着……如今的<strong>平原和天空</strong>，依然等待着……」
+  </div>
+</div>
+
+<table>
+  <tr>
+    <th style="width:20%">反复词语</th>
+    <th style="width:15%">出现次数</th>
+    <th style="width:30%">效果分析</th>
+    <th style="width:35%">与主题的关系</th>
+  </tr>
+  <tr>
+    <td><strong>"那时"</strong></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><strong>"平原和天空"</strong></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><strong>"如今"</strong></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+<!-- Device 5: Rhetorical Question -->
+<div class="device-card">
+  <h4>5. 反问手法 Rhetorical Question</h4>
+  <p><strong>定义：</strong>用疑问的形式表达确定的意思，不需要回答，目的是加强语气、引发思考。</p>
+  <div class="example">
+    「<strong>那时追求的在什么地方？</strong>」
+  </div>
+</div>
+
+<div class="discussion">
+  💬 <strong>思考与讨论：</strong>这个反问句出现在全诗的倒数第三节，位于"歧途与分手"、"死亡与杀戮"之后，"五月的阳光"之前。诗人为什么把它放在这个位置？他真的不知道答案吗？请写出你的理解：
+</div>
+
+<!-- ========== PART B ========== -->
+<h2>B 第二部分：TEE模型实战练习 <span class="en">Part B: TEE Model Practice</span></h2>
+
+<div class="info-box tee">
+  📝 <strong>TEE模型 = Technique + Example + Effect</strong><br><br>
+  <strong>T（手法）：</strong>指出作者使用了什么写作手法<br>
+  <strong>E（例子）：</strong>引用原文中的具体例子<br>
+  <strong>E（效果）：</strong>解释这个手法如何帮助表达主题/情感<br><br>
+  <em>范例：</em>诗人运用了<u>象征手法</u>，以「阴暗的门窗」来象征封建礼教对中国社会的长期统治与压制。这一意象生动地揭示了国际新思潮到来之前中国社会的封闭与黑暗，从而凸显了西方民主科学思想作为"窗外的光明"冲击旧制度的力量。
+</div>
+
+<h3>TEE练习一：比喻手法</h3>
+<p>针对"小马/小鸟"的比喻，用TEE模型写一段分析（3-4句话）：</p>
+
+<table>
+  <tr>
+    <td style="width:12%;background:#48bb78;color:#fff;text-align:center;font-weight:700">T 手法</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td style="background:#48bb78;color:#fff;text-align:center;font-weight:700">E 例子</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td style="background:#48bb78;color:#fff;text-align:center;font-weight:700">E 效果</td>
+    <td></td>
+  </tr>
+</table>
+
+<h3>TEE练习二：借代手法</h3>
+<p>针对"俄国的革命者"的借代，用TEE模型写一段分析（3-4句话）：</p>
+
+<table>
+  <tr>
+    <td style="width:12%;background:#48bb78;color:#fff;text-align:center;font-weight:700">T 手法</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td style="background:#48bb78;color:#fff;text-align:center;font-weight:700">E 例子</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td style="background:#48bb78;color:#fff;text-align:center;font-weight:700">E 效果</td>
+    <td></td>
+  </tr>
+</table>
+
+<h3>TEE练习三：自选手法</h3>
+<p>从反复、反问、象征中<strong>自选一种</strong>手法，用TEE模型写一段分析：</p>
+
+<table>
+  <tr>
+    <td style="width:12%;background:#48bb78;color:#fff;text-align:center;font-weight:700">T 手法</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td style="background:#48bb78;color:#fff;text-align:center;font-weight:700">E 例子</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td style="background:#48bb78;color:#fff;text-align:center;font-weight:700">E 效果</td>
+    <td></td>
+  </tr>
+</table>
+
+<div class="page-break"></div>
+
+<div class="header-bar">
+  <span>Year 11 Chinese &amp; Literature</span>
+  <span>议题 4.2 活动二 | Week 9</span>
+
+</div>
+
+<!-- ========== PART C ========== -->
+<h2>C 第三部分：紧扣Issue 4.2核心考点 <span class="en">Part C: Linking to Issue 4.2 Exam Focus</span></h2>
+
+<h3>8. 系统梳理：用《那时》论证"国际影响与冲击"</h3>
+<p>在HSC考试中，你需要能够用文本证据来论证Issue 4.2的核心观点。完成以下梳理表：</p>
+
+<table>
+  <tr>
+    <th style="width:22%">Issue 4.2 关键词</th>
+    <th style="width:38%">《那时》文本中的体现（引用原文）</th>
+    <th style="width:40%">分析：这如何体现"影响"或"冲击"？</th>
+  </tr>
+  <tr>
+    <td><strong>国际社会的"影响"</strong><br>——思想引入</td>
+    <td style="min-height:50px"></td>
+    <td style="min-height:50px"></td>
+  </tr>
+  <tr>
+    <td><strong>国际社会的"影响"</strong><br>——文化引入</td>
+    <td style="min-height:50px"></td>
+    <td style="min-height:50px"></td>
+  </tr>
+  <tr>
+    <td><strong>产生的"冲击"</strong><br>——思想觉醒</td>
+    <td style="min-height:50px"></td>
+    <td style="min-height:50px"></td>
+  </tr>
+  <tr>
+    <td><strong>产生的"冲击"</strong><br>——代际冲突</td>
+    <td style="min-height:50px"></td>
+    <td style="min-height:50px"></td>
+  </tr>
+  <tr>
+    <td><strong>产生的"冲击"</strong><br>——反叛行为</td>
+    <td style="min-height:50px"></td>
+    <td style="min-height:50px"></td>
+  </tr>
+  <tr>
+    <td><strong>产生的"冲击"</strong><br>——历史剧变</td>
+    <td style="min-height:50px"></td>
+    <td style="min-height:50px"></td>
+  </tr>
+</table>
+
+<h3>9. 常见HSC论点梳理</h3>
+<p>以下是三个可以围绕《那时》展开的HSC论点。选择<strong>一个</strong>你最有把握的论点，在方框中打勾：</p>
+
+<table>
+  <tr>
+    <th style="width:5%">✓</th>
+    <th style="width:25%">论点主题</th>
+    <th style="width:70%">论点陈述 </th>
+  </tr>
+  <tr>
+    <td style="text-align:center">☐</td>
+    <td><strong>文化冲突与代际代沟</strong></td>
+    <td>国际新思潮的涌入必然导致青年一代与坚守传统的长辈之间产生不可调和的矛盾。</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">☐</td>
+    <td><strong>思想启蒙与个性解放</strong></td>
+    <td>国际社会的影响打破了中国传统的封闭状态，激发了青年对个人自由和真理的追求。</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">☐</td>
+    <td><strong>理想与现实的落差</strong></td>
+    <td>外来思想在本土化实践的过程中，往往会遭遇巨大的现实阻力与社会阵痛。</td>
+  </tr>
+</table>
+
+<!-- ========== PART D ========== -->
+<h2>D 第四部分：TEEL段落写作 <span class="en">Part D: TEEL Paragraph Writing</span></h2>
+
+<div class="info-box tips">
+  🎯 <strong>TEEL结构 = Topic + Evidence + Explanation + Link</strong><br>
+  这是HSC议论文/分析文的核心段落结构。每一个论点都应该用TEEL来展开。
+</div>
+
+<h3>10. TEEL段落范例学习</h3>
+
+<div class="teel-box">
+  <p><strong>题目：</strong>结合冯至的《那时》，分析国际思想的涌入如何冲击了中国传统的家庭与社会关系。</p><br>
+
+  <p><span class="teel-label">T</span> <strong>Topic（论点）：</strong>国际先进思想的涌入促使青年觉醒，进而对传统的封建家庭和社会结构产生了猛烈的冲击。</p><br>
+
+  <p><span class="teel-label">E</span> <strong>Evidence（证据）：</strong>诗中写道青年不顾「父母的担忧」和「邻人的冷笑」，决心「跳出窒闷的家庭」。</p><br>
+
+  <p><span class="teel-label">E</span> <strong>Explanation（解释）：</strong>这里运用了象征手法，「窒闷的家庭」象征着压抑人性的中国封建礼教。当代表着西方民主与科学的「窗外光明」照进来时，青年人产生了强烈的逆反心理，导致了严重的代际冲突与文化割裂。</p><br>
+
+  <p><span class="teel-label">L</span> <strong>Link（总结联系）：</strong>由此可见，国际社会的思想影响彻底动摇了中国传统的宗法社会根基。</p>
+</div>
+
+<h3>11. TEEL段落实战</h3>
+<p><strong>题目：</strong>结合冯至的《那时》，分析国际思潮如何影响了中国青年的思想觉醒与人生选择。</p>
+<p><em>（提示：可以从"小马/小鸟"的比喻、"俄国革命者"的借代、"一切为了真理/正义"等角度切入）</em></p>
+
+<table>
+  <tr>
+    <td style="width:12%;background:#1a3a5c;color:#fff;text-align:center;font-weight:700;font-size:12pt">T<br><span style="font-size:8pt">Topic</span></td>
+    <td>
+    </td>
+  </tr>
+  <tr>
+    <td style="background:#2c5282;color:#fff;text-align:center;font-weight:700;font-size:12pt">E<br><span style="font-size:8pt">Evidence</span></td>
+    <td>
+    </td>
+  </tr>
+  <tr>
+    <td style="background:#3182ce;color:#fff;text-align:center;font-weight:700;font-size:12pt">E<br><span style="font-size:8pt">Explain</span></td>
+    <td>
+    </td>
+  </tr>
+  <tr>
+    <td style="background:#4299e1;color:#fff;text-align:center;font-weight:700;font-size:12pt">L<br><span style="font-size:8pt">Link</span></td>
+    <td>
+    </td>
+  </tr>
+</table>
+
+<div class="page-break"></div>
+
+<div class="header-bar">
+  <span>Year 11 Chinese &amp; Literature</span>
+  <span>议题 4.2 活动二 | Week 9</span>
+
+</div>
+
+<!-- ========== PART E ========== -->
+<h2>E 第五部分：总结与反思 <span class="en">Part E: Summary &amp; Reflection</span></h2>
+
+<h3>☑ 本课关键收获 Key Takeaways</h3>
+<div class="info-box">
+  ☑ 《那时》运用了五种核心修辞手法：象征、比喻、借代、反复、反问<br>
+  ☑ 象征手法是全诗最重要的手法——"阴暗的门窗"vs"窗外的光明"构成了封建vs现代的核心对立<br>
+  ☑ TEE模型（手法+例子+效果）是分析文学技巧的标准方法<br>
+  ☑ TEEL结构（论点+证据+解释+联系）是HSC议论段落的核心框架<br>
+  ☑ 《那时》从思想、文化、家庭、政治四个层面全面论证了Issue 4.2的核心命题<br>
+  ☑ 诗人虽经历二十多年沧桑，但最终仍以"五月的阳光"表达对未来的希望
+</div>
+
+<h3>💭 最终反思 Final Reflection</h3>
+
+<div class="discussion">
+  💬 <strong>思考题：</strong>诗歌最后写道「如今的平原和天空，依然等待着新的眺望」。你认为冯至在经历了"歧途与分手"、"死亡与杀戮"之后，为什么仍然选择以希望结尾？这对我们今天理解"国际影响的冲击"有什么启示？
+</div>
+
+<h3>⭐ 成语积累 Idiom Bank</h3>
+<p>以下成语可用于你未来的HSC写作中，与Issue 4.2相关：</p>
+
+<table>
+  <tr>
+    <th style="width:18%">成语</th>
+    <th style="width:32%">含义</th>
+    <th style="width:50%">如何用于《那时》/Issue 4.2</th>
+  </tr>
+  <tr>
+    <td><strong>固步自封</strong></td>
+    <td>比喻保守、不求进步</td>
+    <td>形容封建礼教时代的封闭状态——"阴暗的门窗"</td>
+  </tr>
+  <tr>
+    <td><strong>醍醐灌顶</strong></td>
+    <td>比喻使人彻底觉悟</td>
+    <td>国际新思潮对青年的启蒙——"觉得既然醒了"</td>
+  </tr>
+  <tr>
+    <td><strong>义无反顾</strong></td>
+    <td>为正义而勇往直前，不回头</td>
+    <td>青年不顾一切冲出旧世界——"我们却不管。我们却不顾。"</td>
+  </tr>
+  <tr>
+    <td><strong>事与愿违</strong></td>
+    <td>事实与愿望相反</td>
+    <td>理想与现实的巨大落差——"歧途与分手"、"死亡与杀戮"</td>
+  </tr>
+  <tr>
+    <td><strong>薪火相传</strong></td>
+    <td>比喻精神代代相传</td>
+    <td>"如今的平原和天空，依然等待着新的眺望"——希望延续</td>
+  </tr>
+</table>
+
+<h3>📚 核心词汇表 Key Vocabulary</h3>
+
+<table class="vocab-table">
+  <tr>
+    <th>中文</th>
+    <th>English</th>
+    <th>造句/笔记</th>
+  </tr>
+  <tr><td colspan="3" style="background:#1a3a5c;color:#fff;font-weight:600">修辞手法 Literary Devices</td></tr>
+  <tr><td>象征手法</td><td>Symbolism</td><td></td></tr>
+  <tr><td>比喻手法</td><td>Metaphor</td><td></td></tr>
+  <tr><td>借代手法</td><td>Metonymy</td><td></td></tr>
+  <tr><td>反复手法</td><td>Repetition</td><td></td></tr>
+  <tr><td>反问手法</td><td>Rhetorical question</td><td></td></tr>
+  <tr><td colspan="3" style="background:#1a3a5c;color:#fff;font-weight:600">文学分析词汇 Analysis Terms</td></tr>
+  <tr><td>本体/喻体</td><td>Tenor / Vehicle </td><td></td></tr>
+  <tr><td>意象</td><td>Imagery</td><td></td></tr>
+  <tr><td>旋律感</td><td>Rhythmic quality</td><td></td></tr>
+  <tr><td>含蓄</td><td>Implicit / understated</td><td></td></tr>
+  <tr><td>对比/对立</td><td>Contrast / juxtaposition</td><td></td></tr>
+  <tr><td colspan="3" style="background:#1a3a5c;color:#fff;font-weight:600">写作框架 Writing Frameworks</td></tr>
+  <tr><td>TEE模型</td><td>Technique-Example-Effect</td><td></td></tr>
+  <tr><td>TEEL结构</td><td>Topic-Evidence-Explanation-Link</td><td></td></tr>
+  <tr><td>论点</td><td>Argument / thesis statement</td><td></td></tr>
+  <tr><td>论证</td><td>To argue / substantiate</td><td></td></tr>
+  <tr><td>引用原文</td><td>To quote the original text</td><td></td></tr>
+</table>
+
+<div class="footer">
+  议题 4.2 活动二 Week 9
+</div>
+
+</body>
+</html>

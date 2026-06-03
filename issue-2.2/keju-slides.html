@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第六周 · 科举制度 互动课件 | Year 11 Chinese &amp; Literature</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@600;700;900&display=swap');
+
+  :root{
+    --navy:#16263f; --navy2:#1f3a5f; --teal:#0d7d7d; --teal-l:#e6f4f4;
+    --gold:#c49a2c; --gold-l:#faf3df; --red:#b8392f; --red-l:#fbeae8;
+    --blue:#2f6db5; --blue-l:#eaf1fb; --ink:#22272e; --muted:#5d6b7a;
+    --bg:#f4f6f9; --card:#ffffff; --line:#dde3ea;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; font-family:'Noto Sans SC','Microsoft YaHei','PingFang SC',sans-serif;
+    color:var(--ink); background:var(--bg); line-height:1.75; font-size:18px;
+  }
+  .serif{font-family:'Noto Serif SC','Songti SC',serif;}
+
+  /* ---- top progress nav ---- */
+  nav{
+    position:sticky; top:0; z-index:50; background:rgba(22,38,63,.97); backdrop-filter:blur(6px);
+    display:flex; flex-wrap:wrap; gap:6px; padding:10px 18px; align-items:center;
+    box-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  nav .brand{color:#fff; font-weight:900; margin-right:14px; letter-spacing:.5px; font-size:16px;}
+  nav .brand small{display:block; font-weight:400; color:#9fb4d0; font-size:11px; letter-spacing:0;}
+  nav a{
+    color:#cdd9ea; text-decoration:none; font-size:13px; padding:6px 11px; border-radius:20px;
+    border:1px solid transparent; white-space:nowrap; transition:.15s;
+  }
+  nav a:hover{background:var(--teal); color:#fff;}
+  nav a b{color:var(--gold); font-weight:700;}
+
+  /* ---- sections ---- */
+  section{max-width:1080px; margin:0 auto; padding:54px 26px 30px;}
+  .seg-tag{
+    display:inline-flex; align-items:center; gap:10px; font-weight:700; color:#fff;
+    background:var(--teal); padding:6px 16px; border-radius:30px; font-size:14px; letter-spacing:.5px;
+  }
+  .seg-tag .min{background:rgba(255,255,255,.22); padding:1px 9px; border-radius:20px; font-size:12px;}
+  h1.title{font-size:30px; line-height:1.3; margin:16px 0 8px; color:var(--navy);}
+  h2{font-size:26px; color:var(--navy); margin:14px 0 10px; line-height:1.35;}
+  .lead{color:var(--muted); font-size:17px; margin:2px 0 18px;}
+  hr.div{border:0; border-top:2px dashed var(--line); margin:34px 0;}
+
+  /* ---- hero ---- */
+  .hero{
+    background:linear-gradient(135deg,var(--navy) 0%, var(--navy2) 60%, var(--teal) 140%);
+    color:#fff; border-radius:20px; padding:46px 40px; box-shadow:0 14px 40px rgba(22,38,63,.3);
+  }
+  .hero .kicker{color:var(--gold); font-weight:700; letter-spacing:3px; font-size:14px;}
+  .hero h1{font-size:46px; margin:10px 0 6px; line-height:1.18; color:#fff;}
+  .hero .sub{font-size:21px; color:#dbe6f5; font-weight:300;}
+  .hero .punch{
+    margin-top:26px; font-size:24px; font-weight:700; background:rgba(255,255,255,.1);
+    border-left:5px solid var(--gold); padding:16px 22px; border-radius:0 12px 12px 0;
+  }
+  .hero .punch b{color:var(--gold);}
+  .hook-q{display:flex; gap:16px; flex-wrap:wrap; margin-top:22px;}
+  .hook-q div{flex:1; min-width:240px; background:rgba(255,255,255,.12); border-radius:12px; padding:14px 18px; font-size:16px;}
+  .hook-q div span{color:var(--gold); font-weight:700;}
+
+  /* ---- generic card ---- */
+  .card{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:26px 28px; box-shadow:0 4px 16px rgba(30,50,80,.05);}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  @media(max-width:820px){.grid2{grid-template-columns:1fr;} body{font-size:16px;} .hero h1{font-size:32px;}}
+
+  /* ---- 精读文章 ---- */
+  .article{
+    background:var(--card); border:1px solid var(--line); border-top:6px solid var(--teal);
+    border-radius:14px; padding:34px 40px; box-shadow:0 6px 22px rgba(30,50,80,.07);
+  }
+  .article h3{font-family:'Noto Serif SC',serif; font-size:30px; text-align:center; color:var(--navy); margin:0 0 4px;}
+  .article .byline{text-align:center; color:var(--muted); font-size:14px; margin-bottom:24px;}
+  .article p{font-family:'Noto Serif SC',serif; font-size:19.5px; line-height:2.05; margin:0 0 16px; text-align:justify; text-indent:2em;}
+  .anno{color:var(--red); border-bottom:2px dotted var(--red); cursor:pointer; font-weight:600; padding:0 1px;}
+  .anno sup{font-size:.62em; color:var(--gold); font-weight:700; margin-left:1px;}
+  .anno:hover{background:var(--red-l);}
+
+  /* annotation panel */
+  .notes{margin-top:26px; background:var(--gold-l); border:1px solid #ecdca6; border-radius:14px; padding:20px 24px;}
+  .notes h4{margin:0 0 12px; color:var(--navy); font-size:18px;}
+  .note{border-bottom:1px dashed #e2cf94; padding:9px 4px; cursor:pointer;}
+  .note:last-child{border-bottom:0;}
+  .note .n-head{font-weight:700; color:var(--red); display:flex; align-items:center; gap:8px;}
+  .note .n-head .num{background:var(--red); color:#fff; width:24px; height:24px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:13px; flex:none;}
+  .note .n-body{display:none; margin-top:6px; padding-left:32px; color:#5b4a1d; font-size:16px; line-height:1.7;}
+  .note.open .n-body{display:block;}
+  .note .toggle{margin-left:auto; color:var(--gold); font-size:13px;}
+
+  /* ---- timeline ---- */
+  .tl{position:relative; margin-top:10px;}
+  .tl-row{
+    display:grid; grid-template-columns:130px 1fr; gap:0; border-left:4px solid var(--teal);
+    margin-left:18px; padding:0 0 6px;
+  }
+  .tl-era{
+    font-weight:900; color:#fff; background:var(--teal); align-self:start; margin:0 0 0 -18px;
+    padding:6px 12px; border-radius:0 20px 20px 0; font-size:15px; min-width:118px; text-align:center;
+    position:relative; box-shadow:0 2px 6px rgba(13,125,125,.3);
+  }
+  .tl-card{
+    background:var(--card); border:1px solid var(--line); border-radius:12px; margin:0 0 16px 22px;
+    padding:14px 18px; box-shadow:0 3px 10px rgba(30,50,80,.05); cursor:pointer; transition:.15s;
+  }
+  .tl-card:hover{border-color:var(--teal); box-shadow:0 5px 16px rgba(13,125,125,.14);}
+  .tl-card .sys{font-weight:800; color:var(--navy); font-size:19px;}
+  .tl-card .sys .pill{font-size:12px; font-weight:600; color:var(--teal); background:var(--teal-l); padding:2px 9px; border-radius:12px; margin-left:8px; vertical-align:middle;}
+  .tl-card .how{color:var(--muted); font-size:15px; margin-top:2px;}
+  .tl-card .note-anno{display:none; margin-top:10px; padding-top:10px; border-top:1px dashed var(--line); color:var(--ink); font-size:15.5px; line-height:1.7;}
+  .tl-card.open .note-anno{display:block;}
+  .tl-card .more{color:var(--gold); font-size:12px; font-weight:700; float:right;}
+  .tl-card.flag{border-left:5px solid var(--gold);}
+  .tl-card.danger{border-left:5px solid var(--red);}
+
+  /* ---- ladder game ---- */
+  .ladder{display:flex; flex-direction:column-reverse; gap:0; max-width:760px; margin:6px auto 0;}
+  .rung{
+    display:flex; align-items:stretch; gap:0; margin:0; cursor:pointer; opacity:.55; transition:.25s;
+    border-radius:12px; overflow:hidden; border:2px solid var(--line); background:#fff;
+  }
+  .rung.shown{opacity:1; box-shadow:0 5px 16px rgba(30,50,80,.12);}
+  .rung.correct{border-color:var(--teal);}
+  .rung .lvl{
+    flex:none; width:120px; background:var(--navy); color:#fff; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; padding:12px 6px; font-weight:800;
+  }
+  .rung.correct .lvl{background:var(--teal);}
+  .rung .lvl .stage{font-size:12px; color:var(--gold); font-weight:600;}
+  .rung .body{flex:1; padding:12px 18px;}
+  .rung .q{font-weight:600;}
+  .rung .a{display:none; margin-top:8px; color:var(--teal); font-weight:700; background:var(--teal-l); padding:8px 12px; border-radius:8px; font-size:16px;}
+  .rung.answered .a{display:block;}
+  .rung .a small{display:block; color:var(--muted); font-weight:400; margin-top:3px;}
+  .ladder-hint{text-align:center; color:var(--muted); font-size:14px; margin-bottom:14px;}
+  .crown{text-align:center; font-size:40px; margin-bottom:4px;}
+
+  /* ---- 手法 spot ---- */
+  .tech{border:1px solid var(--line); border-radius:12px; padding:16px 20px; margin-bottom:14px; background:#fff; cursor:pointer; transition:.15s;}
+  .tech:hover{border-color:var(--blue);}
+  .tech .quote{font-family:'Noto Serif SC',serif; font-size:19px; color:var(--navy); font-weight:600;}
+  .tech .reveal{display:none; margin-top:12px; gap:10px;}
+  .tech.open .reveal{display:flex; flex-wrap:wrap;}
+  .tech .lab{background:var(--blue); color:#fff; padding:4px 14px; border-radius:20px; font-weight:700; font-size:15px; align-self:flex-start;}
+  .tech .eff{flex:1; min-width:240px; color:var(--ink); font-size:16px; background:var(--blue-l); border-radius:10px; padding:8px 14px;}
+  .tech .tap{float:right; color:var(--blue); font-size:12px; font-weight:700;}
+
+  /* ---- four corners ---- */
+  .axis{text-align:center; margin:18px 0 10px; font-weight:700; color:var(--navy);}
+  .axis .bar{height:10px; border-radius:6px; background:linear-gradient(90deg,var(--teal),#9fcf6e,#e8b84b,var(--red)); margin:8px 0;}
+  .corners{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .corner{border-radius:14px; padding:18px 20px; color:#fff; cursor:pointer; transition:.15s;}
+  .corner:hover{transform:translateY(-3px);}
+  .corner h4{margin:0 0 4px; font-size:20px;}
+  .corner .stance{font-size:14px; opacity:.9;}
+  .corner .args{display:none; margin-top:12px; background:rgba(255,255,255,.16); border-radius:10px; padding:10px 14px; font-size:15px; line-height:1.7;}
+  .corner.open .args{display:block;}
+  .c1{background:var(--teal);} .c2{background:#5a9e4e;} .c3{background:#c99a2e;} .c4{background:var(--red);}
+
+  /* ---- chips / idioms ---- */
+  .chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:8px;}
+  .chip{background:#fff; border:1px solid var(--line); border-radius:24px; padding:8px 16px; cursor:pointer; font-weight:600; transition:.15s;}
+  .chip:hover{border-color:var(--gold);}
+  .chip .mean{display:none; color:var(--muted); font-weight:400; margin-left:8px; font-size:14px;}
+  .chip.open{background:var(--gold-l); border-color:var(--gold);}
+  .chip.open .mean{display:inline;}
+
+  /* ---- bridge / teaser ---- */
+  .teaser{background:var(--red-l); border:1px solid #f0c8c2; border-radius:14px; padding:24px 28px;}
+  .teaser .ext{font-family:'Noto Serif SC',serif; font-size:18px; line-height:1.95; color:#5a2420; background:#fff; border-radius:10px; padding:16px 20px; border-left:4px solid var(--red);}
+  .exit{background:var(--navy); color:#fff; border-radius:14px; padding:24px 28px; margin-top:20px;}
+  .exit .blank{display:inline-block; min-width:260px; border-bottom:2px solid var(--gold); margin:0 6px;}
+
+  .callout{background:var(--blue-l); border-left:5px solid var(--blue); border-radius:0 12px 12px 0; padding:14px 20px; margin:16px 0; font-size:16px;}
+  .callout b{color:var(--blue);}
+  .tnote{background:#fff7e8; border:1px dashed var(--gold); border-radius:12px; padding:12px 18px; font-size:15px; color:#6b531a; margin-top:14px;}
+  .tnote b{color:var(--red);}
+  footer{max-width:1080px; margin:30px auto; padding:20px 26px; color:var(--muted); font-size:13px; border-top:1px solid var(--line); text-align:center;}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="brand">第六周 · 科举制度<small>Year 11 Chinese &amp; Literature</small></span>
+  <a href="#s1"><b>①</b> 导入 5'</a>
+  <a href="#s2"><b>②</b> 精读文章 12'</a>
+  <a href="#s3"><b>③</b> 科举闯关 13'</a>
+  <a href="#s4"><b>④</b> 手法精读 12'</a>
+  <a href="#s5"><b>⑤</b> 四角辩论 13'</a>
+  <a href="#s6"><b>⑥</b> 收束·钩子 5'</a>
+</nav>
+
+<!-- ===================== ① 导入 ===================== -->
+<section id="s1">
+  <div class="hero">
+    <div class="kicker">ISSUE 2.2 · 传统教育与科举</div>
+    <h1>千年龙门<br>从科举到你今早的考试</h1>
+    <div class="sub">The Imperial Examination — 1,300 years of "exams that change your fate"</div>
+    <div class="punch">你今天上午的 Task 2 写了 <b>80 分钟</b>。<br>一千多年前，孟郊考到 <b>四十六岁</b> 才中榜，欣喜若狂；也有人考了一辈子，白发苍苍仍是 <b>童生</b>。</div>
+    <div class="hook-q">
+      <div><span>热身一</span>　你觉得"靠考试决定前途"这件事，是从什么时候开始的？</div>
+      <div><span>热身二</span>　如果古代没有考试，一个农民的儿子能当大官吗？</div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ===================== ② 精读文章 ===================== -->
+<section id="s2">
+  <span class="seg-tag">② 精读文章 <span class="min">12 min</span></span>
+  <h1 class="title">先把这篇文章读懂——今天所有活动都从它出发</h1>
+  <p class="lead">边读边点开红色术语看<b>注解</b>；右下方有一条<b>科举发展时间线</b>帮你理清来龙去脉。</p>
+
+  <div class="article">
+    <h3>千年龙门：科举的光与影</h3>
+    <div class="byline">—— Year 11 C&amp;L 精读篇目（约 1400 字）</div>
+
+    <p>公元796年，四十六岁的孟郊第三次赴考，终于中了进士，狂喜之下写道：<span class="anno" data-n="1">「春风得意马蹄疾，一日看尽长安花」<sup>[1]</sup></span>。一个半生潦倒的读书人，为何会因为一场考试而欣喜若狂？因为在那个年代，这几乎是他改变命运的唯一通道——科举。它既是寒门向上的<b>龙门</b>，也是思想自缚的<b>牢笼</b>。</p>
+
+    <p>从隋大业元年（605年）始设进士科，到清光绪三十一年（1905年）废止，科举在中国延续了一千三百多年。要看清它的分量，先看它之前怎样选官：先秦行"世卿世禄"，做官凭血缘，平民再有才学也难入庙堂；汉代改行<span class="anno" data-n="2">察举制<sup>[2]</sup></span>，由地方"举孝廉"，可推荐权握在世家手里，"举秀才，不知书；举孝廉，父别居"成了笑谈；魏晋又设<span class="anno" data-n="3">九品中正制<sup>[3]</sup></span>，结果"上品无寒门，下品无势族"，门第几乎决定了一个人的上限。</p>
+
+    <p>隋朝的变革，正是在这门第森严的天地里劈开一道缝：用一场"考试"取代一纸"推荐"，把选官的权柄从士族收归朝廷。从此，寒门第一次有了凭本事翻身的路。这条路有多窄？唐代进士每年不过录取三十人左右，真是千军万马过独木桥；可它又有多亮——<span class="anno" data-n="4">范仲淹<sup>[4]</sup></span>幼年丧父、家境贫寒，曾"划粥断齑"苦读，终于高中进士、官至参知政事，写下"先天下之忧而忧，后天下之乐而乐"；<span class="anno" data-n="5">欧阳修<sup>[5]</sup></span>四岁丧父，母亲以芦荻在沙上画字教他识字，后来同样金榜题名，成为一代文坛领袖。若没有科举，这两个寒门孤儿，几乎不可能走到庙堂之上。</p>
+
+    <p>宋代把这架机器越铸越精：推行<span class="anno" data-n="6">"糊名""誊录"<sup>[6]</sup></span>，密封姓名、誊抄考卷，"取士不问家世"。最高一级的<span class="anno" data-n="7">殿试<sup>[7]</sup></span>由皇帝亲自主持、钦定名次，头三名便是状元、榜眼、探花。能<span class="anno" data-n="8">"连中三元"<sup>[8]</sup></span>者，一千三百年间寥寥可数。状元也未必只是书生：南宋的<span class="anno" data-n="9">文天祥<sup>[9]</sup></span>二十一岁高中状元，后来兵败被俘，写下"人生自古谁无死，留取丹心照汗青"，慷慨殉国。</p>
+
+    <p>那么，这场考试究竟<b>考什么</b>？答案是儒家经典。汉代立<span class="anno" data-n="11">"五经"<sup>[11]</sup></span>（《诗》《书》《礼》《易》《春秋》）为官学；到了南宋，大儒<span class="anno" data-n="12">朱熹<sup>[12]</sup></span>又从《礼记》中抽出《大学》《中庸》，与《论语》《孟子》合为"四书"，并作《四书章句集注》逐字注解。从元代延祐年间（1315年）恢复科举起，朝廷明定：考试以朱熹的注解为<b>标准答案</b>。从此，读书人不仅要背熟原文，更要按朱熹的解释作答——"代圣人立言"，不容自己另出新意。一部《四书集注》，就这样统治了此后六百年读书人的头脑。</p>
+
+    <p>然而，龙门的另一面是牢笼。明清两代把这套推向极致：考试内容死锁在四书五经，文体定为<span class="anno" data-n="10">八股文<sup>[10]</sup></span>——全文须分<b>破题、承题、起讲、入手、起股、中股、后股、束股</b>八个部分，其中四"股"还要两两对仗工整；题目出自经书，立意必须合乎朱注，连语气都要模仿圣人。读书人皓首穷经，"两耳不闻窗外事"，经书以外的学问一概被视为"杂学"；连清初也曾批评八股"空疏无用，实于政事无涉"。当考试成了唯一的出路，思想便成了多余的负担。1905年9月2日，清廷一纸诏书废了科举，兴办学堂——千年制度，戛然而止。</p>
+
+    <p>可它真的结束了吗？科举废了，"考试改变命运"的文化基因却流进了我们的血脉：高考、HSC，乃至你今天上午刚刚伏案写下的 Task 2，哪一个不是那道龙门遥远的回声？我们一边痛恨它的压迫，一边依赖它的公平——这，正是科举留给一千三百年后的我们，最深的矛盾，也是最难的功课。</p>
+
+    <p style="font-size:0.92em;color:var(--muted);text-indent:2em;">（至于被这架机器碾碎的人——发疯的范进、潦倒的孔乙己——我们<b>下个单元</b>再读。）</p>
+
+    <!-- annotation panel -->
+    <div class="notes">
+      <h4>📖 注解（点击逐条展开）</h4>
+      <div class="note"><div class="n-head"><span class="num">1</span>孟郊《登科后》<span class="toggle">＋ 展开</span></div><div class="n-body">唐代诗人孟郊四十六岁中进士后所作。"春风得意马蹄疾，一日看尽长安花"写尽金榜题名的狂喜，至今仍是形容人得志畅快的名句。</div></div>
+      <div class="note"><div class="n-head"><span class="num">2</span>察举制<span class="toggle">＋ 展开</span></div><div class="n-body">汉代选官制度。由地方长官推举"孝廉""秀才"给朝廷任用，靠<b>推荐</b>、重德行，不靠考试。后期被世家操纵，"举孝廉，父别居"成了笑谈。</div></div>
+      <div class="note"><div class="n-head"><span class="num">3</span>九品中正制<span class="toggle">＋ 展开</span></div><div class="n-body">曹魏始行，"中正官"将人才评为九等，朝廷据此授官。后被门阀士族把持，"上品无寒门，下品无势族"（《晋书·刘毅传》）——门第垄断仕途。</div></div>
+      <div class="note"><div class="n-head"><span class="num">4</span>范仲淹<span class="toggle">＋ 展开</span></div><div class="n-body">北宋名臣。幼年丧父家贫，"划粥断齑"（把冻粥划成几块、就着碎腌菜充饥）苦读，中进士后官至参知政事。《岳阳楼记》"先天下之忧而忧"传诵千古。寒门凭科举登顶的典范。</div></div>
+      <div class="note"><div class="n-head"><span class="num">5</span>欧阳修<span class="toggle">＋ 展开</span></div><div class="n-body">北宋文坛领袖。四岁丧父，家贫无纸笔，母亲以芦荻在沙地上画字教他认字（"画荻教子"），后中进士，成一代文宗。</div></div>
+      <div class="note"><div class="n-head"><span class="num">6</span>糊名、誊录<span class="toggle">＋ 展开</span></div><div class="n-body">宋代防作弊之法。"糊名"密封考卷上的姓名；"誊录"由专人重抄考卷，使考官无法凭笔迹辨认考生——很像今天的密封卷。</div></div>
+      <div class="note"><div class="n-head"><span class="num">7</span>殿试<span class="toggle">＋ 展开</span></div><div class="n-body">科举最高一级，由皇帝亲自主持、钦定名次，始于武则天。只考一道策论，一甲前三名为状元、榜眼、探花。</div></div>
+      <div class="note"><div class="n-head"><span class="num">8</span>连中三元<span class="toggle">＋ 展开</span></div><div class="n-body">乡试（解元）、会试（会元）、殿试（状元）接连考第一，千年间极罕见。明代商辂、清代钱棨为著名者。</div></div>
+      <div class="note"><div class="n-head"><span class="num">9</span>文天祥<span class="toggle">＋ 展开</span></div><div class="n-body">南宋名臣，二十一岁高中状元。后抗元兵败被俘，作《过零丁洋》"人生自古谁无死，留取丹心照汗青"，从容就义。状元亦是栋梁。</div></div>
+      <div class="note"><div class="n-head"><span class="num">10</span>八股文<span class="toggle">＋ 展开</span></div><div class="n-body">明清科举规定的僵化文体，须就四书五经命题、按"破题、承题、起讲……"等固定格式"代圣人立言"，严重束缚思想与个性。</div></div>
+      <div class="note"><div class="n-head"><span class="num">11</span>四书五经<span class="toggle">＋ 展开</span></div><div class="n-body"><b>五经</b>：《诗经》《尚书》《礼记》《周易》《春秋》——先秦儒家经典，汉代立为官学。<b>四书</b>：《大学》《中庸》《论语》《孟子》——南宋朱熹编定。两者是科举考试的核心内容，"经书以外，皆为杂学"。</div></div>
+      <div class="note"><div class="n-head"><span class="num">12</span>朱熹与《四书章句集注》<span class="toggle">＋ 展开</span></div><div class="n-body">朱熹（1130–1200），南宋理学集大成者。他从《礼记》中抽出《大学》《中庸》，与《论语》《孟子》合为"四书"，并作《四书章句集注》。元代延祐复科后，朝廷规定科举以朱熹集注为准，明清沿用——他的解释成了此后六百年的"标准答案"。</div></div>
+    </div>
+  </div>
+
+  <!-- timeline -->
+  <h2 style="margin-top:40px;">🗺️ 科举发展时间线 <span style="font-size:15px;color:var(--muted);font-weight:400;">（点击每张卡片展开注解）</span></h2>
+  <div class="tl">
+    <div class="tl-row"><div class="tl-era">先秦<br>西周–战国</div>
+      <div class="tl-card"><span class="more">＋ 注解</span><div class="sys">世卿世禄制 <span class="pill">血缘世袭</span></div><div class="how">做官靠出身，与才能无关</div>
+        <div class="note-anno">官职父子相传，被贵族垄断。"龙生龙，凤生凤"，平民再有才华也几乎无路可走。这是科举出现<b>之前</b>的起点。</div></div></div>
+
+    <div class="tl-row"><div class="tl-era">汉代</div>
+      <div class="tl-card flag"><span class="more">＋ 注解</span><div class="sys">察举制 · 征辟 <span class="pill">靠推荐</span></div><div class="how">地方长官"举孝廉""举秀才"，看重德行</div>
+        <div class="note-anno"><b>科举的前身之一。</b>由地方推荐人才、朝廷征召名士，以德行为标准。进步之处是给了平民机会；弊端是推荐权握在世家手里，后期"举孝廉，父别居"，名实不符。</div></div></div>
+
+    <div class="tl-row"><div class="tl-era">魏晋<br>南北朝</div>
+      <div class="tl-card flag"><span class="more">＋ 注解</span><div class="sys">九品中正制 <span class="pill">门阀政治</span></div><div class="how">"中正官"评人才为九品，按品授官</div>
+        <div class="note-anno"><b>"门阀"的由来。</b>本想纠正察举之弊，却被士族大家把持，形成"上品无寒门，下品无势族"——你的家世几乎决定一切。正因如此，下一步的"考试"才显得革命性。</div></div></div>
+
+    <div class="tl-row"><div class="tl-era">隋</div>
+      <div class="tl-card danger"><span class="more">＋ 注解</span><div class="sys">科举创立 <span class="pill">考试登场</span></div><div class="how">文帝废九品中正，炀帝置进士科</div>
+        <div class="note-anno"><b>转折点。</b>选官权从地方士族收归中央，用"考试"取代"推荐"。寒门第一次有了制度性的上升通道——龙门由此开启。</div></div></div>
+
+    <div class="tl-row"><div class="tl-era">唐</div>
+      <div class="tl-card"><span class="more">＋ 注解</span><div class="sys">科举确立 <span class="pill">明经 / 进士</span></div><div class="how">"三十老明经，五十少进士"</div>
+        <div class="note-anno">明经、进士两科并立，进士科最难最贵。武则天首创<b>殿试</b>、增设<b>武举</b>，制度愈加完备。</div></div></div>
+
+    <div class="tl-row"><div class="tl-era">宋</div>
+      <div class="tl-card"><span class="more">＋ 注解</span><div class="sys">科举完善 <span class="pill">糊名 · 誊录</span></div><div class="how">防作弊、防关系，"取士不问家世"</div>
+        <div class="note-anno">密封姓名（糊名）、重抄考卷（誊录），考官认不出是谁的卷子。录取人数大增，公平程度达到顶峰，文官政治成熟。</div></div></div>
+
+    <div class="tl-row"><div class="tl-era">明清</div>
+      <div class="tl-card danger"><span class="more">＋ 注解</span><div class="sys">八股取士 <span class="pill">乡试–会试–殿试</span></div><div class="how">四书五经 + 八股文，三级考试</div>
+        <div class="note-anno"><b>龙门变牢笼。</b>内容僵化为四书五经，文章死守八股格式，"代圣人立言"。连清初也批评八股"空疏无用，实于政事无涉"；读书人皓首穷经，只为一第。</div></div></div>
+
+    <div class="tl-row"><div class="tl-era">1905<br>清末</div>
+      <div class="tl-card"><span class="more">＋ 注解</span><div class="sys">废除科举 · 兴学堂 <span class="pill">制度终结</span></div><div class="how">清末新政，废科举、办新式学校</div>
+        <div class="note-anno">千年制度戛然而止。但"考试改变命运"的文化基因延续至今——<b>高考、HSC，乃至你今早的 Task 2。</b></div></div></div>
+  </div>
+  <div class="tnote"><b>老师走读：</b>先齐读首段，圈出"龙门 / 牢笼"这组核心对比；再让学生顺着时间线说出"科举之前"靠什么选官（世袭→察举→门阀），点明<b>科举的革命性=用考试取代出身</b>。这条主线贯穿后面所有活动。</div>
+
+  <h2 style="margin-top:40px;">📚 知识窗：科举到底"考什么"？ <span style="font-size:15px;color:var(--muted);font-weight:400;">（读一读，记住这些知识点）</span></h2>
+  <div class="grid2" style="margin-top:6px;">
+    <div class="card" style="border-top:5px solid var(--teal);">
+      <h3 style="margin:0 0 10px;color:var(--navy);">五经 <span style="font-size:14px;font-weight:400;color:var(--muted);">（汉代立为官学）</span></h3>
+      <p style="margin:0;line-height:2.1;"><b>《诗经》</b> · 最早的诗歌总集<br><b>《尚书》</b> · 上古政事文献<br><b>《礼记》</b> · 礼制与人伦<br><b>《周易》</b> · 卜筮与哲理<br><b>《春秋》</b> · 鲁国编年史</p>
+    </div>
+    <div class="card" style="border-top:5px solid var(--gold);">
+      <h3 style="margin:0 0 10px;color:var(--navy);">四书 <span style="font-size:14px;font-weight:400;color:var(--muted);">（南宋朱熹编定）</span></h3>
+      <p style="margin:0;line-height:2.1;"><b>《大学》</b> · 修身治国的纲领<br><b>《中庸》</b> · 中和之道<br><b>《论语》</b> · 孔子言行<br><b>《孟子》</b> · 仁政思想</p>
+      <p style="margin:10px 0 0;font-size:14px;color:var(--muted);">朱熹《四书章句集注》→ 元明清的官方"标准答案"，统治读书人六百年。</p>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:16px;"><b>八股文 · 一篇文章的八个部分：</b><br>
+    破题 → 承题 → 起讲 → 入手 → <b>起股 → 中股 → 后股 → 束股</b>（后四"股"须两两对仗）。<br>
+    题目只出自四书五经，立意必须合乎朱熹注解，连口气都要"代圣人立言"——<b>形式极严，思想极窄</b>。这，就是"龙门"如何一步步变成"牢笼"。</div>
+</section>
+
+<hr class="div">
+
+<!-- ===================== ③ 科举闯关 ===================== -->
+<section id="s3">
+  <span class="seg-tag">③ 科举闯关 <span class="min">13 min</span></span>
+  <h1 class="title">🎮 你能从童生一路考到状元吗？</h1>
+  <p class="lead">每一级都有一道题——<b>答案都藏在刚才那篇文章里</b>。点开题目，全班抢答，答对就升一级！</p>
+  <div class="crown">👑</div>
+  <div class="ladder-hint">从最底层"童生"往上爬 ↑　点击每一级展开题目，再点一次看答案</div>
+  <div class="ladder" id="ladder">
+    <!-- rungs added bottom-up via column-reverse -->
+    <div class="rung" data-lv="1"><div class="lvl"><div>童生</div><div class="stage">起点</div></div><div class="body"><div class="q">第 1 关：先秦时代，一个人能不能当官，主要看什么？</div><div class="a">看<b>血缘出身</b>（世卿世禄制）——做官靠投胎，与才能无关。</div></div></div>
+    <div class="rung" data-lv="2"><div class="lvl"><div>秀才</div><div class="stage">院试</div></div><div class="body"><div class="q">第 2 关：汉代靠什么方式选官？关键词两个字。</div><div class="a"><b>察举</b>（察举制 / 举孝廉）——靠地方推荐，不靠考试。</div></div></div>
+    <div class="rung" data-lv="3"><div class="lvl"><div>举人</div><div class="stage">乡试</div></div><div class="body"><div class="q">第 3 关："上品无寒门，下品无势族"说的是哪种制度？它造就了什么政治？</div><div class="a"><b>九品中正制</b> → 造就了"<b>门阀</b>"政治（门第垄断仕途）。<small>👉 中了"举人"就能做官，已是改换门庭的大事。</small></div></div></div>
+    <div class="rung" data-lv="4"><div class="lvl"><div>贡士</div><div class="stage">会试</div></div><div class="body"><div class="q">第 4 关：科举的"进士科"最早是哪个朝代、哪位皇帝设立的？</div><div class="a"><b>隋朝</b>，隋炀帝始置进士科（隋文帝先废九品中正）。</div></div></div>
+    <div class="rung" data-lv="5"><div class="lvl"><div>进士</div><div class="stage">殿试</div></div><div class="body"><div class="q">第 5 关：宋代为了防作弊、防"走关系"，发明了哪两种办法？</div><div class="a"><b>糊名</b>（密封姓名）+ <b>誊录</b>（重抄考卷）——"取士不问家世"。</div></div></div>
+    <div class="rung" data-lv="6"><div class="lvl"><div>状元 👑</div><div class="stage">天下第一</div></div><div class="body"><div class="q">第 6 关：①明清科举用什么文体取士？②哪一年彻底废除了科举？</div><div class="a">①<b>八股文</b>（八股取士）　②<b>1905 年</b>（清末新政）。<small>🎉 恭喜！你"连中三元"，独占鳌头！</small></div></div></div>
+  </div>
+  <div class="tnote"><b>玩法：</b>分两队抢答／或全班共爬一条梯。点题→学生抢答→点开正确答案→该级变绿"点亮"。每题顺势回扣文章与时间线，<b>本质是一次趣味阅读理解检测</b>。</div>
+
+  <h2 style="margin-top:36px;">🗂️ 龙门档案 —— 走过这道龙门的真实人物</h2>
+  <p class="lead">这些都是文章里提到的人物。读一读他们的科举故事——看科举如何把寒门子弟送上庙堂。</p>
+  <div style="border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:10px;padding:12px 18px;margin-bottom:12px;background:#fff;"><b style="color:var(--navy);font-size:18px;">孟郊</b> <span style="color:var(--muted);font-size:14px;">唐 · 大器晚成</span><div style="margin-top:4px;line-height:1.85;">考到 <b>四十六岁</b> 才中进士，欣喜若狂写下《登科后》——"春风得意马蹄疾，一日看尽长安花"。</div></div>
+  <div style="border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:10px;padding:12px 18px;margin-bottom:12px;background:#fff;"><b style="color:var(--navy);font-size:18px;">范仲淹</b> <span style="color:var(--muted);font-size:14px;">北宋 · 寒门名相</span><div style="margin-top:4px;line-height:1.85;">幼年丧父家贫，"划粥断齑"苦读；中进士后官至参知政事，写下"<b>先天下之忧而忧，后天下之乐而乐</b>"。</div></div>
+  <div style="border:1px solid var(--line);border-left:5px solid var(--red);border-radius:10px;padding:12px 18px;margin-bottom:12px;background:#fff;"><b style="color:var(--navy);font-size:18px;">欧阳修</b> <span style="color:var(--muted);font-size:14px;">北宋 · 文坛领袖</span><div style="margin-top:4px;line-height:1.85;">四岁丧父，家贫无纸笔，母亲用 <b>芦荻在沙地上画字</b> 教他认字（"画荻教子"），后中进士，成一代文宗。</div></div>
+  <div style="border:1px solid var(--line);border-left:5px solid var(--blue);border-radius:10px;padding:12px 18px;margin-bottom:12px;background:#fff;"><b style="color:var(--navy);font-size:18px;">文天祥</b> <span style="color:var(--muted);font-size:14px;">南宋 · 状元忠臣</span><div style="margin-top:4px;line-height:1.85;"><b>二十一岁高中状元</b>。后抗元兵败被俘，从容就义，留下"人生自古谁无死，留取丹心照汗青"——状元亦是栋梁。</div></div>
+  <div style="border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:10px;padding:12px 18px;margin-bottom:12px;background:#fff;"><b style="color:var(--navy);font-size:18px;">商辂 / 钱棨</b> <span style="color:var(--muted);font-size:14px;">明 / 清 · 千年罕见</span><div style="margin-top:4px;line-height:1.85;">乡试、会试、殿试 <b>接连考第一</b>（解元→会元→状元）。一千三百年间能做到的，屈指可数。</div></div>
+  <div class="tnote"><b>读法：</b>这是一份"知识卡"，让学生默读即可；也可选一位，思考"如果没有科举，他会怎样？"——呼应文章的 <b>龙门</b> 主题，并为下周《范进中举》（科举的反面）做铺垫。</div>
+</section>
+
+<hr class="div">
+
+<!-- ===================== ④ 手法精读 ===================== -->
+<section id="s4">
+  <span class="seg-tag">④ 手法精读 <span class="min">12 min</span></span>
+  <h1 class="title">✍️ 这篇文章是怎么"写"出来的？——练 Q3(b) 的眼睛</h1>
+  <p class="lead">作者为什么读起来有力量？从文中挑出 4 处，先猜<b>手法</b>，再想<b>效果</b>。点击卡片揭晓。</p>
+
+  <div class="tech"><span class="tap">点击揭晓 ▾</span><div class="quote">「它既是寒门向上的<u>龙门</u>，也是思想自缚的<u>牢笼</u>。」</div>
+    <div class="reveal"><span class="lab">比喻 + 对比</span><div class="eff">用"龙门 / 牢笼"两个比喻形成强烈对比，一句话点出科举的<b>双面性</b>，确立全文论点。</div></div></div>
+
+  <div class="tech"><span class="tap">点击揭晓 ▾</span><div class="quote">「<u>春风得意马蹄疾，一日看尽长安花</u>。」</div>
+    <div class="reveal"><span class="lab">引用（用典）</span><div class="eff">借孟郊中举后的名句，以"春风得意"的畅快 <b>以乐景烘托</b> 科举"龙门"对读书人的巨大诱惑，比直说"考上很高兴"更有画面感。</div></div></div>
+
+  <div class="tech"><span class="tap">点击揭晓 ▾</span><div class="quote">「范仲淹『划粥断齑』，欧阳修『画荻教子』……<u>若没有科举，几乎不可能走到庙堂之上</u>。」</div>
+    <div class="reveal"><span class="lab">举例 + 假设</span><div class="eff">连举两个真实的寒门例子，再用"若没有……几乎不可能"的假设推理，<b>有力证明</b>科举作为"龙门"的公平与意义。</div></div></div>
+
+  <div class="tech"><span class="tap">点击揭晓 ▾</span><div class="quote">「可它真的结束了吗？……哪一个不是那道龙门遥远的回声？」</div>
+    <div class="reveal"><span class="lab">反问（连用）</span><div class="eff">连续反问，不答自明，<b>引发读者反思</b>，把千年前的科举一把拉到"你今早的考试"，完成古今勾连。</div></div></div>
+
+  <div class="callout"><b>HSC 衔接：</b>这就是 Q3(b) 的做法——<b>命名手法 → 引原文 → 说效果（回扣论点）</b>。三步缺一不可，"两张皮"（只贴标签不讲作用）拿不到分。</div>
+</section>
+
+<hr class="div">
+
+<!-- ===================== ⑤ 四角辩论 ===================== -->
+<section id="s5">
+  <span class="seg-tag">⑤ 四角辩论 <span class="min">13 min</span></span>
+  <h1 class="title">🧭 龙门，还是牢笼？——站到你的立场去</h1>
+  <p class="lead">文章说科举"既是龙门，也是牢笼"。<b>那今天的应试 / 高考 / HSC 呢？</b>选一个角站好，准备 30 秒理由；被说服可以换角。</p>
+
+  <div class="axis">
+    <div>← 公平的精英阶梯　　　　　　　　　　　禁锢思想的牢笼 →</div>
+    <div class="bar"></div>
+  </div>
+
+  <div class="corners">
+    <div class="corner c1"><span style="float:right;font-size:13px;">点击看提示 ▾</span><h4>① 龙门派</h4><div class="stance">"科举/应试是公平的精英阶梯"</div>
+      <div class="args">糊名誊录、分数面前人人平等；寒门凭努力翻身；没有更好的客观标准。<br><b>证据可引：</b>宋代"取士不问家世"。</div></div>
+    <div class="corner c2"><span style="float:right;font-size:13px;">点击看提示 ▾</span><h4>② 利大于弊</h4><div class="stance">"有问题，但仍是最不坏的制度"</div>
+      <div class="args">承认压力大，但它给了普通人一条可预期的上升路；关键是改良考试内容，而非废除。</div></div>
+    <div class="corner c3"><span style="float:right;font-size:13px;">点击看提示 ▾</span><h4>③ 弊大于利</h4><div class="stance">"它扭曲了学习的目的"</div>
+      <div class="args">为分数而学、死记硬背；八股／题海扼杀创造力；范进、孔乙己就是代价。</div></div>
+    <div class="corner c4"><span style="float:right;font-size:13px;">点击看提示 ▾</span><h4>④ 牢笼派</h4><div class="stance">"它是禁锢思想的牢笼"</div>
+      <div class="args">"代圣人立言"不许独立思考；一考定终身的焦虑；把人变成考试机器。</div></div>
+  </div>
+  <div class="tnote"><b>回扣：</b>"你今早写《应试教育是最大压力源》的同学，现在站哪个角？"——把刚考完的 Task 2 经验直接接进辩论。结束时不必统一结论，<b>点明"龙门与牢笼并存"正是这一议题的核心张力</b>。</div>
+</section>
+
+<hr class="div">
+
+<!-- ===================== ⑥ 收束 + 钩子 ===================== -->
+<section id="s6">
+  <span class="seg-tag">⑥ 收束 · 钩子 <span class="min">5 min</span></span>
+  <h1 class="title">📌 带走的词 &amp; 下一站</h1>
+
+  <h2>科举术语 / 成语 速记（点击展开释义）</h2>
+  <div class="chips">
+    <span class="chip">十年寒窗<span class="mean">长年刻苦读书</span></span>
+    <span class="chip">金榜题名<span class="mean">科举考中，榜上有名</span></span>
+    <span class="chip">名落孙山<span class="mean">考试落榜</span></span>
+    <span class="chip">独占鳌头<span class="mean">高中状元，居第一</span></span>
+    <span class="chip">连中三元<span class="mean">乡试、会试、殿试均第一（解元·会元·状元）</span></span>
+    <span class="chip">朝为田舍郎，暮登天子堂<span class="mean">寒门凭科举地位骤变</span></span>
+    <span class="chip">八股<span class="mean">明清僵化的考试文体，喻死板教条</span></span>
+  </div>
+
+  <div class="teaser" style="margin-top:26px;">
+    <h2 style="margin-top:0;">🎬 下一站预告：当科举把人逼疯——精读《范进中举》</h2>
+    <p style="margin:6px 0 12px;">文章里那句"范进中举发疯"，下个单元我们要<b>亲眼读到</b>。先尝一口（吴敬梓《儒林外史》）：</p>
+    <div class="ext">范进不看便罢，看了一遍，又念一遍……自己把两手拍了一下，笑了一声，道："噫！好了！我中了！"说着，往后一交跌倒，牙关咬紧，不省人事。……他爬将起来，又拍着手大笑道："噫！好！我中了！"笑着，不由分说，就往门外飞跑……一脚踹在塘里，挣起来，头发都跌散了，两手黄泥，淋淋漓漓一身的水。众人……一齐道："原来新贵人欢喜疯了。"</div>
+    <p style="margin:12px 0 0;"><b>留个问题想一想：</b>一个人为什么会因为"考上了"而<b>发疯</b>？这背后，是科举怎样的力量？——下节课见分晓。再之后，我们读<b>蔡元培</b>在北大的演讲，看他如何亲手推倒这套旧思想。</p>
+  </div>
+
+  <div class="exit">
+    <h2 style="color:#fff;margin-top:0;">🎟️ 离场券（口头或一句话）</h2>
+    <p style="font-size:20px;">科举 / 应试，留给今天年轻人最大的一个影响是<span class="blank"></span>。</p>
+    <p style="color:#9fb4d0;font-size:14px;margin-bottom:0;">每人一句，说完下课。</p>
+  </div>
+</section>
+
+<footer>
+  第六周 · 科举制度 互动课件　·　Year 11 Chinese &amp; Literature　·　Issue 2.2 传统教育与科举　·　精读文章 + 注解时间线 + 龙门档案 + 闯关 + 手法 + 四角辩论
+</footer>
+
+<script>
+  // annotation panel: click note to expand; click inline term scrolls + opens its note
+  document.querySelectorAll('.note').forEach(function(n){
+    n.addEventListener('click',function(){ n.classList.toggle('open'); });
+  });
+  document.querySelectorAll('.anno').forEach(function(a){
+    a.addEventListener('click',function(){
+      var num=a.getAttribute('data-n');
+      var notes=document.querySelectorAll('.notes .note');
+      var target=notes[parseInt(num,10)-1];
+      if(target){ target.classList.add('open'); target.scrollIntoView({behavior:'smooth',block:'center'});
+        target.style.transition='background .4s'; target.style.background='#f6e6b0';
+        setTimeout(function(){target.style.background='';},900);
+      }
+    });
+  });
+
+  // timeline cards expand
+  document.querySelectorAll('.tl-card').forEach(function(c){
+    c.addEventListener('click',function(){ c.classList.toggle('open'); });
+  });
+
+  // ladder: 1st click shows the question (reveal), 2nd click shows answer + light up
+  document.querySelectorAll('#ladder .rung').forEach(function(r){
+    r.addEventListener('click',function(){
+      if(!r.classList.contains('shown')){ r.classList.add('shown'); return; }
+      if(!r.classList.contains('answered')){ r.classList.add('answered'); r.classList.add('correct'); }
+    });
+  });
+
+  // technique cards
+  document.querySelectorAll('.tech').forEach(function(t){
+    t.addEventListener('click',function(){ t.classList.toggle('open'); });
+  });
+
+  // corners
+  document.querySelectorAll('.corner').forEach(function(c){
+    c.addEventListener('click',function(){ c.classList.toggle('open'); });
+  });
+
+  // idiom chips
+  document.querySelectorAll('.chip').forEach(function(c){
+    c.addEventListener('click',function(){ c.classList.toggle('open'); });
+  });
+</script>
+</body>
+</html>

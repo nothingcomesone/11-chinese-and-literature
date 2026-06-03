@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第七周 · 《范进中举》与《孔乙己》比较精读 | Year 11 Chinese &amp; Literature</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@600;700;900&display=swap');
+  :root{
+    --navy:#16263f; --navy2:#1f3a5f; --teal:#0d7d7d; --teal-l:#e6f4f4;
+    --gold:#c49a2c; --gold-l:#faf3df; --red:#b8392f; --red-l:#fbeae8;
+    --blue:#2f6db5; --blue-l:#eaf1fb; --ink:#22272e; --muted:#5d6b7a;
+    --bg:#f4f6f9; --card:#ffffff; --line:#dde3ea;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; font-family:'Noto Sans SC','Microsoft YaHei','PingFang SC',sans-serif; color:var(--ink); background:var(--bg); line-height:1.75; font-size:18px;}
+  nav{position:sticky; top:0; z-index:50; background:rgba(22,38,63,.97); backdrop-filter:blur(6px); display:flex; flex-wrap:wrap; gap:5px; padding:10px 16px; align-items:center; box-shadow:0 2px 12px rgba(0,0,0,.18);}
+  nav .brand{color:#fff; font-weight:900; margin-right:12px; letter-spacing:.3px; font-size:14px;}
+  nav .brand small{display:block; font-weight:400; color:#9fb4d0; font-size:10.5px; letter-spacing:0;}
+  nav a{color:#cdd9ea; text-decoration:none; font-size:12px; padding:5px 9px; border-radius:20px; border:1px solid transparent; white-space:nowrap; transition:.15s;}
+  nav a:hover{background:var(--teal); color:#fff;}
+  nav a b{color:var(--gold); font-weight:700;}
+  section{max-width:1080px; margin:0 auto; padding:50px 26px 28px;}
+  .seg-tag{display:inline-flex; align-items:center; gap:10px; font-weight:700; color:#fff; background:var(--teal); padding:6px 16px; border-radius:30px; font-size:14px; letter-spacing:.5px;}
+  .seg-tag.red{background:var(--red);} .seg-tag.blue{background:var(--blue);} .seg-tag.gold{background:var(--gold);}
+  .seg-tag .min{background:rgba(255,255,255,.22); padding:1px 9px; border-radius:20px; font-size:12px;}
+  h1.title{font-size:28px; line-height:1.3; margin:16px 0 8px; color:var(--navy);}
+  h2{font-size:23px; color:var(--navy); margin:18px 0 10px; line-height:1.35;}
+  .lead{color:var(--muted); font-size:17px; margin:2px 0 16px;}
+  hr.div{border:0; border-top:2px dashed var(--line); margin:32px 0;}
+  .hero{background:linear-gradient(135deg,var(--navy) 0%, var(--navy2) 55%, var(--red) 150%); color:#fff; border-radius:20px; padding:44px 40px; box-shadow:0 14px 40px rgba(22,38,63,.3);}
+  .hero .kicker{color:var(--gold); font-weight:700; letter-spacing:2px; font-size:13.5px;}
+  .hero h1{font-size:40px; margin:10px 0 6px; line-height:1.18; color:#fff;}
+  .hero .sub{font-size:19px; color:#dbe6f5; font-weight:300;}
+  .hero .punch{margin-top:22px; font-size:21px; font-weight:700; background:rgba(255,255,255,.1); border-left:5px solid var(--gold); padding:15px 20px; border-radius:0 12px 12px 0;}
+  .hero .punch b{color:var(--gold);}
+  .hook-q{display:flex; gap:14px; flex-wrap:wrap; margin-top:20px;}
+  .hook-q div{flex:1; min-width:240px; background:rgba(255,255,255,.12); border-radius:12px; padding:13px 17px; font-size:15.5px;}
+  .hook-q div span{color:var(--gold); font-weight:700;}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px 22px; box-shadow:0 4px 16px rgba(30,50,80,.05);}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  @media(max-width:820px){.grid2{grid-template-columns:1fr;} body{font-size:16px;} .hero h1{font-size:30px;}}
+  .article{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:26px 32px; box-shadow:0 6px 22px rgba(30,50,80,.07); margin-bottom:4px;}
+  .article.fanjin{border-top:6px solid var(--red);} .article.kong{border-top:6px solid var(--blue);}
+  .article h3{font-family:'Noto Serif SC',serif; font-size:23px; text-align:center; color:var(--navy); margin:0 0 4px;}
+  .article .byline{text-align:center; color:var(--muted); font-size:13.5px; margin-bottom:18px;}
+  .article p{font-family:'Noto Serif SC',serif; font-size:18.5px; line-height:1.95; margin:0 0 14px; text-align:justify; text-indent:2em;}
+  .anno{color:var(--red); border-bottom:2px dotted var(--red); cursor:pointer; font-weight:600; padding:0 1px;}
+  .anno.b{color:var(--blue); border-bottom-color:var(--blue);}
+  .anno sup{font-size:.62em; color:var(--gold); font-weight:700; margin-left:1px;}
+  .anno:hover{background:var(--red-l);} .anno.b:hover{background:var(--blue-l);}
+  .notes{margin-top:18px; background:var(--gold-l); border:1px solid #ecdca6; border-radius:14px; padding:16px 20px;}
+  .notes h4{margin:0 0 10px; color:var(--navy); font-size:16.5px;}
+  .note{border-bottom:1px dashed #e2cf94; padding:8px 4px; cursor:pointer;}
+  .note:last-child{border-bottom:0;}
+  .note .n-head{font-weight:700; color:var(--red); display:flex; align-items:center; gap:8px; font-size:16px;}
+  .note.kn .n-head{color:var(--blue);}
+  .note .n-head .num{background:var(--red); color:#fff; width:23px; height:23px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:12.5px; flex:none;}
+  .note.kn .n-head .num{background:var(--blue);}
+  .note .n-body{display:none; margin-top:6px; padding-left:31px; color:#5b4a1d; font-size:15px; line-height:1.7;}
+  .note.open .n-body{display:block;}
+  .note .toggle{margin-left:auto; color:var(--gold); font-size:13px;}
+  .ba-head{font-weight:800; font-size:18px; margin:0 0 8px; display:flex; align-items:center; gap:8px;}
+  .ba-before{border-top:5px solid var(--red);} .ba-after{border-top:5px solid var(--teal);}
+  .quoteline{font-family:'Noto Serif SC',serif; font-size:16px; line-height:1.65; margin:7px 0; padding-left:13px; border-left:3px solid var(--line);}
+  .quoteline b{color:var(--navy);}
+  table.cmp{width:100%; border-collapse:collapse; margin-top:8px; font-size:15px;}
+  table.cmp th{background:var(--navy); color:#fff; padding:9px 11px; text-align:left;}
+  table.cmp th.f{background:var(--red);} table.cmp th.k{background:var(--blue);}
+  table.cmp td{border:1px solid var(--line); padding:9px 11px; vertical-align:top; background:#fff;}
+  table.cmp td.dim{background:#f4f6f9; font-weight:700; color:var(--navy); width:13%;}
+  .tech{border:1px solid var(--line); border-radius:12px; padding:15px 19px; margin-bottom:13px; background:#fff; cursor:pointer; transition:.15s;}
+  .tech:hover{border-color:var(--blue);}
+  .tech .quote{font-size:17.5px; color:var(--navy); font-weight:700;}
+  .tech .reveal{display:none; margin-top:11px;}
+  .tech.open .reveal{display:block;}
+  .tech .tap{float:right; color:var(--blue); font-size:12px; font-weight:700;}
+  .tech .reveal .lab{display:inline-block; background:var(--blue); color:#fff; padding:3px 12px; border-radius:20px; font-weight:700; font-size:13.5px; margin-bottom:6px;}
+  .step{counter-reset:none; background:#fff; border:1px solid var(--line); border-left:5px solid var(--teal); border-radius:10px; padding:13px 18px; margin-bottom:12px;}
+  .step b{color:var(--teal);}
+  .model{background:var(--teal-l); border:1px solid #bfe0e0; border-radius:12px; padding:16px 20px; margin-top:8px; font-family:'Noto Serif SC',serif; font-size:16.5px; line-height:1.9;}
+  .model .tag{font-family:'Noto Sans SC',sans-serif; display:inline-block; background:var(--teal); color:#fff; font-size:13px; font-weight:700; padding:2px 12px; border-radius:20px; margin-bottom:8px;}
+  .teaser{background:var(--blue-l); border:1px solid #c7d9f0; border-radius:14px; padding:22px 26px;}
+  .exit{background:var(--navy); color:#fff; border-radius:14px; padding:22px 26px; margin-top:18px;}
+  .exit .blank{display:inline-block; min-width:240px; border-bottom:2px solid var(--gold); margin:0 6px;}
+  .callout{background:var(--blue-l); border-left:5px solid var(--blue); border-radius:0 12px 12px 0; padding:13px 18px; margin:14px 0; font-size:15.5px;}
+  .callout b{color:var(--blue);} .callout.gold{background:var(--gold-l); border-left-color:var(--gold);} .callout.gold b{color:var(--gold);}
+  .tnote{background:#fff7e8; border:1px dashed var(--gold); border-radius:12px; padding:11px 17px; font-size:14.5px; color:#6b531a; margin-top:13px;}
+  .tnote b{color:var(--red);}
+  footer{max-width:1080px; margin:30px auto; padding:18px 26px; color:var(--muted); font-size:13px; border-top:1px solid var(--line); text-align:center;}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="brand">第七周 · 范进中举 × 孔乙己<small>Year 11 C&amp;L · 8:40–10:30 + 10:45–11:45</small></span>
+  <a href="#s1"><b>①</b> 导入</a>
+  <a href="#s2"><b>②</b> 范进·发疯段</a>
+  <a href="#s3"><b>③</b> 前倨后恭+暴利</a>
+  <a href="#s4"><b>④</b> 孔乙己·出场迂腐</a>
+  <a href="#s5"><b>⑤</b> 孔乙己·沉沦冷漠</a>
+  <a href="#s6"><b>⑥</b> 两文比较(Q4)</a>
+  <a href="#s7"><b>⑦</b> 课堂写作</a>
+  <a href="#s8"><b>⑧</b> 讨论·钩子</a>
+</nav>
+
+<!-- ① 导入 -->
+<section id="s1">
+  <div class="hero">
+    <div class="kicker">ISSUE 2.2 收尾 · 吴敬梓《范进中举》× 鲁迅《孔乙己》</div>
+    <h1>一个"中了"，一个"没中"<br>同样被科举碾过</h1>
+    <div class="sub">两部讽刺小说 · 科举牢笼的两种结局</div>
+    <div class="punch">上周科举是 <b>龙门</b>（孟郊、范仲淹鱼跃而上）。<br>这周看两个被它碾碎的人：<b>范进</b>中举发疯，<b>孔乙己</b>潦倒而死。</div>
+    <div class="hook-q">
+      <div><span>热身一</span>　一个"考上"疯了，一个"没考上"死了——是这两个人有问题，还是这制度有问题？</div>
+      <div><span>热身二</span>　如果让你比较这两个人，你会从哪几个角度入手？（这就是 Q4 的思路）</div>
+    </div>
+  </div>
+  <div class="callout gold"><b>两部作品 · 一句话背景：</b><b>吴敬梓《儒林外史》</b>(清·1750年前后)——中国第一部长篇讽刺小说，专写科举下读书人的丑态；<b>鲁迅《孔乙己》</b>(1919·《新青年》)——五四时期借一个落第书生，控诉科举与冷漠社会"吃人"。两文相隔近两百年，却都把矛头指向同一架制度机器。</div>
+</section>
+
+<hr class="div">
+
+<!-- ② 范进·发疯段 -->
+<section id="s2">
+  <span class="seg-tag red">② 范进·发疯段精读 <span class="min">22 min</span></span>
+  <h1 class="title">范进中举：科举把"成功者"逼疯</h1>
+  <p class="lead">范进是广东穷书生，考了大半辈子、五十多岁才中秀才；接着中举人——本是天大喜事，他却当场发了疯。点开红色术语看<b>手法注解</b>。</p>
+  <div class="article fanjin">
+    <h3>《范进中举》· 发疯段</h3>
+    <div class="byline">—— 吴敬梓《儒林外史》第三回（原文节选）</div>
+    <p style="text-indent:0;color:var(--muted);font-size:15.5px;">〔范进家穷得卖鸡度日。出榜那天，报录人三匹马闯来报喜；范进从集上被拉回，看见报帖上写着「高中广东乡试第七名亚元」——〕</p>
+    <p>范进不看便罢，看了一遍，又念一遍，自己把两手拍了一下，笑了一声，道：<span class="anno" data-n="1">「噫！好了！我中了！」<sup>[1]</sup></span>说着，<span class="anno" data-n="2">往后一交跌倒，牙关咬紧，不省人事<sup>[2]</sup></span>。老太太慌了，慌将几口开水灌了过来。他爬将起来，又拍着手大笑道：「噫！好！我中了！」笑着，不由分说，就<span class="anno" data-n="2">往门外飞跑</span>，把报录人和邻居吓了一跳。走出大门不多路，<span class="anno" data-n="3">一脚踹在塘里，挣起来，头发都跌散了，两手黄泥，淋淋漓漓一身的水<sup>[3]</sup></span>。众人拉他不住，拍着笑着，一直走到集上去了。众人大眼望小眼，一齐道：<span class="anno" data-n="4">「原来新贵人欢喜疯了。」<sup>[4]</sup></span></p>
+    <p style="text-indent:0;color:var(--muted);font-size:15.5px;">〔众人商议：范进只怕丈人胡屠户，便请他来打范进一个嘴巴"治疯"——〕</p>
+    <p>胡屠户凶神似的走到跟前，说道：「该死的畜生！你中了甚么？」<b>一个嘴巴打将去</b>。……范进因这一个嘴巴，却也打晕了，昏倒于地。众邻居一齐上前，替他抹胸口，捶背心，舞了半日，渐渐喘息过来，眼睛明亮，<b>不疯了</b>。一个嘴巴，竟"治"好了中举的"喜疯"——这本身就是莫大的讽刺。</p>
+    <div class="notes">
+      <h4>📖 手法注解（点击逐条展开）</h4>
+      <div class="note"><div class="n-head"><span class="num">1</span>「噫！好了！我中了！」 — 语言描写 · 重复<span class="toggle">＋</span></div><div class="n-body">三个短句、"中了"反复，写尽喜极癫狂、语无伦次——大半辈子的压抑在这一刻决堤。一个"好了"，道尽他几十年活在"还没好"的屈辱里。</div></div>
+      <div class="note"><div class="n-head"><span class="num">2</span>跌倒 → 飞跑 — 动作描写 · 层层递进<span class="toggle">＋</span></div><div class="n-body">"跌倒""不省人事""爬起""飞跑"一连串动作把疯态步步推高，由昏厥到狂奔，画面感极强。</div></div>
+      <div class="note"><div class="n-head"><span class="num">3</span>踹塘、满身黄泥 — 细节 / 外貌描写<span class="toggle">＋</span></div><div class="n-body">"头发跌散、两手黄泥、淋淋漓漓"，狼狈与"喜事"强烈反差——越喜越显其可悲。</div></div>
+      <div class="note"><div class="n-head"><span class="num">4</span>众人「欢喜疯了」 — 侧面描写<span class="toggle">＋</span></div><div class="n-body">借旁人反应烘托失常之深；"欢喜疯了"四字平淡道出，暗示这样的"疯"在当时并不稀奇——科举早把无数人逼到这一步。</div></div>
+    </div>
+  </div>
+  <div class="tnote"><b>老师走读：</b>先请两位学生分角色有感情地朗读，全班笑过之后追问——"<b>笑完之后，你觉得可笑还是可悲？</b>"，再点开四条注解逐一落实四种描写。</div>
+</section>
+
+<hr class="div">
+
+<!-- ③ 前倨后恭 + 中举暴利 -->
+<section id="s3">
+  <span class="seg-tag red">③ 前倨后恭 + 中举暴利 <span class="min">20 min</span></span>
+  <h1 class="title">他为什么会疯？看看"中举"换来了什么</h1>
+  <p class="lead">范进的疯不是偶然——中举前后，整个世界对他翻脸般地改变。</p>
+  <h2>㈠ 丈人胡屠户：前倨后恭</h2>
+  <div class="grid2">
+    <div class="card ba-before">
+      <div class="ba-head">😠 中举前 · 倨</div>
+      <div class="quoteline">「把个女儿嫁与你这 <b>现世宝</b>……你是个 <b>烂忠厚没用</b> 的人。」</div>
+      <div class="quoteline">（范进借钱赴乡试）「你就 <b>『癞虾蟆想吃天鹅肉』</b> 来！像你这 <b>尖嘴猴腮</b>，也该撒抛尿自己照照！」</div>
+    </div>
+    <div class="card ba-after">
+      <div class="ba-head">😊 中举后 · 恭</div>
+      <div class="quoteline">「<b>贤婿老爷</b>……我的这个贤婿，<b>才学又高，品貌又好</b>。」</div>
+      <div class="quoteline">（打了一巴掌后）「果然天上 <b>『文曲星』是打不得的</b>！」</div>
+    </div>
+  </div>
+  <h2>㈡ 张乡绅：素不相识，登门送银送房</h2>
+  <div class="card" style="border-top:5px solid var(--gold);">
+    <div class="quoteline">张乡绅（举人出身、做过知县）一进门便攀亲：「<b>世先生同在桑梓，一向有失亲近</b>……我和你是 <b>亲切的世弟兄</b>。」</div>
+    <div class="quoteline">「谨具贺仪 <b>五十两</b>……弟有空房一所，就在东门大街上，<b>三进三间</b>……就送与世先生。」</div>
+    <div class="quoteline" style="border-left-color:var(--gold);">几个时辰前，范进还在 <b>卖鸡救命、饿了两三天</b>；中举之后，白银、房子主动送上门。</div>
+  </div>
+  <div class="callout"><b>这就是答案：</b>中举＝一夜之间从"现世宝"变"文曲星"、从饿肚子变住三进大宅。<b>科举把全部的尊严、财富、人际，都押在一场考试上</b>——范进几十年的屈辱与渴望，在"中了"那一刻彻底爆炸，于是疯了。吴敬梓借"前倨后恭"和"暴利"，辛辣讽刺科举功名下的 <b>世态炎凉、趋炎附势</b>。</div>
+</section>
+
+<hr class="div">
+
+<!-- ④ 孔乙己·出场与迂腐 -->
+<section id="s4">
+  <span class="seg-tag blue">④ 孔乙己·出场与迂腐 <span class="min">25 min</span></span>
+  <h1 class="title">孔乙己：连秀才也没考中的读书人</h1>
+  <p class="lead">鲁迅笔下，孔乙己是咸亨酒店里一个落第书生。点开蓝色术语看<b>手法注解</b>。</p>
+  <div class="article kong">
+    <h3>《孔乙己》· 出场与迂腐</h3>
+    <div class="byline">—— 鲁迅《孔乙己》（原文节选 · 串读）</div>
+    <p><span class="anno b" data-n="5">孔乙己是站着喝酒而穿长衫的唯一的人。<sup>[5]</sup></span>他身材很高大；青白脸色，皱纹间时常夹些伤痕；一部乱蓬蓬的花白的胡子。<span class="anno b" data-n="6">穿的虽然是长衫，可是又脏又破，似乎十多年没有补，也没有洗。<sup>[6]</sup></span>他对人说话，总是满口之乎者也，教人半懂不懂的。</p>
+    <p>孔乙己一到店，所有喝酒的人便都看着他笑，有的叫道：「孔乙己，你脸上又添上新伤疤了！」「你一定又偷了人家的东西了！」「我前天亲眼见你偷了何家的书，吊着打。」孔乙己便涨红了脸，额上的青筋条条绽出，争辩道：<span class="anno b" data-n="7">「窃书不能算偷……窃书！……读书人的事，能算偷么？」<sup>[7]</sup></span>接连便是「君子固穷」「者乎」之类难懂的话，引得众人都哄笑起来。</p>
+    <p>旁人又问：「你怎的连半个秀才也捞不到呢？」孔乙己立刻显出颓唐不安模样，脸上笼上了一层灰色。他却热心地考"我"：「<span class="anno b" data-n="8">回字有四样写法<sup>[8]</sup></span>，你知道么？」分茴香豆给孩子吃，孩子吃完不肯散，他着了慌，伸开五指将碟子罩住，弯腰说：「不多了，我已经不多了。」又直起身摇头道：<span class="anno b" data-n="9">「不多不多！多乎哉？不多也。」<sup>[9]</sup></span></p>
+    <div class="notes">
+      <h4>📖 手法注解（点击逐条展开）</h4>
+      <div class="note kn"><div class="n-head"><span class="num">5</span>站着喝酒 + 穿长衫 + "唯一" — 矛盾身份<span class="toggle">＋</span></div><div class="n-body">"站着喝酒"是短衣帮(穷人)的做派，"穿长衫"是读书人的体面——他偏偏两样都占。"唯一"二字写尽他 <b>高不成、低不就</b> 的尴尬：考不上功名，又放不下读书人的架子。</div></div>
+      <div class="note kn"><div class="n-head"><span class="num">6</span>又脏又破、十多年没补没洗的长衫 — 象征<span class="toggle">＋</span></div><div class="n-body">那件破长衫象征他 <b>死死攥住"读书人"身份不放</b>，却早已潦倒不堪——放不下的身段，正是科举功名观给他套上的枷锁。</div></div>
+      <div class="note kn"><div class="n-head"><span class="num">7</span>「窃书不能算偷……能算偷么」 — 语言 · 自欺<span class="toggle">＋</span></div><div class="n-body">偷书还强词夺理、咬文嚼字。作者用他的"读书人腔调"反衬其可笑可悲——科举只教会了他空洞的体面与诡辩。</div></div>
+      <div class="note kn"><div class="n-head"><span class="num">8</span>「回字有四样写法」 — 迂腐 · 无用之学<span class="toggle">＋</span></div><div class="n-body">把"回"字的四种冷僻写法当作了不起的学问，正是科举死读书、读死书的产物——满腹"学问"却毫无用处，连自己都养不活。</div></div>
+      <div class="note kn"><div class="n-head"><span class="num">9</span>「多乎哉？不多也」 — 语言 · 半文半白<span class="toggle">＋</span></div><div class="n-body">连分几颗豆子都要拽古文，迂腐到可笑；可笑之中又见可怜——这是他仅剩的、用来维持"读书人"自尊的东西。</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ⑤ 孔乙己·沉沦与冷漠 -->
+<section id="s5">
+  <span class="seg-tag blue">⑤ 孔乙己·沉沦与冷漠 <span class="min">18 min</span></span>
+  <h1 class="title">从"排出"到"摸出"——一个人的彻底沦落</h1>
+  <div class="article kong">
+    <h3>《孔乙己》· 沉沦与结局</h3>
+    <div class="byline">—— 鲁迅《孔乙己》（原文节选 · 串读）</div>
+    <p>孔乙己在店里品行比别人都好，从不拖欠；有钱时，便 <span class="anno b" data-n="10">「排出」九文大钱<sup>[10]</sup></span>，要酒要茴香豆。可有一天，掌柜结账时忽然说：「孔乙己长久没有来了。」有人说道：「他打折了腿了……他总仍旧是偷，这一回，是自己发昏，竟偷到丁举人家里去了。他家的东西，偷得的么？……打了大半夜，再打折了腿。」</p>
+    <p>入冬的一个下午，柜台下传来一个极低却耳熟的声音：「温一碗酒。」原来是孔乙己——脸上黑而且瘦，已经不成样子，穿一件破夹袄，盘着两腿，下面垫一个蒲包，用草绳在肩上挂住。掌柜仍旧笑着说：「孔乙己，你又偷了东西了！」他这回不十分分辩，只低声说：「跌断，跌，跌……」他从破衣袋里 <span class="anno b" data-n="10">「摸出」四文大钱</span>，放在我手里，见他满手是泥——原来他便是用这手「走」来的。不一会，他喝完酒，便又在旁人的说笑声中，坐着用这手慢慢走去了。</p>
+    <p>此后又长久没有看见他。到年关、到端午、到中秋，都没有他的影子……<span class="anno b" data-n="11">我到现在终于没有见——大约孔乙己的确死了。<sup>[11]</sup></span>而那些看客呢？<span class="anno b" data-n="12">孔乙己是这样的使人快活，可是没有他，别人也便这么过。<sup>[12]</sup></span></p>
+    <div class="notes">
+      <h4>📖 手法注解（点击逐条展开）</h4>
+      <div class="note kn"><div class="n-head"><span class="num">10</span>"排出"九文 → "摸出"四文 — 细节对比<span class="toggle">＋</span></div><div class="n-body">早先有钱时一个"<b>排</b>"字，摆阔、维持体面；末了潦倒时一个"<b>摸</b>"字，钱少而心虚。一字之差，写尽他从"勉强体面"到"彻底沦落"的全过程。</div></div>
+      <div class="note kn"><div class="n-head"><span class="num">11</span>「大约……的确死了」 — 反语 / 看似矛盾<span class="toggle">＋</span></div><div class="n-body">"大约"是猜测，"的确"是肯定，并用看似矛盾，实则：<b>没人确知他的死活，也没人真正在意</b>。这冷冷一句，写出社会的麻木——比直接写"死了"更令人心寒。（打折他腿的"丁举人"，正是科举的"成功者"——成功者打垮失败者，讽刺至极。）</div></div>
+      <div class="note kn"><div class="n-head"><span class="num">12</span>众人的"笑" — 侧面 / 社会批判<span class="toggle">＋</span></div><div class="n-body">全篇反复写众人对孔乙己的"笑"。他活着是 <b>笑料</b>，死了无人问。科举不仅毁了他，冷漠的看客还把他的悲剧当成消遣——这正是鲁迅笔下"吃人"的社会。</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ⑥ 两文比较 -->
+<section id="s6">
+  <span class="seg-tag">⑥ 两文比较（Q4 思路）<span class="min">25 min</span></span>
+  <h1 class="title">范进 ⇄ 孔乙己：一喜一悲，同一制度</h1>
+  <table class="cmp">
+    <tr><th>角度</th><th class="f">范进（吴敬梓）</th><th class="k">孔乙己（鲁迅）</th></tr>
+    <tr><td class="dim">科举结果</td><td>大半辈子苦考，终于"中了"举人</td><td>考了一辈子，连半个秀才也没捞到</td></tr>
+    <tr><td class="dim">人物下场</td><td>喜极而 <b>疯</b>（爬上龙门，人却垮了）</td><td>偷书被打折腿，<b>潦倒而死</b>，无人在意</td></tr>
+    <tr><td class="dim">周围人</td><td>中举后争相趋附（胡屠户前倨后恭、张乡绅送银送房）</td><td>始终是 <b>笑料</b>，死活无人过问</td></tr>
+    <tr><td class="dim">作者·时代</td><td>吴敬梓 · 清代（科举仍盛）</td><td>鲁迅 · 五四新文化（反思批判）</td></tr>
+    <tr><td class="dim">主要手法</td><td>夸张、对比（前倨后恭）、侧面描写</td><td>白描、象征（长衫）、对比（排/摸）、反语、侧面（众人的笑）</td></tr>
+    <tr><td class="dim">批判锋芒</td><td>讽刺功名观扭曲人性、世态炎凉</td><td>控诉科举/封建制度与冷漠社会"吃人"</td></tr>
+    <tr><td class="dim">共同点</td><td colspan="2" style="text-align:center;background:var(--gold-l);">都被「万般皆下品，唯有读书高」困住——一个被"<b>成功</b>"逼疯，一个被"<b>失败</b>"压垮。这正是科举"<b>牢笼</b>"的两种结局。</td></tr>
+  </table>
+  <div class="callout gold"><b>中心论点（一句话）：</b>范进与孔乙己，一个中了、一个没中，命运却殊途同归——可见 <b>悲剧的根源不在个人，而在科举制度本身</b>。这就是 Q4 比较essay 的立意。</div>
+</section>
+
+<hr class="div">
+
+<!-- ⑦ 课堂写作 -->
+<section id="s7">
+  <span class="seg-tag gold">⑦ 课堂写作（Q4）<span class="min">40 min</span></span>
+  <h1 class="title">动笔：写一篇 Q4 比较论述</h1>
+  <p class="lead">题目：「科举制度如何扭曲、吞噬读书人？」请比较《范进中举》与《孔乙己》两个人物加以分析。（约 350–450 字，写在《学生活动单》上）</p>
+
+  <div class="step"><b>第一步 · 审题（3 分钟）：</b>共同议题＝<b>科举对读书人的扭曲</b>；比较对象＝范进 vs 孔乙己；立意＝悲剧根在制度，不在个人。</div>
+  <div class="step"><b>第二步 · 列提纲（5 分钟）：</b>四段——① 开头(点议题+立场) ② 范进段(中举发疯·TEEL) ③ 孔乙己段(潦倒而死·TEEL) ④ 综上所述(殊途同归·制度之过)。<b>一部作品一段</b>。</div>
+  <div class="step"><b>第三步 · 动笔（25 分钟）：</b>写好 ②③ 两个主体段，每段：主题句 → 引原文 → 命名手法说效果 → 回扣议题。<b>内容与手法融合，忌"两张皮"、忌复述情节。</b></div>
+  <div class="step"><b>第四步 · 范文参照 + 互评（7 分钟）：</b>对照下面范文段，用清单互评。</div>
+
+  <div class="model"><span class="tag">范文 · 范进段（参照）</span>在《范进中举》中，吴敬梓借范进发疯，揭示科举对读书人的彻底异化。范进苦考大半辈子，中举那一刻竟"拍着手大笑"、"往门外飞跑"、"一脚踹在塘里"——作者以层层递进的<b>动作描写</b>，把读书人喜极而疯的丑态刻画得淋漓尽致；那句反复的"噫！好了！我中了！"，更以短促癫狂的<b>语言</b>写尽他被功名压抑一生的精神崩溃。范进的疯，不是个人脆弱，而是科举功名观长期挤压的总爆发——这正是吴敬梓对"万般皆下品，唯有读书高"的辛辣控诉。</div>
+
+  <div class="callout"><b>互评清单：</b>① 是否一部作品一段？ ② 每段有没有"命名手法 → 引原文 → 说效果"？ ③ 有没有回扣"科举扭曲读书人"这一议题？ ④ 结尾是否点出"殊途同归、制度之过"？ ⑤ 有没有变成复述情节？</div>
+  <div class="tnote"><b>时间弹性：</b>若 8:40–10:30 段已读完两文（②–⑤），写作（⑦）可安排在 10:45–11:45 段完成并当堂互评；时间富余可让 2–3 位学生朗读自己的段落、全班点评。</div>
+</section>
+
+<hr class="div">
+
+<!-- ⑧ 讨论 + 钩子 -->
+<section id="s8">
+  <span class="seg-tag">⑧ 讨论 · 钩子 <span class="min">12 min</span></span>
+  <h1 class="title">📌 该批判什么？下一站去哪？</h1>
+  <div class="callout">范进与孔乙己的悲剧，背后是一整套功名观——「<b>万般皆下品，唯有读书高</b>」「学而优则仕」「书中自有黄金屋」。这些流传千年的"传统价值"，今天哪些该传承、哪些该批判？（正是 <b>议题 2.3 子议题①</b>：如何看待中国传统价值观。）</div>
+  <div class="teaser" style="margin-top:18px;">
+    <h2 style="margin-top:0;">🎬 下一站预告：蔡元培"砸碎"旧观念</h2>
+    <p style="margin:6px 0 0;">范进、孔乙己都被"读书做官发财"的旧观念毁掉。下周，我们读 <b>蔡元培</b> 1917 年就任北京大学校长的演说——他当着全校学生，要亲手推翻这套"做官的阶梯"，告诉青年：大学的宗旨是「<b>研究高深学问</b>」。从范进、孔乙己到蔡元培，正是 <b>议题 2.2 教育 → 2.3 价值观</b> 的过渡。</p>
+  </div>
+  <div class="exit">
+    <h2 style="color:#fff;margin-top:0;">🎟️ 离场券（口头或一句话）</h2>
+    <p style="font-size:20px;">范进和孔乙己，谁的命运更可悲？为什么？<span class="blank"></span></p>
+    <p style="color:#9fb4d0;font-size:14px;margin-bottom:0;">每人一句，说完下课。</p>
+  </div>
+</section>
+
+<footer>
+  第七周 · 《范进中举》× 《孔乙己》比较精读　·　Year 11 Chinese &amp; Literature　·　Issue 2.2 收尾　·　8:40–10:30 + 10:45–11:45（约 170 分钟）　·　发疯段 + 前倨后恭/暴利 + 孔乙己(出场迂腐/沉沦冷漠) + 两文比较(Q4) + 课堂写作 + 讨论
+</footer>
+
+<script>
+  document.querySelectorAll('.note').forEach(function(n){ n.addEventListener('click',function(){ n.classList.toggle('open'); }); });
+  document.querySelectorAll('.anno').forEach(function(a){
+    a.addEventListener('click',function(){
+      var num=a.getAttribute('data-n');
+      var target=null;
+      document.querySelectorAll('.note').forEach(function(nn){ var h=nn.querySelector('.num'); if(h && h.textContent.trim()===num) target=nn; });
+      if(target){ target.classList.add('open'); target.scrollIntoView({behavior:'smooth',block:'center'});
+        target.style.transition='background .4s'; target.style.background='#f6e6b0';
+        setTimeout(function(){target.style.background='';},900); }
+    });
+  });
+  document.querySelectorAll('.tech').forEach(function(t){ t.addEventListener('click',function(){ t.classList.toggle('open'); }); });
+</script>
+</body>
+</html>

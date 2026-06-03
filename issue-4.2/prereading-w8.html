@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>议题 4.2 课前阅读练习册 | Pre-Class Reading Booklet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: A4;
+    margin: 18mm 20mm;
+  }
+
+  body {
+    font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    font-size: 11pt;
+    line-height: 1.7;
+    color: #1a1a1a;
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 20mm;
+    background: #fff;
+  }
+
+  /* Header bar — uses table layout for print safety */
+  .header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #1a3a5c;
+    padding-bottom: 6px;
+    margin-bottom: 16px;
+    font-size: 9pt;
+    color: #1a3a5c;
+    font-weight: 500;
+  }
+
+  /* ===== PRINT / PDF STYLES ===== */
+  @media print {
+    /* Force background colors to print */
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+
+    /* Body: @page margin handles spacing, so zero body padding */
+    body {
+      margin: 0;
+      padding: 0;
+      max-width: none;
+      width: 100%;
+      font-size: 10.5pt;
+    }
+
+    /* Page break utility class */
+    .page-break {
+      page-break-before: always;
+      break-before: page;
+    }
+    .no-print { display: none; }
+
+    /* Header bar: replace flex with table display for print reliability */
+    .header-bar {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+    .header-bar > span:first-child {
+      display: table-cell;
+      text-align: left;
+      width: 60%;
+    }
+    .header-bar > span:last-child {
+      display: table-cell;
+      text-align: right;
+      width: 40%;
+    }
+
+    /* Info fields: replace flex with table display */
+    .info-fields {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+    .info-fields .field {
+      display: table-cell;
+      padding-right: 16px;
+    }
+
+    /* Prevent orphaned headings at page bottom */
+    h2, h3 {
+      page-break-after: avoid;
+      break-after: avoid;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Small containers: keep together */
+    .title-box,
+    .info-fields {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Large containers: allow page breaks inside, content flows naturally */
+    .info-box,
+    .discussion,
+    .scenario-box {
+      page-break-inside: auto;
+      break-inside: auto;
+    }
+
+    /* Tables: keep header with body, avoid row splitting */
+    table {
+      page-break-inside: auto;
+      break-inside: auto;
+    }
+    thead {
+      display: table-header-group;
+    }
+    tr {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Writing lines: slightly shorter for print density, allow group to break */
+    .writing-line {
+      height: 28px;
+    }
+    .writing-lines {
+      page-break-inside: auto;
+      break-inside: auto;
+    }
+
+    /* Poem box: keep stanzas together */
+    .info-box.poem {
+      page-break-inside: auto;
+    }
+    .poem-stanza {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Two-column layout: stack vertically in print */
+    .two-col {
+      display: block;
+    }
+    .two-col > div {
+      margin-bottom: 10px;
+    }
+
+    /* Footer: always at bottom */
+    .footer {
+      page-break-before: avoid;
+      break-before: avoid;
+    }
+
+    /* Ensure table widths stay within page */
+    table {
+      width: 100% !important;
+      max-width: 100%;
+    }
+    td, th {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    }
+
+    /* Pre-reading booklet: large containers break freely */
+    .reading-box,
+    .vocab-box,
+    .comprehension-box {
+      page-break-inside: auto;
+      break-inside: auto;
+    }
+
+    /* Individual items inside stay together */
+    .reading-box p,
+    .vocab-box .vocab-item,
+    .comprehension-box li {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* Title box */
+  .title-box {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 18px 24px;
+    border-radius: 4px;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .title-box h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20pt;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .title-box .subtitle {
+    font-size: 11pt;
+    color: #c9d6e3;
+    font-weight: 300;
+  }
+  .title-box .activity {
+    font-size: 13pt;
+    color: #f0c75e;
+    font-weight: 500;
+    margin-top: 6px;
+  }
+
+  /* Info fields */
+  .info-fields {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 18px;
+    font-size: 10pt;
+  }
+  .info-fields .field {
+    flex: 1;
+    border-bottom: 1px solid #999;
+    padding-bottom: 4px;
+  }
+  .info-fields .field label {
+    font-weight: 600;
+    color: #1a3a5c;
+  }
+
+  /* Section headings */
+  h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14pt;
+    color: #1a3a5c;
+    border-left: 4px solid #f0c75e;
+    padding-left: 12px;
+    margin: 28px 0 14px 0;
+  }
+  h2 .en {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10pt;
+    color: #666;
+    font-weight: 400;
+    display: block;
+  }
+
+  h3 {
+    font-size: 12pt;
+    color: #2c5282;
+    margin: 18px 0 10px 0;
+    font-weight: 600;
+  }
+
+  /* Info boxes */
+  .info-box {
+    background: #f0f5fa;
+    border: 1px solid #c9d6e3;
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin: 12px 0;
+    font-size: 10.5pt;
+  }
+  .info-box.objectives {
+    background: #f0f5fa;
+    border-left: 4px solid #1a3a5c;
+  }
+  .info-box.tips {
+    background: #fdf8e8;
+    border-left: 4px solid #f0c75e;
+  }
+  .info-box.poem {
+    background: #fafaf5;
+    border: 1px solid #d4c89a;
+    font-family: 'Noto Serif SC', serif;
+    line-height: 2.0;
+    padding: 20px 28px;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 10.5pt;
+  }
+  th {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 10pt;
+  }
+  td {
+    border: 1px solid #ccc;
+    padding: 9px 12px;
+    vertical-align: top;
+  }
+  tr:nth-child td {
+    background: #f8f9fa;
+  }
+  .highlight-row td {
+    background: #fdf8e8 !important;
+  }
+
+  /* Writing lines */
+  .writing-lines {
+    margin: 10px 0;
+    padding: 8px 0;
+  }
+  .writing-line {
+    border-bottom: 1px solid #bbb;
+    height: 32px;
+    margin-bottom: 2px;
+  }
+
+  /* Scenario boxes */
+  .scenario-box {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 14px 16px;
+    margin: 10px 0;
+  }
+  .scenario-box .icon {
+    font-size: 14pt;
+    margin-right: 6px;
+  }
+
+  /* Discussion prompts */
+  .discussion {
+    background: #f0f8f0;
+    border-left: 4px solid #48bb78;
+    padding: 12px 16px;
+    margin: 10px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid #ccc;
+    padding-top: 8px;
+    margin-top: 30px;
+    font-size: 8pt;
+    color: #888;
+    text-align: center;
+  }
+
+  /* Poem formatting */
+  .poem-text {
+    font-family: 'Noto Serif SC', serif;
+    line-height: 2.2;
+    margin: 6px 0;
+  }
+  .poem-title {
+    font-size: 16pt;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .poem-subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 10pt;
+    margin-bottom: 16px;
+  }
+  .poem-stanza {
+    margin-bottom: 14px;
+  }
+  .poem-date {
+    text-align: right;
+    color: #888;
+    margin-top: 12px;
+    font-size: 10pt;
+  }
+
+  /* Numbered items */
+  .num-circle {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #1a3a5c;
+    color: #fff;
+    text-align: center;
+    line-height: 22px;
+    font-size: 9pt;
+    margin-right: 6px;
+  }
+
+  /* Vocab table */
+  .vocab-table td:first-child {
+    font-weight: 600;
+    width: 30%;
+  }
+  .vocab-table td:nth-child(2) {
+    width: 30%;
+    color: #555;
+  }
+
+  /* Analysis table with writing space */
+  .analysis-cell {
+    min-height: 60px;
+    border-bottom: 1px dotted #bbb;
+  }
+
+  ol, ul { margin-left: 20px; margin-bottom: 10px; }
+  li { margin-bottom: 4px; }
+
+  .emoji { font-style: normal; }
+
+  .two-col { display: flex; gap: 16px; }
+  .two-col > div { flex: 1; }
+
+  /* ===== PRE-READING BOOKLET ADDITIONAL STYLES ===== */
+
+  /* Reading passage box */
+  .reading-box {
+    background: #fdfcf8;
+    border: 1.5px solid #1a3a5c;
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin: 12px 0;
+    font-family: 'Noto Serif SC', serif;
+    line-height: 1.9;
+  }
+  .reading-box .reading-title {
+    font-size: 15pt;
+    font-weight: 700;
+    color: #1a3a5c;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .reading-box .reading-subtitle {
+    font-size: 10pt;
+    color: #666;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .reading-box .separator {
+    text-align: center;
+    color: #ccc;
+    font-size: 10pt;
+    margin-bottom: 10px;
+  }
+  .reading-box p {
+    text-indent: 2em;
+    margin-bottom: 8px;
+    font-size: 11pt;
+  }
+
+  /* Vocabulary box */
+  .vocab-box {
+    background: #f5f0fa;
+    border-left: 4px solid #6b46c1;
+    border-radius: 0 4px 4px 0;
+    padding: 12px 18px;
+    margin: 12px 0;
+  }
+  .vocab-box .vocab-title {
+    font-weight: 700;
+    color: #6b46c1;
+    font-size: 10pt;
+    margin-bottom: 6px;
+  }
+  .vocab-box .vocab-item {
+    font-size: 9.5pt;
+    margin-bottom: 2px;
+  }
+  .vocab-box .vocab-item .word { font-weight: 700; }
+  .vocab-box .vocab-item 
+  .vocab-box .vocab-item .meaning { color: #555; font-size: 9pt; }
+
+  /* Comprehension box */
+  .comprehension-box {
+    background: #f0f8f0;
+    border-left: 4px solid #48bb78;
+    border-radius: 0 4px 4px 0;
+    padding: 12px 18px;
+    margin: 12px 0;
+  }
+  .comprehension-box .comp-title {
+    font-weight: 700;
+    color: #48bb78;
+    font-size: 10.5pt;
+    margin-bottom: 8px;
+  }
+  .comprehension-box ol {
+    margin-left: 20px;
+  }
+  .comprehension-box li {
+    margin-bottom: 6px;
+    font-size: 10.5pt;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header-bar">
+  <span>Year 11 Chinese &amp; Literature</span>
+  <span>议题 4.2 课前阅读 | Pre-Class Reading</span>
+</div>
+
+<!-- TITLE BOX -->
+<div class="title-box">
+  <h1>议题 4.2：课前阅读练习册</h1>
+  <div class="subtitle">Pre-Class Reading Booklet — Issue 4.2</div>
+  <div class="activity">走进《那时》的历史世界：新文化运动 · 巴黎和会 · 五四运动</div>
+</div>
+
+<!-- INFO FIELDS -->
+<div class="info-fields">
+  <div class="field"><label>姓名 Name：</label></div>
+  <div class="field"><label>日期 Date：</label></div>
+  <div class="field"><label>班级 Class：</label></div>
+</div>
+
+<!-- READING GUIDE -->
+<div class="info-box objectives">
+  <strong>📋 阅读指引 Reading Guide</strong><br><br>
+  本练习册包含三篇原创短文，帮助你在课前了解冯至诗歌《那时》的历史背景。<br>
+  这三篇短文以故事化的方式呈现三个关键历史事件——新文化运动、巴黎和会、五四运动。<br>
+  请在课前仔细阅读每篇短文，完成每篇后面的阅读理解题，并标记不认识的生词。<br><br>
+  <strong>阅读目标：</strong><br>
+  <span class="num-circle">①</span> 理解新文化运动如何用"民主"与"科学"挑战封建礼教<br>
+  <span class="num-circle">②</span> 了解巴黎和会的外交失败如何引爆中国青年的愤怒<br>
+  <span class="num-circle">③</span> 认识五四运动的历史意义及其对后续社会变革的影响<br>
+  <span class="num-circle">④</span> 建立这些历史事件与冯至《那时》诗歌内容之间的联系
+</div>
+
+<!-- ========== READING 1 ========== -->
+<h2>阅读一：一本杂志改变了一个时代 <span class="en">Reading 1: A Magazine That Changed an Era</span></h2>
+
+<div class="info-box tips">
+  📌 <strong>历史背景 Historical Context</strong><br>
+  时间：1915—1920年代 &nbsp;|&nbsp; 事件：新文化运动 &nbsp;|&nbsp; 核心人物：陈独秀、胡适、鲁迅
+</div>
+
+<div class="reading-box">
+  <div class="reading-title">一本杂志改变了一个时代</div>
+  <div class="reading-subtitle">——新文化运动散记</div>
+  <div class="separator">— · —</div>
+
+  <p>1915年秋天，上海法租界的一间小小印刷所里，一本名叫《新青年》的杂志悄然问世。创办者陈独秀在发刊词中向全国青年发出振聋发聩的呼声：要做"自主的而非奴隶的"青年，要做"进步的而非保守的"青年。那个时候，恐怕没有人想到，这本薄薄的杂志，将在未来几年内引发一场席卷整个中国的思想革命。</p>
+
+  <p>那时的中国，虽然已经推翻了皇帝，建立了中华民国，但社会的根基并没有真正改变。在城镇的大街小巷，人们依然严格遵守着"三纲五常"的旧礼教；在乡村的宗族祠堂里，父母之命、媒妁之言依然主宰着年轻人的命运。更令人窒息的是，新任的大总统袁世凯居然妄想恢复帝制，还大力推行"尊孔读经"，企图用封建思想来巩固自己的独裁统治。</p>
+
+  <p>正是在这样令人"窒闷"的时代背景下，陈独秀高高举起了两面大旗：一面叫"德先生"——民主，另一面叫"赛先生"——科学。他认为，中国之所以落后，不仅仅是因为技术不如人，更根本的原因是思想被封建礼教牢牢地束缚着。要救中国，必须先从思想上来一场彻底的革命。</p>
+
+  <p>紧随其后的是文学领域的革新。1917年，年轻的学者胡适从美国留学归来，在《新青年》上发表了一篇重要文章——《文学改良刍议》。他大胆提出：应当废弃那些只有少数读书人才能看懂的文言文，改用老百姓日常说话使用的白话文来写作。这个主张在当时简直是石破天惊！因为在那个年代，能够用文言文写出漂亮文章，是读书人身份和地位的象征。胡适要废弃文言文，等于在向整个士大夫阶层的传统宣战。</p>
+
+  <p>鲁迅，另一位新文化运动的旗手，则用他那支锋利如刀的笔，无情地揭露了旧社会吃人的本质。在他的笔下，那些表面上道貌岸然的"仁义道德"，背后隐藏的却是对人性的压迫和扼杀。他的声音如同惊雷，震醒了无数在黑暗中沉睡的青年。</p>
+
+  <p>这些新思想通过《新青年》等杂志迅速传播到全国各地的大学校园。在北京大学，在南京的学堂里，在上海的书店中，一批又一批年轻人如饥似渴地阅读着这些"窗外的光明"。他们中的许多人是第一次接触到"自由""平等""个人权利"这些来自西方的概念。那种兴奋和激动的心情，正如后来冯至在《那时》中所写的那样——"那时象离开马棚的小马，第一次望见平原"。</p>
+
+  <p>当然，并非所有人都欢迎这场变革。在许多家庭中，父亲坚决反对儿子阅读那些"离经叛道"的新书；在乡下的宗族中，读了新书的年轻人被长辈们视为"数典忘祖"的叛逆。但这些年轻人已经"醒了"，他们再也不愿意回到那扇"阴暗的门窗"后面去了。</p>
+</div>
+
+<div class="vocab-box">
+  <div class="vocab-title">📖 生词表 Vocabulary</div>
+  <div class="vocab-item"><span class="word">振聋发聩</span> — <span class="meaning">so powerful it awakens the deaf — a wake-up call</span></div>
+  <div class="vocab-item"><span class="word">三纲五常</span> — <span class="meaning">the three bonds and five virtues </span></div>
+  <div class="vocab-item"><span class="word">媒妁之言</span> — <span class="meaning">matchmaker's arrangement </span></div>
+  <div class="vocab-item"><span class="word">尊孔读经</span> — <span class="meaning">to worship Confucius and study the classics</span></div>
+  <div class="vocab-item"><span class="word">石破天惊</span> — <span class="meaning">earth-shattering, groundbreaking</span></div>
+  <div class="vocab-item"><span class="word">士大夫</span> — <span class="meaning">literati-official class in traditional China</span></div>
+  <div class="vocab-item"><span class="word">道貌岸然</span> — <span class="meaning">seemingly moral but actually hypocritical</span></div>
+  <div class="vocab-item"><span class="word">离经叛道</span> — <span class="meaning">to go against orthodox teachings; heretical</span></div>
+  <div class="vocab-item"><span class="word">数典忘祖</span> — <span class="meaning">to forget one's roots; to be ungrateful</span></div>
+</div>
+
+<div class="comprehension-box">
+  <div class="comp-title">📝 阅读理解 Comprehension Questions</div>
+  <ol>
+    <li>陈独秀创办《新青年》的目的是什么？他向中国青年提出了什么要求？</li>
+    <li>"德先生"和"赛先生"分别指什么？为什么陈独秀认为它们是拯救中国的关键？</li>
+    <li>胡适提倡白话文运动，为什么在当时被认为是"石破天惊"的举动？</li>
+    <li>文中提到的"窒闷"的时代背景，你能在冯至的《那时》中找到对应的诗句吗？请写出来。</li>
+    <li>你认为新文化运动中的知识分子和你的父母一代之间，哪些观念冲突与你自身的经历相似？</li>
+  </ol>
+</div>
+
+<!-- ========== READING 2 ========== -->
+<div class="page-break"></div>
+
+<div class="header-bar">
+  <span>Year 11 Chinese &amp; Literature</span>
+  <span>议题 4.2 课前阅读 | Pre-Class Reading</span>
+</div>
+
+<h2>阅读二：当"公理"败给了"强权" <span class="en">Reading 2: When Justice Lost to Power</span></h2>
+
+<div class="info-box tips">
+  📌 <strong>历史背景 Historical Context</strong><br>
+  时间：1919年1—6月 &nbsp;|&nbsp; 事件：巴黎和会 &nbsp;|&nbsp; 地点：法国凡尔赛宫
+</div>
+
+<div class="reading-box">
+  <div class="reading-title">当"公理"败给了"强权"</div>
+  <div class="reading-subtitle">——1919年巴黎和会纪实</div>
+  <div class="separator">— · —</div>
+
+  <p>1918年11月，持续四年之久的第一次世界大战终于结束了。整个世界都在庆祝和平的到来，而在遥远的东方，中国也沉浸在喜悦之中——因为中国是"战胜国"的一员。虽然中国并没有派出大规模军队参战，但十四万华工远赴欧洲，在战场后方修建铁路、挖掘战壕，为协约国的胜利做出了不可磨灭的贡献。</p>
+
+  <p>1919年初，一场决定世界新秩序的国际会议在法国巴黎召开。这就是著名的"巴黎和会"。中国政府怀着极大的期望，派出了由外交官顾维钧等人组成的代表团前往巴黎。中国代表团提出了合情合理的要求：收回战前德国在中国山东半岛强占的一切权益——包括青岛港口、胶济铁路以及相关的矿产开采权。中国代表团的理由非常充分：既然德国已经战败，作为战胜国的中国理应收回被战败国非法侵占的领土。</p>
+
+  <p>顾维钧在和会上慷慨陈词："山东是中国的领土，是孔子的故乡，是中华文明的发祥地之一。中国绝不能放弃山东，就如同基督教不能失去耶路撒冷一样。"他的演讲引起了会场的关注，连法国总理都对这位年轻的中国外交官留下了深刻的印象。</p>
+
+  <p>然而，理想终究敌不过现实中的强权政治。和会被英国、法国、美国等"三巨头"牢牢把控。日本代表向和会出示了其在战争期间与英国、法国签订的秘密协定——在这些暗箱操作的条约中，列强们早已私下同意将德国在山东的一切权益转交给日本，以换取日本在战争中的合作。更令人愤怒的是，日本还拿出了1915年中国被迫签署的"二十一条"，以此作为其"合法"继承山东权益的依据。</p>
+
+  <p>消息传到国内，举国上下群情激愤。报纸上铺天盖地地刊登着巴黎传来的屈辱消息。"公理战胜强权"——这曾是战后中国知识分子最美好的信念，如今被现实击得粉碎。人们这才痛苦地意识到：在弱肉强食的国际秩序中，所谓的"公理"和"正义"不过是强国用来粉饰太平的漂亮词汇。一个积贫积弱的国家，即使站在"正义"的一方，也无法保护自己最基本的权益。</p>
+
+  <p>北京大学的校园里，学生们传阅着从巴黎发回的电报，愤怒的情绪如同即将喷发的火山。一位学生在日记中写道："我们被骗了！那些关于公理、正义的承诺，不过是一纸空文。如果连我们自己的土地都保不住，那么我们所追求的'民主'与'科学'又有什么意义？"</p>
+
+  <p>多年以后，冯至在他的诗中回忆道："那时谁也不会想，在前途有无限的艰难。"是的，在1919年初，那些满怀理想主义的中国青年们，还完全无法预见即将到来的风暴——一场改变中国历史走向的运动，正在酝酿之中。</p>
+</div>
+
+<div class="vocab-box">
+  <div class="vocab-title">📖 生词表 Vocabulary</div>
+  <div class="vocab-item"><span class="word">协约国</span> — <span class="meaning">Allied Powers </span></div>
+  <div class="vocab-item"><span class="word">不可磨灭</span> — <span class="meaning">indelible; impossible to erase</span></div>
+  <div class="vocab-item"><span class="word">慷慨陈词</span> — <span class="meaning">to speak passionately and eloquently</span></div>
+  <div class="vocab-item"><span class="word">暗箱操作</span> — <span class="meaning">behind-the-scenes manipulation</span></div>
+  <div class="vocab-item"><span class="word">二十一条</span> — <span class="meaning">the Twenty-One Demands (Japan's demands on China, 1915)</span></div>
+  <div class="vocab-item"><span class="word">群情激愤</span> — <span class="meaning">the masses are outraged</span></div>
+  <div class="vocab-item"><span class="word">弱肉强食</span> — <span class="meaning">the weak are prey to the strong; law of the jungle</span></div>
+  <div class="vocab-item"><span class="word">粉饰太平</span> — <span class="meaning">to whitewash; to cover up reality</span></div>
+  <div class="vocab-item"><span class="word">积贫积弱</span> — <span class="meaning">deeply impoverished and weakened </span></div>
+  <div class="vocab-item"><span class="word">酝酿</span> — <span class="meaning">to brew; to be in the making</span></div>
+</div>
+
+<div class="comprehension-box">
+  <div class="comp-title">📝 阅读理解 Comprehension Questions</div>
+  <ol>
+    <li>中国以什么身份参加巴黎和会？中国代表团提出了什么核心要求？</li>
+    <li>顾维钧在演讲中用了什么比喻来说明山东对中国的重要性？</li>
+    <li>为什么和会最终决定将山东权益交给日本而不是归还中国？请用自己的话解释。</li>
+    <li>"公理战胜强权"这个信念是如何被打破的？这件事揭示了当时国际秩序的什么本质？</li>
+    <li>文末引用了冯至《那时》中的诗句。你认为"无限的艰难"具体指的是什么？</li>
+  </ol>
+</div>
+
+<!-- ========== READING 3 ========== -->
+<div class="page-break"></div>
+
+<div class="header-bar">
+  <span>Year 11 Chinese &amp; Literature</span>
+  <span>议题 4.2 课前阅读 | Pre-Class Reading</span>
+</div>
+
+<h2>阅读三：觉醒的一天 <span class="en">Reading 3: The Day of Awakening</span></h2>
+
+<div class="info-box tips">
+  📌 <strong>历史背景 Historical Context</strong><br>
+  时间：1919年5月4日 &nbsp;|&nbsp; 事件：五四运动 &nbsp;|&nbsp; 地点：北京天安门前
+</div>
+
+<div class="reading-box">
+  <div class="reading-title">觉醒的一天</div>
+  <div class="reading-subtitle">——五四运动亲历散记</div>
+  <div class="separator">— · —</div>
+
+  <p>1919年5月4日，星期天，北京的天空一片晴朗。</p>
+
+  <p>这天上午，北京十三所大学的三千多名学生从四面八方涌向天安门广场。他们手举白布横幅，上面写着醒目的大字："外争主权，内除国贼！""废除二十一条！""拒绝在和约上签字！"这些年轻的面庞上写满了愤怒——前一天，巴黎传来的消息彻底打碎了他们最后的幻想：西方列强不仅没有主持"公理"，反而要将中国的山东拱手让给日本。</p>
+
+  <p>北京大学的学生罗家伦，一个二十出头的年轻人，连夜写下了《北京学界全体宣言》。宣言中有一句话深深打动了在场的每一个人："中国的土地可以征服，但绝不可以断送！中国的人民可以杀戮，但绝不可以低头！"这些话语如同火焰，瞬间点燃了所有人心中压抑已久的怒火。</p>
+
+  <p>学生们高呼着口号，从天安门出发，浩浩荡荡地向东交民巷的各国使馆区进发。他们要向外国公使们递交请愿书，要求各国主持公道。然而，使馆区的大门紧闭，没有任何一个外国使馆愿意接见这些愤怒的中国学生。这个冷漠的回应，再一次证实了巴黎和会上的残酷现实：在强权面前，弱国的呐喊不过是微风中的一声叹息。</p>
+
+  <p>被使馆区拒之门外的学生们更加愤怒了。一些学生冲向了亲日派官员曹汝霖的住宅——赵家楼。他们闯入大门，将这座豪华宅邸中的家具砸得粉碎。隐藏在曹汝霖家中的另一名亲日派外交官章宗祥被学生们拦住，遭到了痛打。"赵家楼事件"虽然引发了争议，但也将五四运动推向了全国的视野。</p>
+
+  <p>北洋政府的反应是镇压。大批军警出动，逮捕了三十多名学生。然而，逮捕不但没有吓退学生，反而激起了更大范围的抗议浪潮。消息传到上海、天津、武汉、广州，各地学生纷纷罢课声援。更重要的是，上海的工人阶级史无前例地发动了大规模罢工——这是中国工人阶级第一次作为独立的政治力量登上历史舞台。商人们也关上了店铺的大门，加入了罢市的行列。一场由学生发起的爱国运动，迅速演变成了工人、商人、市民共同参与的全国性浪潮。</p>
+
+  <p>在巨大的社会压力下，北洋政府不得不做出让步：释放被捕学生，罢免了曹汝霖、章宗祥等亲日派官员。最终，中国代表团拒绝在《凡尔赛条约》上签字——这是中国近代外交史上第一次向列强说"不"。</p>
+
+  <p>五四运动的意义远远超越了一次外交抗争。它标志着中国青年的彻底觉醒——正如冯至后来写的那样："那时觉得既然醒了，就不该关着阴暗的门窗。"那些走上街头的年轻人，不仅仅是在抗议一个不公正的国际条约，他们是在向整个旧世界宣战。他们要求的不只是收回山东，更是一个全新的中国——一个拥有民主、科学、自由和尊严的中国。</p>
+
+  <p>然而，冯至的诗也告诉我们，"那时谁也不会想，在前途有无限的艰难"。五四之后的二十多年里，这些满怀理想的青年们将经历国共分裂、军阀混战、抗日战争和内战的"歧途与分手"与"死亡与杀戮"。觉醒只是开始，真正的考验还在后头。</p>
+</div>
+
+<div class="vocab-box">
+  <div class="vocab-title">📖 生词表 Vocabulary</div>
+  <div class="vocab-item"><span class="word">外争主权</span> — <span class="meaning">fight for sovereignty against foreign powers</span></div>
+  <div class="vocab-item"><span class="word">内除国贼</span> — <span class="meaning">remove the traitors within the nation</span></div>
+  <div class="vocab-item"><span class="word">请愿书</span> — <span class="meaning">petition</span></div>
+  <div class="vocab-item"><span class="word">拒之门外</span> — <span class="meaning">to shut out; to refuse entry</span></div>
+  <div class="vocab-item"><span class="word">亲日派</span> — <span class="meaning">pro-Japanese faction</span></div>
+  <div class="vocab-item"><span class="word">罢课</span> — <span class="meaning">to go on strike from school</span></div>
+  <div class="vocab-item"><span class="word">罢工</span> — <span class="meaning">to go on strike </span></div>
+  <div class="vocab-item"><span class="word">罢市</span> — <span class="meaning">to close shops in protest</span></div>
+  <div class="vocab-item"><span class="word">凡尔赛条约</span> — <span class="meaning">Treaty of Versailles</span></div>
+  <div class="vocab-item"><span class="word">觉醒</span> — <span class="meaning">awakening; to become aware</span></div>
+</div>
+
+<div class="comprehension-box">
+  <div class="comp-title">📝 阅读理解 Comprehension Questions</div>
+  <ol>
+    <li>1919年5月4日，学生们为什么走上街头？他们的核心口号是什么？</li>
+    <li>学生们为什么去东交民巷使馆区？使馆区的反应说明了什么？</li>
+    <li>五四运动如何从一场学生运动发展成全国性的抗议浪潮？哪些群体加入了？</li>
+    <li>五四运动最终取得了哪些成果？请列举至少两项。</li>
+    <li>作者引用了冯至《那时》的两句诗。请解释这两句诗与五四运动的关系。</li>
+  </ol>
+</div>
+
+<!-- ========== SUMMARY PAGE ========== -->
+<div class="page-break"></div>
+
+<div class="header-bar">
+  <span>Year 11 Chinese &amp; Literature</span>
+  <span>议题 4.2 课前阅读 | Pre-Class Reading</span>
+</div>
+
+<h2>阅读总结：三篇阅读与《那时》的关联 <span class="en">Summary: Connecting the Readings to the Poem</span></h2>
+
+<div class="info-box tips">
+  💡 完成以下表格，梳理三篇阅读中的历史事件与冯至《那时》诗句之间的对应关系。这将帮助你在课堂上更深入地分析诗歌。
+</div>
+
+<table>
+  <tr>
+    <th style="width:20%">历史事件</th>
+    <th style="width:40%">核心内容（用自己的话概括）</th>
+    <th style="width:40%">《那时》对应诗句</th>
+  </tr>
+  <tr>
+    <td><strong>新文化运动</strong><br>（阅读一）</td>
+    <td class="analysis-cell"></td>
+    <td class="analysis-cell"></td>
+  </tr>
+  <tr>
+    <td><strong>巴黎和会</strong><br>（阅读二）</td>
+    <td class="analysis-cell"></td>
+    <td class="analysis-cell"></td>
+  </tr>
+  <tr>
+    <td><strong>五四运动</strong><br>（阅读三）</td>
+    <td class="analysis-cell"></td>
+    <td class="analysis-cell"></td>
+  </tr>
+</table>
+
+<h3>Issue 4.2 核心框架回顾</h3>
+
+<div class="info-box">
+  <strong>议题 4.2：国际社会对华语国家/地区的影响及其产生的冲击</strong><br><br>
+  <strong>"国际影响" 的三个层面：</strong><br>
+  &emsp;1. 思想层面 — 西方民主、科学、自由主义的涌入（新文化运动）<br>
+  &emsp;2. 政治层面 — 国际事件直接影响中国命运（巴黎和会→五四运动）<br>
+  &emsp;3. 文化层面 — 白话文运动取代文言文，新诗取代旧诗（文学革命）<br><br>
+  <strong>"冲击" 的四个维度：</strong><br>
+  &emsp;1. 思想觉醒 — "觉得既然醒了"，青年推翻封建思想<br>
+  &emsp;2. 代际冲突 — 父母担忧、邻人冷笑，家庭关系破裂<br>
+  &emsp;3. 社会反叛 — "跳出窒闷的家庭"，追求自由与真理<br>
+  &emsp;4. 历史剧变 — "歧途与分手"、"死亡与杀戮"，理想与现实的残酷落差
+</div>
+
+<h3>📝 课前思考题 Pre-Class Reflection</h3>
+
+<div class="discussion">
+  💬 <strong>请在阅读完三篇短文后，思考并简要回答以下问题（带到课堂上讨论）：</strong><br><br>
+  1. 三篇短文中，哪一个历史事件对你触动最大？为什么？<br><br>
+  2. 冯至《那时》中反复出现"那时"这个词。在了解了这些历史背景之后，你觉得"那时"这个词除了表示时间，还包含了诗人怎样的感情？<br><br>
+  3. 作为在澳大利亚接受西方教育的华裔青年，你是否也经历过类似的"文化冲击"？你觉得100年前中国青年面对的"冲击"与你的经历有什么相似之处和不同之处？
+</div>
+
+<div class="footer">
+  议题 4.2 课前阅读 Pre-Class Reading
+</div>
+
+</body>
+</html>

@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>议题 4.2 课前阅读 Week 9 | 课前阅读练习册（二）</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: A4;
+    margin: 18mm 20mm;
+  }
+
+  body {
+    font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    font-size: 11pt;
+    line-height: 1.7;
+    color: #1a1a1a;
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 20mm;
+    background: #fff;
+  }
+
+  /* Header bar — uses table layout for print safety */
+  .header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #1a3a5c;
+    padding-bottom: 6px;
+    margin-bottom: 16px;
+    font-size: 9pt;
+    color: #1a3a5c;
+    font-weight: 500;
+  }
+
+  /* ===== PRINT / PDF STYLES ===== */
+  @media print {
+    /* Force background colors to print */
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+
+    /* Body: @page margin handles spacing, so zero body padding */
+    body {
+      margin: 0;
+      padding: 0;
+      max-width: none;
+      width: 100%;
+      font-size: 10.5pt;
+    }
+
+    /* Page break utility class */
+    .page-break {
+      page-break-before: always;
+      break-before: page;
+    }
+    .no-print { display: none; }
+
+    /* Header bar: replace flex with table display for print reliability */
+    .header-bar {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+    .header-bar > span:first-child {
+      display: table-cell;
+      text-align: left;
+      width: 60%;
+    }
+    .header-bar > span:last-child {
+      display: table-cell;
+      text-align: right;
+      width: 40%;
+    }
+
+    /* Info fields: replace flex with table display */
+    .info-fields {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+    .info-fields .field {
+      display: table-cell;
+      padding-right: 16px;
+    }
+
+    /* Prevent orphaned headings at page bottom */
+    h2, h3 {
+      page-break-after: avoid;
+      break-after: avoid;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Small containers: keep together */
+    .title-box,
+    .info-fields {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Large containers: allow page breaks inside, content flows naturally */
+    .info-box,
+    .discussion,
+    .scenario-box {
+      page-break-inside: auto;
+      break-inside: auto;
+    }
+
+    /* Tables: keep header with body, avoid row splitting */
+    table {
+      page-break-inside: auto;
+      break-inside: auto;
+    }
+    thead {
+      display: table-header-group;
+    }
+    tr {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Writing lines: slightly shorter for print density, allow group to break */
+    .writing-line {
+      height: 28px;
+    }
+    .writing-lines {
+      page-break-inside: auto;
+      break-inside: auto;
+    }
+
+    /* Poem box: keep stanzas together */
+    .info-box.poem {
+      page-break-inside: auto;
+    }
+    .poem-stanza {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Two-column layout: stack vertically in print */
+    .two-col {
+      display: block;
+    }
+    .two-col > div {
+      margin-bottom: 10px;
+    }
+
+    /* Footer: always at bottom */
+    .footer {
+      page-break-before: avoid;
+      break-before: avoid;
+    }
+
+    /* Ensure table widths stay within page */
+    table {
+      width: 100% !important;
+      max-width: 100%;
+    }
+    td, th {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    }
+
+    /* Pre-reading booklet: large containers break freely */
+    .reading-box,
+    .vocab-box,
+    .comprehension-box {
+      page-break-inside: auto;
+      break-inside: auto;
+    }
+
+    /* Individual items inside stay together */
+    .reading-box p,
+    .vocab-box .vocab-item,
+    .comprehension-box li {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Poem display: allow break if too tall */
+    .poem-display {
+      page-break-inside: auto;
+      break-inside: auto;
+    }
+    .poem-display .poem-line {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+  }
+
+  /* Title box */
+  .title-box {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 18px 24px;
+    border-radius: 4px;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .title-box h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20pt;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .title-box .subtitle {
+    font-size: 11pt;
+    color: #c9d6e3;
+    font-weight: 300;
+  }
+  .title-box .activity {
+    font-size: 13pt;
+    color: #f0c75e;
+    font-weight: 500;
+    margin-top: 6px;
+  }
+
+  /* Info fields */
+  .info-fields {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 18px;
+    font-size: 10pt;
+  }
+  .info-fields .field {
+    flex: 1;
+    border-bottom: 1px solid #999;
+    padding-bottom: 4px;
+  }
+  .info-fields .field label {
+    font-weight: 600;
+    color: #1a3a5c;
+  }
+
+  /* Section headings */
+  h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14pt;
+    color: #1a3a5c;
+    border-left: 4px solid #f0c75e;
+    padding-left: 12px;
+    margin: 28px 0 14px 0;
+  }
+  h2 .en {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10pt;
+    color: #666;
+    font-weight: 400;
+    display: block;
+  }
+
+  h3 {
+    font-size: 12pt;
+    color: #2c5282;
+    margin: 18px 0 10px 0;
+    font-weight: 600;
+  }
+
+  /* Info boxes */
+  .info-box {
+    background: #f0f5fa;
+    border: 1px solid #c9d6e3;
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin: 12px 0;
+    font-size: 10.5pt;
+  }
+  .info-box.objectives {
+    background: #f0f5fa;
+    border-left: 4px solid #1a3a5c;
+  }
+  .info-box.tips {
+    background: #fdf8e8;
+    border-left: 4px solid #f0c75e;
+  }
+  .info-box.poem {
+    background: #fafaf5;
+    border: 1px solid #d4c89a;
+    font-family: 'Noto Serif SC', serif;
+    line-height: 2.0;
+    padding: 20px 28px;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 10.5pt;
+  }
+  th {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 10pt;
+  }
+  td {
+    border: 1px solid #ccc;
+    padding: 9px 12px;
+    vertical-align: top;
+  }
+  tr:nth-child td {
+    background: #f8f9fa;
+  }
+  .highlight-row td {
+    background: #fdf8e8 !important;
+  }
+
+  /* Writing lines */
+  .writing-lines {
+    margin: 10px 0;
+    padding: 8px 0;
+  }
+  .writing-line {
+    border-bottom: 1px solid #bbb;
+    height: 32px;
+    margin-bottom: 2px;
+  }
+
+  /* Scenario boxes */
+  .scenario-box {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 14px 16px;
+    margin: 10px 0;
+  }
+  .scenario-box .icon {
+    font-size: 14pt;
+    margin-right: 6px;
+  }
+
+  /* Discussion prompts */
+  .discussion {
+    background: #f0f8f0;
+    border-left: 4px solid #48bb78;
+    padding: 12px 16px;
+    margin: 10px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid #ccc;
+    padding-top: 8px;
+    margin-top: 30px;
+    font-size: 8pt;
+    color: #888;
+    text-align: center;
+  }
+
+  /* Poem formatting */
+  .poem-text {
+    font-family: 'Noto Serif SC', serif;
+    line-height: 2.2;
+    margin: 6px 0;
+  }
+  .poem-title {
+    font-size: 16pt;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .poem-subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 10pt;
+    margin-bottom: 16px;
+  }
+  .poem-stanza {
+    margin-bottom: 14px;
+  }
+  .poem-date {
+    text-align: right;
+    color: #888;
+    margin-top: 12px;
+    font-size: 10pt;
+  }
+
+  /* Numbered items */
+  .num-circle {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #1a3a5c;
+    color: #fff;
+    text-align: center;
+    line-height: 22px;
+    font-size: 9pt;
+    margin-right: 6px;
+  }
+
+  /* Vocab table */
+  .vocab-table td:first-child {
+    font-weight: 600;
+    width: 30%;
+  }
+  .vocab-table td:nth-child(2) {
+    width: 30%;
+    color: #555;
+  }
+
+  /* Analysis table with writing space */
+  .analysis-cell {
+    min-height: 60px;
+    border-bottom: 1px dotted #bbb;
+  }
+
+  ol, ul { margin-left: 20px; margin-bottom: 10px; }
+  li { margin-bottom: 4px; }
+
+  .emoji { font-style: normal; }
+
+  .two-col { display: flex; gap: 16px; }
+  .two-col > div { flex: 1; }
+
+  /* ===== ADDITIONAL STYLES FOR PRE-READING BOOKLET ===== */
+
+  /* Reading passage box */
+  .reading-box {
+    background: #fdfcf8;
+    border: 1.5px solid #1a3a5c;
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin: 12px 0;
+    font-family: 'Noto Serif SC', serif;
+    line-height: 1.9;
+  }
+  .reading-box .reading-title {
+    font-size: 15pt;
+    font-weight: 700;
+    color: #1a3a5c;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .reading-box .reading-subtitle {
+    font-size: 10pt;
+    color: #666;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .reading-box .separator {
+    text-align: center;
+    color: #ccc;
+    font-size: 10pt;
+    margin-bottom: 10px;
+  }
+  .reading-box p {
+    text-indent: 2em;
+    margin-bottom: 8px;
+    font-size: 11pt;
+  }
+
+  /* Vocabulary box */
+  .vocab-box {
+    background: #f5f0fa;
+    border-left: 4px solid #6b46c1;
+    border-radius: 0 4px 4px 0;
+    padding: 12px 18px;
+    margin: 12px 0;
+  }
+  .vocab-box .vocab-title {
+    font-weight: 700;
+    color: #6b46c1;
+    font-size: 10pt;
+    margin-bottom: 6px;
+  }
+  .vocab-box .vocab-item {
+    font-size: 9.5pt;
+    margin-bottom: 2px;
+  }
+  .vocab-box .vocab-item .word { font-weight: 700; }
+  .vocab-box .vocab-item 
+  .vocab-box .vocab-item .meaning { color: #555; font-size: 9pt; }
+
+  /* Comprehension box */
+  .comprehension-box {
+    background: #f0f8f0;
+    border-left: 4px solid #48bb78;
+    border-radius: 0 4px 4px 0;
+    padding: 12px 18px;
+    margin: 12px 0;
+  }
+  .comprehension-box .comp-title {
+    font-weight: 700;
+    color: #48bb78;
+    font-size: 10.5pt;
+    margin-bottom: 8px;
+  }
+  .comprehension-box ol {
+    margin-left: 20px;
+  }
+  .comprehension-box li {
+    margin-bottom: 6px;
+    font-size: 10.5pt;
+  }
+
+  /* Poem display box (for 满江红 校歌) */
+  .poem-display {
+    background: #fbf8f0;
+    border: 2px solid #8b6914;
+    border-radius: 4px;
+    padding: 24px 36px;
+    margin: 12px 0;
+    text-align: center;
+  }
+  .poem-display .poem-display-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14pt;
+    font-weight: 700;
+    color: #8b6914;
+    margin-bottom: 8px;
+  }
+  .poem-display .poem-display-sep {
+    color: #ccbb88;
+    font-size: 10pt;
+    margin-bottom: 10px;
+  }
+  .poem-display .poem-line {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 12pt;
+    color: #3a2a0a;
+    line-height: 2.0;
+    margin-bottom: 4px;
+  }
+  .poem-display .poem-notes {
+    margin-top: 14px;
+    text-align: left;
+    border-top: 1px solid #ccbb88;
+    padding-top: 10px;
+  }
+  .poem-display .poem-notes .note-title {
+    color: #998866;
+    font-size: 9pt;
+    text-align: center;
+    margin-bottom: 6px;
+  }
+  .poem-display .poem-notes .note-item {
+    font-size: 9.5pt;
+    margin-bottom: 2px;
+    color: #666;
+  }
+  .poem-display .poem-notes .note-item .note-word {
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header-bar">
+  <span>Year 11 Chinese &amp; Literature</span>
+  <span>议题 4.2 课前阅读 Week 9 | Pre-Class Reading</span>
+</div>
+
+<!-- TITLE BOX -->
+<div class="title-box">
+  <h1>议题 4.2：课前阅读练习册（二）</h1>
+  <div class="subtitle">Pre-Class Reading Booklet II — Issue 4.2</div>
+  <div class="activity">西南联大 · 《满江红》校歌 · 冯至与《那时》的创作</div>
+</div>
+
+<!-- INFO FIELDS -->
+<div class="info-fields">
+  <div class="field"><label>姓名 Name：</label></div>
+  <div class="field"><label>日期 Date：</label></div>
+  <div class="field"><label>班级 Class：</label></div>
+</div>
+
+<!-- READING GUIDE -->
+<div class="info-box objectives">
+  <strong>📋 阅读指引 Reading Guide</strong><br><br>
+  本练习册是 Week 9（活动二）的课前阅读材料，包含三篇原创短文。<br>
+  Week 8 的课前阅读带你了解了新文化运动、巴黎和会、五四运动的历史背景。<br>
+  本册将带你走进抗战时期知识分子的坚守，并深入了解冯至创作《那时》的时代背景。<br><br>
+  <strong>阅读目标：</strong><br>
+  <span class="num-circle">①</span> 了解西南联大的历史——战火中知识分子如何延续文化命脉<br>
+  <span class="num-circle">②</span> 赏析西南联大校歌《满江红》，体会其中的家国情怀与修辞手法<br>
+  <span class="num-circle">③</span> 理解冯至的创作背景——为什么他在1947年回望五四时代<br>
+  <span class="num-circle">④</span> 建立从五四运动→抗日战争→《那时》创作之间的历史脉络
+</div>
+
+<!-- ========== READING 1 ========== -->
+<h2>阅读一：战火中的大学 <span class="en">Reading 1: A University in the Flames of War</span></h2>
+
+<div class="info-box tips">
+  📌 <strong>历史背景 Historical Context</strong><br>
+  时间：1937—1946年 | 事件：西南联合大学 | 地点：从北京到昆明
+</div>
+
+<div class="reading-box">
+  <div class="reading-title">战火中的大学</div>
+  <div class="reading-subtitle">——西南联合大学纪事</div>
+  <div class="separator">— · —</div>
+
+  <p>1937年7月7日，卢沟桥的枪声撕裂了北平的夜空。日本军队全面侵华战争爆发，古都北平很快沦陷。在战火纷飞之中，中国最顶尖的三所大学——北京大学、清华大学、南开大学——面临着一个生死抉择：是留在沦陷区忍受屈辱，还是踏上流亡之路，在战火的缝隙中延续中华文化的命脉？</p>
+
+  <p>答案是坚决的：走！三所大学决定向中国的西南方向转移，在远离前线的地方继续办学。这场迁徙后来被称为中国教育史上最壮烈的"万里长征"——师生们背着书箱、抱着仪器，从北方一路辗转南下。他们先到长沙，建立了临时的"长沙临时大学"。然而战火很快追赶上来，长沙也不再安全。1938年，他们不得不再次迁移，最终在云南昆明落脚，正式成立了"国立西南联合大学"。</p>
+
+  <p>昆明的办学条件极其艰苦。校舍不过是一些铁皮屋顶的简陋平房，一下雨，雨点打在铁皮上，叮叮当当，老师的声音完全被淹没。据说有一次物理学教授上课时雨声太大，他干脆在黑板上写了四个大字："停课赏雨"。这个故事虽然带着几分幽默，却道出了联大师生在困境中那份从容不迫的风骨。</p>
+
+  <p>物质条件的匮乏到了令人难以想象的地步。教授们的工资因为通货膨胀几乎不值钱，许多著名学者不得不靠卖字、刻印章、甚至摆地摊来维持生计。学生们更是节衣缩食，常常饥一顿饱一顿。闻一多先生为了养家糊口，开始替人刻印章挣钱。校长梅贻琦的夫人也做起了糕点，拿到昆明的街头叫卖。但即使在这样的困境中，联大人始终坚持一个信念：国家的希望在教育，教育不能因为战争而中断。</p>
+
+  <p>就是在这样简陋的铁皮屋下，西南联大培养出了一批改变中国、甚至影响世界的杰出人才。物理学家杨振宁和李政道后来获得了诺贝尔物理学奖；数学家华罗庚在联大完成了他最重要的研究成果；"两弹一星"功勋科学家邓稼先也是联大的学生。在人文领域，闻一多、朱自清、沈从文、钱钟书等文学巨匠在联大的讲台上传道授业。冯至，我们正在学习的《那时》的作者，也正是在这个时期在西南联大任教。</p>
+
+  <p>更令人敬佩的是联大师生在精神层面的坚守。在敌机轰炸的间隙，教授们依然认真备课；在防空洞里，学生们借着微弱的灯光继续读书。联大的校训是"刚毅坚卓"，这四个字不是挂在墙上的口号，而是每一个联大人用实际行动践行的生命态度。他们用知识对抗暴力，用文化抵御侵略，用坚持守护着一个民族最宝贵的精神财富。</p>
+
+  <p>1946年，抗战胜利后，三所大学各自回到了北方。西南联大的校门永远关闭了，但它在八年间播下的种子，已经深深扎根在中国的土地上。联大的故事告诉我们：真正的大学，不在于有多么宏伟的建筑，而在于有一群甘愿为真理和文化牺牲一切的人。</p>
+</div>
+
+<div class="vocab-box">
+  <div class="vocab-title">📖 重点词汇 Key Vocabulary</div>
+  <div class="vocab-item"><span class="word">沦陷</span> — <span class="meaning">to fall to the enemy; occupied</span></div>
+  <div class="vocab-item"><span class="word">流亡</span> — <span class="meaning">to go into exile; to flee</span></div>
+  <div class="vocab-item"><span class="word">辗转</span> — <span class="meaning">to move about; to pass through many places</span></div>
+  <div class="vocab-item"><span class="word">简陋</span> — <span class="meaning">crude; simple and rough</span></div>
+  <div class="vocab-item"><span class="word">从容不迫</span> — <span class="meaning">calm and unhurried; composed</span></div>
+  <div class="vocab-item"><span class="word">通货膨胀</span> — <span class="meaning">inflation</span></div>
+  <div class="vocab-item"><span class="word">节衣缩食</span> — <span class="meaning">to scrimp and save; live frugally</span></div>
+  <div class="vocab-item"><span class="word">传道授业</span> — <span class="meaning">to impart knowledge and teach skills</span></div>
+  <div class="vocab-item"><span class="word">刚毅坚卓</span> — <span class="meaning">resolute, persevering, and outstanding</span></div>
+  <div class="vocab-item"><span class="word">践行</span> — <span class="meaning">to put into practice; to live out</span></div>
+</div>
+
+<div class="comprehension-box">
+  <div class="comp-title">📝 阅读理解 Comprehension Questions</div>
+  <ol>
+    <li>西南联大是由哪三所大学合并而成的？它们为什么要离开北平？</li>
+    <li>文中提到"停课赏雨"的故事，你觉得这体现了联大师生怎样的精神态度？</li>
+    <li>联大师生在物质极度匮乏的条件下是如何坚持办学的？请举出文中的两个具体例子。</li>
+    <li>冯至在西南联大的经历与他创作《那时》有什么关系？请结合你对诗歌的理解来回答。</li>
+    <li>联大校训"刚毅坚卓"与冯至《那时》中"那时觉得既然醒了，就不该关着阴暗的门窗"表达的精神有何相似之处？</li>
+  </ol>
+</div>
+
+<!-- ========== PAGE BREAK + READING 2 ========== -->
+<div class="page-break"></div>
+
+<div class="header-bar">
+  <span>Year 11 Chinese &amp; Literature</span>
+  <span>议题 4.2 课前阅读 Week 9 | Pre-Class Reading</span>
+</div>
+
+<h2>阅读二：一首校歌中的家国情怀 <span class="en">Reading 2: Patriotism in a School Song</span></h2>
+
+<div class="info-box tips">
+  📌 <strong>文本背景 Text Background</strong><br>
+  文体：词（《满江红》词牌） | 作者：罗庸 | 年代：约1938年 | 用途：西南联大校歌
+</div>
+
+<!-- POEM DISPLAY -->
+<div class="poem-display">
+  <div class="poem-display-title">《满江红》——西南联合大学校歌</div>
+  <div class="poem-display-sep">— · —</div>
+
+  <div class="poem-line">万里长征，辞却了五朝宫阙。</div>
+  <div class="poem-line">暂驻足衡山湘水，又成离别。</div>
+  <div class="poem-line">绝徼移栽桢干质，九州遍洒黎元血。</div>
+  <div class="poem-line">尽笳吹弦诵在山城，情弥切。</div>
+  <div class="poem-line" style="margin-top: 10px;">千秋耻，终当雪。</div>
+  <div class="poem-line">中兴业，须人杰。</div>
+  <div class="poem-line">便一城三户，壮怀难折。</div>
+  <div class="poem-line">多难殷忧新国运，动心忍性希前哲。</div>
+  <div class="poem-line">待驱除仇寇复神京，还燕碣。</div>
+
+  <div class="poem-notes">
+    <div class="note-title">📖 注释 Notes</div>
+    <div class="note-item"><span class="note-word">五朝宫阙：</span>指北平（北京），因它曾是五个朝代的首都。</div>
+    <div class="note-item"><span class="note-word">衡山湘水：</span>指湖南长沙，联大最初迁到的地方。</div>
+    <div class="note-item"><span class="note-word">绝徼：</span>极远的边疆，这里指云南昆明。</div>
+    <div class="note-item"><span class="note-word">桢干质：</span>栋梁之才，比喻优秀的人才。</div>
+    <div class="note-item"><span class="note-word">黎元：</span>黎民百姓。"九州遍洒黎元血"指全国百姓在战争中流血牺牲。</div>
+    <div class="note-item"><span class="note-word">笳吹弦诵：</span>笳是胡笳（军乐），弦诵是弦歌诵读。军乐声与读书声交织。</div>
+    <div class="note-item"><span class="note-word">一城三户：</span>典出《史记》，"楚虽三户，亡秦必楚"，意为即使力量微小，也有复兴的决心。</div>
+    <div class="note-item"><span class="note-word">殷忧：</span>深切的忧患。"多难殷忧"即越是多灾多难，越要心怀忧患。</div>
+    <div class="note-item"><span class="note-word">动心忍性：</span>出自《孟子》，磨炼意志、坚韧心性。</div>
+    <div class="note-item"><span class="note-word">仇寇：</span>敌人，这里指日本侵略者。</div>
+    <div class="note-item"><span class="note-word">神京：</span>指北平（北京）。</div>
+    <div class="note-item"><span class="note-word">燕碣：</span>燕地和碣石，泛指北方故土。</div>
+  </div>
+</div>
+
+<!-- ANALYSIS READING TEXT -->
+<div class="reading-box">
+  <div class="reading-title">一首校歌中的家国情怀</div>
+  <div class="reading-subtitle">——赏析《满江红》与《那时》的呼应</div>
+  <div class="separator">— · —</div>
+
+  <p>西南联大的校歌采用的是宋代岳飞《满江红》的词牌——这个选择本身就充满象征意义。岳飞是中国历史上最著名的民族英雄之一，他的《满江红·怒发冲冠》表达的正是"精忠报国"的壮志。联大选用同一词牌来写校歌，显然是要将联大的精神与岳飞的爱国传统相连接。</p>
+
+  <p>校歌的上阙叙事，下阙抒情。上阙用"万里长征"开篇，将联大从北平到长沙、再到昆明的迁徙比作一场漫长的征途。"辞却了五朝宫阙"——离开了那座承载着五个朝代辉煌的古都，语气中有多少不舍与悲壮！"暂驻足衡山湘水，又成离别"——还没来得及安顿，就又被迫再次踏上流亡之路。短短两句，将战时师生的颠沛流离写得令人动容。</p>
+
+  <p>"绝徼移栽桢干质"这句尤其精妙。它用"移栽"这个园艺术语来比喻大学的迁移——就像把一棵珍贵的大树连根拔起，移植到遥远的边疆。这棵"树"就是中国最优秀的知识分子和学术传统。紧接着的"九州遍洒黎元血"则将镜头从校园拉向整个战场：当联大师生在昆明苦读时，全国的百姓正在战火中流血牺牲。教育与牺牲、书声与炮声，在这首歌中形成了令人震撼的对比。</p>
+
+  <p>下阙的情感更加激昂。"千秋耻，终当雪。中兴业，须人杰。"——千百年来的耻辱终有一天要洗刷，复兴大业需要杰出的人才。这里不只是在说抗战，更是在回望中国近代以来遭受的种种屈辱——包括我们在Week 8课前阅读中了解到的巴黎和会的外交失败。"便一城三户，壮怀难折"引用了秦末楚国的典故：即使只剩下最后几户人家，推翻暴政的壮志也不会屈服。这种"绝不投降"的决心，正是联大精神的核心。</p>
+
+  <p>最值得我们关注的是校歌与冯至《那时》之间的深层呼应。两者都在回望一个充满苦难与理想的时代，都在表达知识分子面对国家危亡时的复杂情感。校歌中的"万里长征"与《那时》中"那时大家跳出窒闷的家庭"一样，都描绘了一种被迫出走、寻找新路的经历。校歌中的"多难殷忧新国运"与《那时》中"在前途有无限的艰难"遥相呼应——两位作者都清醒地意识到，觉醒之后等待着的并非一片坦途，而是漫长而艰辛的跋涉。</p>
+
+  <p>然而，两者的语调有着微妙的差别。校歌写于战争之中，带着一种"虽千万人吾往矣"的激昂与豪迈；而《那时》写于战后，冯至以回忆的口吻重新审视那段岁月，语调中多了一份沉思和感慨。这种"当时"与"事后"的视角差异，恰恰是Week 9课堂上值得深入讨论的话题。</p>
+</div>
+
+<div class="vocab-box">
+  <div class="vocab-title">📖 重点词汇 Key Vocabulary</div>
+  <div class="vocab-item"><span class="word">词牌</span> — <span class="meaning">a set tune pattern for Chinese lyric poetry </span></div>
+  <div class="vocab-item"><span class="word">上阙/下阙</span> — <span class="meaning">the first/second half of a ci poem</span></div>
+  <div class="vocab-item"><span class="word">颠沛流离</span> — <span class="meaning">homeless and displaced; in dire straits</span></div>
+  <div class="vocab-item"><span class="word">动容</span> — <span class="meaning">to be moved; deeply touched</span></div>
+  <div class="vocab-item"><span class="word">园艺</span> — <span class="meaning">horticulture; gardening</span></div>
+  <div class="vocab-item"><span class="word">壮志</span> — <span class="meaning">lofty ambition; heroic aspiration</span></div>
+  <div class="vocab-item"><span class="word">遥相呼应</span> — <span class="meaning">to echo each other from afar</span></div>
+  <div class="vocab-item"><span class="word">坦途</span> — <span class="meaning">smooth road; easy path</span></div>
+  <div class="vocab-item"><span class="word">跋涉</span> — <span class="meaning">to trek; to endure a long, difficult journey</span></div>
+  <div class="vocab-item"><span class="word">虽千万人吾往矣</span> — <span class="meaning">I will go even against thousands </span></div>
+</div>
+
+<div class="comprehension-box">
+  <div class="comp-title">📝 阅读理解 Comprehension Questions</div>
+  <ol>
+    <li>校歌为什么选用《满江红》这个词牌？这个选择有什么象征意义？</li>
+    <li>"绝徼移栽桢干质"这句话用了什么修辞手法？它想表达什么？</li>
+    <li>校歌中"笳吹弦诵"形成了怎样的对比？这个对比与联大的处境有什么关系？</li>
+    <li>请对比校歌中的"多难殷忧新国运"与《那时》中"在前途有无限的艰难"，分析两者在情感和视角上的异同。</li>
+    <li>你认为校歌中哪一句最能代表西南联大的精神？为什么？</li>
+  </ol>
+</div>
+
+<!-- ========== PAGE BREAK + READING 3 ========== -->
+<div class="page-break"></div>
+
+<div class="header-bar">
+  <span>Year 11 Chinese &amp; Literature</span>
+  <span>议题 4.2 课前阅读 Week 9 | Pre-Class Reading</span>
+</div>
+
+<h2>阅读三：为什么是"那时"？ <span class="en">Reading 3: Why "Back Then"?</span></h2>
+
+<div class="info-box tips">
+  📌 <strong>作者背景 Author Background</strong><br>
+  冯至（1905—1993） | 诗人、学者、翻译家 | 代表作：《十四行集》《那时》
+</div>
+
+<div class="reading-box">
+  <div class="reading-title">为什么是"那时"？</div>
+  <div class="reading-subtitle">——冯至与一首诗的二十八年</div>
+  <div class="separator">— · —</div>
+
+  <p>1947年，四十二岁的冯至坐在书桌前，写下了一首名为《那时》的诗。这一年距离五四运动已经过去了二十八年。一个中年诗人，为什么在这个时候回望二十八年前那个激情燃烧的年代？要理解这首诗，我们必须先走进冯至的人生。</p>
+
+  <p>冯至，原名冯承植，1905年出生于河北涿州的一个读书人家庭。他的童年恰好与中国最动荡的时代重叠：他十岁时，陈独秀创办了《新青年》；他十四岁时，五四运动爆发。1921年，十六岁的冯至考入北京大学德语系，正式踏入了新文化运动的核心圈子。在北大，他如饥似渴地阅读新诗、新小说、西方哲学，感受着那个时代独有的思想解放的狂喜。</p>
+
+  <p>年轻的冯至很快崭露头角。1920年代中期，他发表了一系列令人瞩目的抒情诗，被鲁迅誉为"中国最为杰出的抒情诗人"。那时的他，正如他后来在《那时》中所写的那样——"象离开马棚的小马，第一次望见平原"——满眼都是新世界的辽阔与美好，心中充满了对未来的无限憧憬。</p>
+
+  <p>然而，命运给这一代知识分子安排的并非一条坦途。1930年代，冯至留学德国，在海德堡大学攻读博士学位，研究德国浪漫主义文学。正当他沉浸在学术的世界里时，祖国传来了一个又一个令人心碎的消息：九一八事变，日本侵占东北；一二八事变，上海遭到轰炸。远在异国的冯至，感受到了"那时谁也不会想，在前途有无限的艰难"这句诗中所蕴含的痛楚。</p>
+
+  <p>1935年，冯至学成回国。仅仅两年后，全面抗战爆发。冯至随同大批知识分子来到了昆明，在西南联合大学外语系任教。在联大的八年，是冯至创作生涯中最重要的转折期。战争的残酷、流亡的艰辛、同胞的牺牲，让这位曾经充满浪漫情怀的抒情诗人变得更加深沉和内省。1941年，他创作了中国新诗史上里程碑式的作品《十四行集》——二十七首十四行诗，用西方的诗歌形式装载了东方哲学的沉思。</p>
+
+  <p>抗战胜利后的1947年，中国并没有迎来人们期盼已久的和平。国共内战全面爆发，物价飞涨，民不聊生。知识分子们在抗战中燃起的希望，又一次被现实击碎。就是在这样的历史时刻，冯至写下了《那时》。</p>
+
+  <p>我们可以想象，当他在1947年的某个夜晚写下"那时"这两个字时，他的脑海中浮现的是怎样的画面：1919年那些在天安门前高呼口号的年轻面孔，联大校园里衣衫褴褛却目光坚定的学生们，战争中牺牲的朋友和同事，以及——二十八年后依然看不到尽头的苦难与动荡。"那时"不只是一个时间状语，它是一声长叹，是对一整个时代的回望与追问：我们当初的觉醒、我们的理想、我们付出的一切——值得吗？</p>
+
+  <p>《那时》中反复出现的"那时"，每一次重复都像是记忆中的一个回响。第一个"那时"带着新奇和兴奋，最后一个"那时"则笼罩着沉重和感慨。从"望见平原"到"无限的艰难"，这首诗浓缩了一代中国知识分子从觉醒到幻灭、从理想到现实的全部心路历程。它不仅仅是冯至个人的回忆，更是一整代人的集体记忆。</p>
+</div>
+
+<div class="vocab-box">
+  <div class="vocab-title">📖 重点词汇 Key Vocabulary</div>
+  <div class="vocab-item"><span class="word">动荡</span> — <span class="meaning">turbulent; in upheaval</span></div>
+  <div class="vocab-item"><span class="word">崭露头角</span> — <span class="meaning">to distinguish oneself; to come to prominence</span></div>
+  <div class="vocab-item"><span class="word">憧憬</span> — <span class="meaning">to look forward to; to have visions of</span></div>
+  <div class="vocab-item"><span class="word">内省</span> — <span class="meaning">introspection; self-reflection</span></div>
+  <div class="vocab-item"><span class="word">里程碑</span> — <span class="meaning">milestone</span></div>
+  <div class="vocab-item"><span class="word">民不聊生</span> — <span class="meaning">the people have no way to live; destitute</span></div>
+  <div class="vocab-item"><span class="word">衣衫褴褛</span> — <span class="meaning">dressed in rags; shabbily clothed</span></div>
+  <div class="vocab-item"><span class="word">幻灭</span> — <span class="meaning">disillusionment</span></div>
+  <div class="vocab-item"><span class="word">心路历程</span> — <span class="meaning">emotional journey; inner development</span></div>
+  <div class="vocab-item"><span class="word">集体记忆</span> — <span class="meaning">collective memory</span></div>
+</div>
+
+<div class="comprehension-box">
+  <div class="comp-title">📝 阅读理解 Comprehension Questions</div>
+  <ol>
+    <li>冯至的青年时代（1920年代）正好经历了哪些历史事件？这些事件如何影响了他？</li>
+    <li>鲁迅称赞冯至是"中国最为杰出的抒情诗人"。你认为这与冯至后来在联大时期的创作风格变化有什么关系？</li>
+    <li>冯至为什么在1947年——而不是1919年或1939年——写下《那时》？1947年的时代背景如何赋予了这首诗特殊的意义？</li>
+    <li>文中说"那时"不只是一个时间状语，而是"一声长叹"。你是否同意这个解读？请结合诗歌原文说明。</li>
+    <li>文章最后说《那时》是"一整代人的集体记忆"。请解释为什么一首个人抒情诗能够代表一代人的经历。</li>
+  </ol>
+</div>
+
+<!-- ========== PAGE BREAK + SUMMARY PAGE ========== -->
+<div class="page-break"></div>
+
+<div class="header-bar">
+  <span>Year 11 Chinese &amp; Literature</span>
+  <span>议题 4.2 课前阅读 Week 9 | Pre-Class Reading</span>
+</div>
+
+<h2>阅读总结：从西南联大到《那时》 <span class="en">Summary: From Southwest Associated University to the Poem</span></h2>
+
+<div class="info-box tips">
+  💡 <strong>完成以下表格，整理三篇阅读中的关键信息及其与《那时》诗歌的联系。</strong>
+</div>
+
+<table>
+  <tr>
+    <th style="width:22%">阅读篇目</th>
+    <th style="width:39%">核心内容（用自己的话概括）</th>
+    <th style="width:39%">与《那时》的联系</th>
+  </tr>
+  <tr>
+    <td><strong>西南联大（阅读一）</strong></td>
+    <td class="analysis-cell"></td>
+    <td class="analysis-cell"></td>
+  </tr>
+  <tr>
+    <td><strong>《满江红》校歌（阅读二）</strong></td>
+    <td class="analysis-cell"></td>
+    <td class="analysis-cell"></td>
+  </tr>
+  <tr>
+    <td><strong>冯至的创作背景（阅读三）</strong></td>
+    <td class="analysis-cell"></td>
+    <td class="analysis-cell"></td>
+  </tr>
+</table>
+
+<h3>📅 历史脉络 Timeline</h3>
+
+<div class="info-box">
+  <strong>从五四到《那时》——一条贯穿的历史线索</strong><br><br>
+  <strong>1915</strong>&emsp;新文化运动开始（Week 8 阅读一）<br>
+  <strong>1919</strong>&emsp;巴黎和会 → 五四运动爆发（Week 8 阅读二、三）<br>
+  <strong>1921</strong>&emsp;冯至考入北大，加入新文化运动<br>
+  <strong>1930</strong>&emsp;冯至留学德国<br>
+  <strong>1937</strong>&emsp;全面抗战爆发，三校南迁<br>
+  <strong>1938</strong>&emsp;西南联合大学在昆明成立（Week 9 阅读一）<br>
+  <strong>1938</strong>&emsp;西南联大校歌《满江红》写成（Week 9 阅读二）<br>
+  <strong>1941</strong>&emsp;冯至创作《十四行集》<br>
+  <strong>1945</strong>&emsp;抗战胜利，联大结束使命<br>
+  <strong>1947</strong>&emsp;冯至创作《那时》（Week 9 阅读三）<br><br>
+  💡 <strong>注意：</strong>《那时》写于 1947 年，但回望的是 1919 年前后的觉醒时代。诗人用 28 年的距离审视历史，这种"时间的回望"本身就是诗歌最重要的结构特征。
+</div>
+
+<h3>🔗 与 Week 9 课堂的联系</h3>
+
+<div class="info-box objectives">
+  <strong>Week 9 活动二：深入《那时》——修辞手法与议题论证</strong><br><br>
+  课前阅读完这三篇文章后，你将在课堂上进行以下活动：<br><br>
+  <strong>Part A 修辞手法深度解析</strong><br>
+  &emsp;→ 用校歌中学到的比喻、借代、象征来分析《那时》<br><br>
+  <strong>Part B TEE模型实战</strong><br>
+  &emsp;→ 用 Technique-Example-Effect 分析诗歌中的修辞效果<br><br>
+  <strong>Part C Issue 4.2 核心考点</strong><br>
+  &emsp;→ 将冯至的联大经历与"国际社会的冲击"联系起来<br><br>
+  <strong>Part D TEEL段落写作</strong><br>
+  &emsp;→ 运用课前阅读的知识写出有理有据的分析段落
+</div>
+
+<h3>📝 课前思考题 Pre-Class Reflection</h3>
+
+<div class="discussion">
+  💬 <strong>请在阅读完三篇短文后，思考并简要回答以下问题（带到课堂上讨论）：</strong><br><br>
+  1. 西南联大的故事中，哪个细节最打动你？为什么？<br><br>
+  2. 校歌《满江红》与冯至的《那时》都在表达知识分子的家国情怀。你觉得它们的"情怀"有什么不同？（提示：注意写作时间和语调的差异。）<br><br>
+  3. 如果你是冯至，在1947年的中国回望五四运动和联大岁月，你会有什么感受？请用3—5句话描述。
+</div>
+
+<div class="footer">
+  议题 4.2 课前阅读 Week 9 Pre-Class Reading
+</div>
+
+</body>
+</html>

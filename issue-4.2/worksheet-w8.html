@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>议题 4.2 活动一 | Week 8 - 学生工作纸</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: A4;
+    margin: 18mm 20mm;
+  }
+
+  body {
+    font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    font-size: 11pt;
+    line-height: 1.7;
+    color: #1a1a1a;
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 20mm;
+    background: #fff;
+  }
+
+  /* Header bar — uses table layout for print safety */
+  .header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #1a3a5c;
+    padding-bottom: 6px;
+    margin-bottom: 16px;
+    font-size: 9pt;
+    color: #1a3a5c;
+    font-weight: 500;
+  }
+
+  /* ===== PRINT / PDF STYLES ===== */
+  @media print {
+    /* Force background colors to print */
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+
+    /* Body: @page margin handles spacing, so zero body padding */
+    body {
+      margin: 0;
+      padding: 0;
+      max-width: none;
+      width: 100%;
+      font-size: 10.5pt;
+    }
+
+    /* Page break utility class */
+    .page-break {
+      page-break-before: always;
+      break-before: page;
+    }
+    .no-print { display: none; }
+
+    /* Header bar: replace flex with table display for print reliability */
+    .header-bar {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+    .header-bar > span:first-child {
+      display: table-cell;
+      text-align: left;
+      width: 60%;
+    }
+    .header-bar > span:last-child {
+      display: table-cell;
+      text-align: right;
+      width: 40%;
+    }
+
+    /* Info fields: replace flex with table display */
+    .info-fields {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+    .info-fields .field {
+      display: table-cell;
+      padding-right: 16px;
+    }
+
+    /* Prevent orphaned headings at page bottom */
+    h2, h3 {
+      page-break-after: avoid;
+      break-after: avoid;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Small containers: keep together */
+    .title-box,
+    .info-fields {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Large containers: allow page breaks inside, content flows naturally */
+    .info-box,
+    .discussion,
+    .scenario-box {
+      page-break-inside: auto;
+      break-inside: auto;
+    }
+
+    /* Tables: keep header with body, avoid row splitting */
+    table {
+      page-break-inside: auto;
+      break-inside: auto;
+    }
+    thead {
+      display: table-header-group;
+    }
+    tr {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Writing lines: slightly shorter for print density, allow group to break */
+    .writing-line {
+      height: 28px;
+    }
+    .writing-lines {
+      page-break-inside: auto;
+      break-inside: auto;
+    }
+
+    /* Poem box: keep stanzas together */
+    .info-box.poem {
+      page-break-inside: auto;
+    }
+    .poem-stanza {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Two-column layout: stack vertically in print */
+    .two-col {
+      display: block;
+    }
+    .two-col > div {
+      margin-bottom: 10px;
+    }
+
+    /* Footer: always at bottom */
+    .footer {
+      page-break-before: avoid;
+      break-before: avoid;
+    }
+
+    /* Ensure table widths stay within page */
+    table {
+      width: 100% !important;
+      max-width: 100%;
+    }
+    td, th {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    }
+  }
+
+  /* Title box */
+  .title-box {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 18px 24px;
+    border-radius: 4px;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .title-box h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20pt;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .title-box .subtitle {
+    font-size: 11pt;
+    color: #c9d6e3;
+    font-weight: 300;
+  }
+  .title-box .activity {
+    font-size: 13pt;
+    color: #f0c75e;
+    font-weight: 500;
+    margin-top: 6px;
+  }
+
+  /* Info fields */
+  .info-fields {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 18px;
+    font-size: 10pt;
+  }
+  .info-fields .field {
+    flex: 1;
+    border-bottom: 1px solid #999;
+    padding-bottom: 4px;
+  }
+  .info-fields .field label {
+    font-weight: 600;
+    color: #1a3a5c;
+  }
+
+  /* Section headings */
+  h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14pt;
+    color: #1a3a5c;
+    border-left: 4px solid #f0c75e;
+    padding-left: 12px;
+    margin: 28px 0 14px 0;
+  }
+  h2 .en {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10pt;
+    color: #666;
+    font-weight: 400;
+    display: block;
+  }
+
+  h3 {
+    font-size: 12pt;
+    color: #2c5282;
+    margin: 18px 0 10px 0;
+    font-weight: 600;
+  }
+
+  /* Info boxes */
+  .info-box {
+    background: #f0f5fa;
+    border: 1px solid #c9d6e3;
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin: 12px 0;
+    font-size: 10.5pt;
+  }
+  .info-box.objectives {
+    background: #f0f5fa;
+    border-left: 4px solid #1a3a5c;
+  }
+  .info-box.tips {
+    background: #fdf8e8;
+    border-left: 4px solid #f0c75e;
+  }
+  .info-box.poem {
+    background: #fafaf5;
+    border: 1px solid #d4c89a;
+    font-family: 'Noto Serif SC', serif;
+    line-height: 2.0;
+    padding: 20px 28px;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 10.5pt;
+  }
+  th {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 10pt;
+  }
+  td {
+    border: 1px solid #ccc;
+    padding: 9px 12px;
+    vertical-align: top;
+  }
+  tr:nth-child td {
+    background: #f8f9fa;
+  }
+  .highlight-row td {
+    background: #fdf8e8 !important;
+  }
+
+  /* Writing lines */
+  .writing-lines {
+    margin: 10px 0;
+    padding: 8px 0;
+  }
+  .writing-line {
+    border-bottom: 1px solid #bbb;
+    height: 32px;
+    margin-bottom: 2px;
+  }
+
+  /* Scenario boxes */
+  .scenario-box {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 14px 16px;
+    margin: 10px 0;
+  }
+  .scenario-box .icon {
+    font-size: 14pt;
+    margin-right: 6px;
+  }
+
+  /* Discussion prompts */
+  .discussion {
+    background: #f0f8f0;
+    border-left: 4px solid #48bb78;
+    padding: 12px 16px;
+    margin: 10px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid #ccc;
+    padding-top: 8px;
+    margin-top: 30px;
+    font-size: 8pt;
+    color: #888;
+    text-align: center;
+  }
+
+  /* Poem formatting */
+  .poem-text {
+    font-family: 'Noto Serif SC', serif;
+    line-height: 2.2;
+    margin: 6px 0;
+  }
+  .poem-title {
+    font-size: 16pt;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .poem-subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 10pt;
+    margin-bottom: 16px;
+  }
+  .poem-stanza {
+    margin-bottom: 14px;
+  }
+  .poem-date {
+    text-align: right;
+    color: #888;
+    margin-top: 12px;
+    font-size: 10pt;
+  }
+
+  /* Numbered items */
+  .num-circle {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #1a3a5c;
+    color: #fff;
+    text-align: center;
+    line-height: 22px;
+    font-size: 9pt;
+    margin-right: 6px;
+  }
+
+  /* Vocab table */
+  .vocab-table td:first-child {
+    font-weight: 600;
+    width: 30%;
+  }
+  .vocab-table td:nth-child(2) {
+    width: 30%;
+    color: #555;
+  }
+
+  /* Analysis table with writing space */
+  .analysis-cell {
+    min-height: 60px;
+    border-bottom: 1px dotted #bbb;
+  }
+
+  ol, ul { margin-left: 20px; margin-bottom: 10px; }
+  li { margin-bottom: 4px; }
+
+  .emoji { font-style: normal; }
+
+  .two-col { display: flex; gap: 16px; }
+  .two-col > div { flex: 1; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header-bar">
+  <span>Year 11 Chinese &amp; Literature</span>
+  <span>议题 4.2 活动一 | Week 8</span>
+
+</div>
+
+<!-- TITLE BOX -->
+<div class="title-box">
+  <h1>议题 4.2：国际社会对华语国家/地区的影响及其产生的冲击</h1>
+  <div class="subtitle">The Impact of International Influences on Chinese-Speaking Communities</div>
+  <div class="activity">活动一：走进《那时》——历史背景与文本初读</div>
+</div>
+
+<!-- INFO FIELDS -->
+<div class="info-fields">
+  <div class="field"><label>姓名 Name：</label></div>
+  <div class="field"><label>日期 Date：</label></div>
+  <div class="field"><label>班级 Class：</label></div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="info-box objectives">
+  <strong>📋 学习目标 Learning Objectives</strong><br><br>
+  <span class="num-circle">①</span> 了解新文化运动和五四运动的历史背景，理解国际社会对中国的思想冲击<br>
+  <span class="num-circle">②</span> 初读冯至的诗歌《那时》，理清诗歌的情感发展脉络（觉醒→反叛→追求→反思）<br>
+  <span class="num-circle">③</span> 识别诗歌中体现Issue 4.2"国际影响与冲击"的关键诗句，建立文本与议题的联系<br>
+  <span class="num-circle">④</span> 通过个人经历反思"中西文化冲击"，为后续深入文本分析做准备
+</div>
+
+<!-- ========== PART A ========== -->
+<h2>A 第一部分：历史背景导入 <span class="en">Part A: Historical Context</span></h2>
+
+<div class="info-box tips">
+  💡 <strong>导入问题：</strong>你们现在作为在澳大利亚接受西方教育的年轻人，和传统的中国父母有代沟吗？100年前的中国青年，也经历了类似的中西文化冲击——而且更加猛烈。让我们先了解那个时代。
+</div>
+
+<h3>1. 时代背景：改变中国命运的国际思潮</h3>
+
+<table>
+  <tr>
+    <th style="width:18%">时期</th>
+    <th style="width:42%">事件与内容</th>
+    <th style="width:40%">国际影响与冲击 (Issue 4.2)</th>
+  </tr>
+  <tr>
+    <td><strong>1840s-1900s</strong><br>晚清时期</td>
+    <td>鸦片战争后，中国被迫打开国门；洋务运动引入西方技术（"师夷长技以制夷"）</td>
+    <td>🔹 <strong>物质层面的影响：</strong>西方工业文明首次冲击中国传统农业社会</td>
+  </tr>
+  <tr>
+    <td><strong>1915年起</strong><br>新文化运动</td>
+    <td>陈独秀创办《新青年》杂志，提倡"民主" 与"科学" ；胡适倡导白话文运动，反对文言文</td>
+    <td>🔹 <strong>文化层面的冲击：</strong>西方文学形式（白话文、新诗）取代传统文言，诗中"简单的文字"即为体现</td>
+  </tr>
+  <tr>
+    <td><strong>1917年</strong><br>俄国十月革命</td>
+    <td>列宁领导布尔什维克革命成功，马克思主义传入中国；李大钊发表《布尔什维主义的胜利》</td>
+    <td>🔹 <strong>思想层面的影响：</strong>诗中"相信俄国的革命者"，"一切为了真理/正义"直接体现</td>
+  </tr>
+  <tr class="highlight-row">
+    <td><strong>1919年</strong><br>⭐ 五四运动</td>
+    <td>巴黎和会（国际事件）上中国外交失败，引发大规模爱国运动；中国青年彻底觉醒，走上街头</td>
+    <td>🔹 <strong>全面冲击：</strong>国际事件直接引发国内政治运动，标志着中国青年的思想独立与反叛精神的爆发</td>
+  </tr>
+  <tr>
+    <td><strong>1920s-1940s</strong><br>动荡年代</td>
+    <td>国共合作→分裂→军阀混战→抗日战争→内战；意识形态（资本主义vs共产主义）的对立</td>
+    <td>🔹 <strong>政治命运的冲击：</strong>诗中"歧途与分手"、"死亡与杀戮"即为国际意识形态引入后的惨痛代价</td>
+  </tr>
+</table>
+
+<div class="discussion">
+  💬 <strong>讨论：</strong>从上表中选择一个时期，用自己的话解释：这个时期的"国际影响"具体是什么？它对中国社会产生了怎样的"冲击"？
+</div>
+<h3>2. 关键概念配对练习</h3>
+<p>将左栏的"国际影响"与右栏的"产生的冲击"用线连接起来：</p>
+
+<table>
+  <tr>
+    <th style="width:45%">国际影响 </th>
+    <th style="width:10%">连线</th>
+    <th style="width:45%">产生的冲击 </th>
+  </tr>
+  <tr>
+    <td>A. 西方民主与科学思想的传入</td>
+    <td></td>
+    <td>① 国共两党意识形态对立，导致内战</td>
+  </tr>
+  <tr>
+    <td>B. 白话文运动（受西方文学影响）</td>
+    <td></td>
+    <td>② 青年反叛封建家庭，代际冲突加剧</td>
+  </tr>
+  <tr>
+    <td>C. 马克思主义（经俄国十月革命传入）</td>
+    <td></td>
+    <td>③ 文言文被取代，传统文学形式瓦解</td>
+  </tr>
+  <tr>
+    <td>D. 巴黎和会的外交失败</td>
+    <td></td>
+    <td>④ 五四运动爆发，青年走上街头抗议</td>
+  </tr>
+  <tr>
+    <td>E. 西方个人主义、自由主义</td>
+    <td></td>
+    <td>⑤ 新文化运动兴起，挑战封建礼教</td>
+  </tr>
+</table>
+
+<!-- ========== HISTORY RESEARCH PROJECT ========== -->
+<div class="page-break"></div>
+
+<div class="header-bar">
+  <span>Year 11 Chinese &amp; Literature</span>
+  <span>议题 4.2 活动一 | Week 8</span>
+</div>
+
+<h2>历史研究项目 <span class="en">History Research Project</span></h2>
+
+<div class="info-box objectives">
+  <strong>📋 项目说明 Project Overview</strong><br><br>
+  本研究项目是 Part A 的延伸活动，旨在让同学们通过自主研究更深入地理解中国近代史中"国际影响与冲击"的脉络。<br>
+  本项目包含两个任务，可以作为课后作业或小组项目完成。<br><br>
+  <strong>⏰ 完成时间：</strong>2周（建议在Week 10前完成）<br>
+  <strong>👥 合作方式：</strong>2-3人小组 或 个人完成
+</div>
+
+<h3>Task 1：PPT演讲项目 Presentation Project</h3>
+
+<div class="info-box tips">
+  <strong>🎤 任务要求</strong><br><br>
+  从下表中选择一个历史时期，研究该时期的国际影响及其对中国社会产生的冲击。<br>
+  制作一个以图片/图表为主的PPT（6-8张幻灯片），然后向全班展示（5-8分钟）。
+</div>
+
+<table>
+  <tr>
+    <th style="width:6%">选题</th>
+    <th style="width:20%">历史时期</th>
+    <th style="width:24%">核心国际影响</th>
+    <th style="width:50%">研究方向建议</th>
+  </tr>
+  <tr>
+    <td>A</td>
+    <td><strong>新文化运动</strong><br><span style="color:#888;font-size:9.5pt">1915-1923</span></td>
+    <td>西方民主、科学思想</td>
+    <td>《新青年》如何改变了中国青年的思想？</td>
+  </tr>
+  <tr>
+    <td>B</td>
+    <td><strong>五四运动</strong><br><span style="color:#888;font-size:9.5pt">1919</span></td>
+    <td>巴黎和会外交失败</td>
+    <td>一次国际会议如何引发了全国性的抗议运动？</td>
+  </tr>
+  <tr>
+    <td>C</td>
+    <td><strong>国共合作与分裂</strong><br><span style="color:#888;font-size:9.5pt">1924-1927</span></td>
+    <td>苏联/共产国际的介入</td>
+    <td>外国意识形态如何影响了中国的政治走向？</td>
+  </tr>
+  <tr>
+    <td>D</td>
+    <td><strong>抗日战争</strong><br><span style="color:#888;font-size:9.5pt">1937-1945</span></td>
+    <td>日本侵华与国际援助</td>
+    <td>战争如何改变了中国知识分子的命运？（可结合西南联大）</td>
+  </tr>
+  <tr>
+    <td>E</td>
+    <td><strong>自选课题</strong></td>
+    <td>学生自选</td>
+    <td>须经老师批准。可选择其他体现"国际影响→冲击"的历史事件。</td>
+  </tr>
+</table>
+
+<div class="info-box">
+  <strong>📊 PPT内容要求：</strong><br>
+  &emsp;① 历史背景简介（What happened?）<br>
+  &emsp;② 国际影响的具体内容（What was the international influence?）<br>
+  &emsp;③ 对中国社会的冲击——至少涵盖两个层面：思想/文化/政治/家庭/社会<br>
+  &emsp;④ 与冯至《那时》的联系——找到至少一句诗与你的选题相呼应<br>
+  &emsp;⑤ 个人反思——这段历史对今天的我们有什么启示？<br><br>
+  <span style="color:#b8860b"><strong>💡 提示：</strong></span>PPT应以图片、图表、地图为主，避免大段文字。演讲时使用中文，PPT上的关键术语可以中英双语标注。
+</div>
+
+<h3>Task 2：时间轴制作 Timeline Project</h3>
+
+<div class="info-box tips">
+  <strong>📏 任务要求</strong><br><br>
+  按照"旧民主主义革命→新民主主义革命"的历史框架，搜集资料制作一个时间轴。<br>
+  将具体事件、年代、国际影响清楚标注在时间轴上。<br>
+  可以手绘（A3纸）或使用电子工具（Canva, PowerPoint等）。
+</div>
+
+<table>
+  <tr>
+    <th style="width:20%">历史阶段</th>
+    <th style="width:14%">时间范围</th>
+    <th style="width:36%">关键事件（至少标注3个）</th>
+    <th style="width:30%">国际影响因素</th>
+  </tr>
+  <tr>
+    <td><strong>旧民主主义革命</strong><br><em style="color:#888;font-size:9.5pt">Old Democratic Revolution</em></td>
+    <td>1840—1919</td>
+    <td>① 鸦片战争<br>② _______________<br>③ _______________<br>④ _______________</td>
+    <td>西方列强入侵、不平等条约、西方技术/思想传入</td>
+  </tr>
+  <tr>
+    <td><strong>新民主主义革命</strong><br><em style="color:#888;font-size:9.5pt">New Democratic Revolution</em></td>
+    <td>1919—1949</td>
+    <td>① 五四运动<br>② _______________<br>③ _______________<br>④ _______________</td>
+    <td>马克思主义传入、苏联/共产国际、日本侵华、美苏冷战</td>
+  </tr>
+</table>
+
+<div class="info-box">
+  <strong>🎯 时间轴制作要求：</strong><br>
+  &emsp;① 每个阶段至少标注 5 个关键事件（含年份）<br>
+  &emsp;② 用不同颜色或符号区分"国际影响"和"国内冲击"<br>
+  &emsp;③ 在时间轴上标出冯至《那时》提到或暗示的事件<br>
+  &emsp;④ 标注"旧民主主义革命"与"新民主主义革命"的分界线（1919年五四运动）<br><br>
+  <span style="color:#b8860b"><strong>⭐ 加分项：</strong></span>在时间轴上标注冯至的人生经历（出生、求学、联大、创作《那时》），展示诗人与历史的交织。
+</div>
+
+<h3>📋 评分标准 Assessment Criteria</h3>
+
+<table>
+  <tr>
+    <th style="width:18%">评分维度</th>
+    <th style="width:30%">优秀 </th>
+    <th style="width:28%">良好 </th>
+    <th style="width:24%">合格 </th>
+  </tr>
+  <tr>
+    <td><strong>内容准确性</strong><br><em style="color:#888;font-size:9.5pt">Accuracy</em></td>
+    <td>历史事件准确，国际影响分析深入</td>
+    <td>基本准确，分析有一定深度</td>
+    <td>部分准确，分析较浅</td>
+  </tr>
+  <tr>
+    <td><strong>Issue 4.2 联系</strong><br><em style="color:#888;font-size:9.5pt">Relevance</em></td>
+    <td>清晰展示"国际影响→冲击"的逻辑，与《那时》联系紧密</td>
+    <td>有一定联系，但不够具体</td>
+    <td>联系较弱</td>
+  </tr>
+  <tr>
+    <td><strong>视觉呈现</strong><br><em style="color:#888;font-size:9.5pt">Presentation</em></td>
+    <td>图文并茂，排版清晰，视觉效果佳</td>
+    <td>有图片/图表，排版整齐</td>
+    <td>以文字为主，排版一般</td>
+  </tr>
+  <tr>
+    <td><strong>口头表达</strong><br><em style="color:#888;font-size:9.5pt">(仅Task 1)</em></td>
+    <td>中文流利，表达清晰，有互动</td>
+    <td>基本流利，表达清楚</td>
+    <td>能完成演讲</td>
+  </tr>
+</table>
+
+<!-- ========== PART B ========== -->
+<div class="page-break"></div>
+
+<div class="header-bar">
+  <span>Year 11 Chinese &amp; Literature</span>
+  <span>议题 4.2 活动一 | Week 8</span>
+</div>
+
+<h2>B 第二部分：初读《那时》 <span class="en">Part B: First Reading of the Poem</span></h2>
+
+<div class="info-box tips">
+  📖 <strong>阅读指南：</strong>这首诗写于1947年，诗人冯至以一个中年人的视角回顾五四时期的青春岁月。请先通读全诗，用荧光笔标记以下内容：<br>
+  🟡 黄色 = 体现"青年觉醒/反叛"的诗句<br>
+  🟢 绿色 = 体现"国际影响"的诗句<br>
+  🔴 红色 = 体现"冲击与代价"的诗句
+</div>
+
+<div class="info-box poem">
+  <div class="poem-title">《那时》</div>
+  <div class="poem-subtitle">——一个中年人述说五四以后的那几年&emsp;&emsp;&emsp;冯至</div>
+
+  <div class="poem-stanza">
+    那时觉得既然醒了，就不该关着阴暗的门窗；<br>
+    那时觉得既然醒了，就应该放进窗外的光明。<br>
+    <span style="color:#888">处处看见新绿。处处看见阳光。</span>
+  </div>
+
+  <div class="poem-stanza">
+    那时象离开马棚的小马，第一次望见平原；<br>
+    那时象离开鸟巢的小鸟，第一次望见天空。<br>
+    <span style="color:#888">前面是旷远。前面是清明。</span>
+  </div>
+
+  <div class="poem-stanza">
+    那时我们抛下许多的事物，不管是好还是坏；<br>
+    那时要去追求许多的事物，不管是远还是近。<br>
+    <span style="color:#888">有的在眼前。有的在明天。</span>
+  </div>
+
+  <div class="poem-stanza">
+    那时我们用简单的文字，写出简单的诗文；<br>
+    那时我们用幼稚的文字，写出幼稚的思想。<br>
+    <span style="color:#888">写的很幼稚。想的也单纯。</span>
+  </div>
+
+  <div class="poem-stanza">
+    那时父母看见了我们，常暗地为我们担忧；<br>
+    那时邻人看见了我们，常在我们背后冷笑。<br>
+    <span style="color:#888">我们却不管。我们却不顾。</span>
+  </div>
+
+  <div class="poem-stanza">
+    那时无论如何，要跳出窒闷的家庭；<br>
+    那时无论如何，要舍弃狭窄的家乡。<br>
+    <span style="color:#888">外面在招手。外面在呼唤。</span>
+  </div>
+
+  <div class="poem-stanza">
+    那时我们爱谈论历史上新发现的诗人；<br>
+    那时我们相信俄国的革命者。<br>
+    <span style="color:#888">一切为了真理。一切为了正义。</span>
+  </div>
+
+  <div class="poem-stanza">
+    那时谁也不会想，在前途有无限的艰难；<br>
+    那时谁也不会想，艰难时便会彼此分手。<br>
+  </div>
+
+  <div class="poem-stanza">
+    如今走了二十多年，却经过无数的歧途与分手；<br>
+    如今走了二十多年，看见了无数的死亡与杀戮。<br>
+  </div>
+
+  <div class="poem-stanza">
+    <strong>那时追求的在什么地方？</strong>
+  </div>
+
+  <div class="poem-stanza">
+    如今的平原和天空，依然照映着五月的阳光；<br>
+    如今的平原和天空，依然等待着新的眺望。<br>
+  </div>
+
+  <div class="poem-date">三月三日 一九四七</div>
+</div>
+
+<h3>3. 初读理解：诗歌情感脉络梳理</h3>
+<p>根据诗歌内容，将以下四个阶段按顺序排列，并在右栏写出对应的关键诗句：</p>
+
+<table>
+  <tr>
+    <th style="width:8%">顺序</th>
+    <th style="width:22%">阶段</th>
+    <th style="width:35%">核心内容</th>
+    <th style="width:35%">对应关键诗句（摘抄）</th>
+  </tr>
+  <tr>
+    <td style="text-align:center"></td>
+    <td><strong>觉醒与渴望</strong><br>The Awakening</td>
+    <td>青年在西方新思潮冲击下醒悟，渴望打开封闭的世界，迎接光明</td>
+    <td class="analysis-cell"></td>
+  </tr>
+  <tr>
+    <td style="text-align:center"></td>
+    <td><strong>冲动与决绝</strong><br>The Rebellion</td>
+    <td>不顾家人反对，用新的文字表达新的思想，决心冲出旧世界</td>
+    <td class="analysis-cell"></td>
+  </tr>
+  <tr>
+    <td style="text-align:center"></td>
+    <td><strong>信仰与追求</strong><br>The Global Influence</td>
+    <td>追随国际新思潮——新诗人（白话文运动）和俄国革命者（马克思主义）</td>
+    <td class="analysis-cell"></td>
+  </tr>
+  <tr>
+    <td style="text-align:center"></td>
+    <td><strong>反思与希冀</strong><br>Reflection &amp; Hope</td>
+    <td>经历二十多年动荡后的反思，但仍怀抱希望</td>
+    <td class="analysis-cell"></td>
+  </tr>
+</table>
+
+<!-- ========== PART C ========== -->
+<h2>C 第三部分：文本与议题的初步联系 <span class="en">Part C: Connecting Text to Issue 4.2</span></h2>
+
+<h3>4. "国际影响"在诗中的体现</h3>
+<p>阅读以下诗句，判断它体现了哪种类型的"国际影响"，在对应的方框中打勾：</p>
+
+<table>
+  <tr>
+    <th style="width:40%">诗句</th>
+    <th style="width:15%">🏛️ 思想影响</th>
+    <th style="width:15%">📚 文化影响</th>
+    <th style="width:15%">🔄 政治影响</th>
+    <th style="width:15%">🤝 社会影响</th>
+  </tr>
+  <tr>
+    <td>"用简单的文字，写出简单的诗文"</td>
+    <td style="text-align:center">☐</td>
+    <td style="text-align:center">☐</td>
+    <td style="text-align:center">☐</td>
+    <td style="text-align:center">☐</td>
+  </tr>
+  <tr>
+    <td>"相信俄国的革命者"</td>
+    <td style="text-align:center">☐</td>
+    <td style="text-align:center">☐</td>
+    <td style="text-align:center">☐</td>
+    <td style="text-align:center">☐</td>
+  </tr>
+  <tr>
+    <td>"觉得既然醒了，就不该关着阴暗的门窗"</td>
+    <td style="text-align:center">☐</td>
+    <td style="text-align:center">☐</td>
+    <td style="text-align:center">☐</td>
+    <td style="text-align:center">☐</td>
+  </tr>
+  <tr>
+    <td>"父母常暗地为我们担忧；邻人常在我们背后冷笑"</td>
+    <td style="text-align:center">☐</td>
+    <td style="text-align:center">☐</td>
+    <td style="text-align:center">☐</td>
+    <td style="text-align:center">☐</td>
+  </tr>
+  <tr>
+    <td>"经过无数的歧途与分手"</td>
+    <td style="text-align:center">☐</td>
+    <td style="text-align:center">☐</td>
+    <td style="text-align:center">☐</td>
+    <td style="text-align:center">☐</td>
+  </tr>
+  <tr>
+    <td>"要跳出窒闷的家庭，要舍弃狭窄的家乡"</td>
+    <td style="text-align:center">☐</td>
+    <td style="text-align:center">☐</td>
+    <td style="text-align:center">☐</td>
+    <td style="text-align:center">☐</td>
+  </tr>
+</table>
+
+<h3>5. 诗中的"冲击"——从个人到国家</h3>
+<p>参考诗歌内容，填写下表，分析国际影响在不同层面产生的"冲击"：</p>
+
+<table>
+  <tr>
+    <th style="width:20%">冲击层面</th>
+    <th style="width:40%">诗中体现（引用原文）</th>
+    <th style="width:40%">你的解释（用自己的话）</th>
+  </tr>
+  <tr>
+    <td><strong>思想上的冲击</strong><br><em>Intellectual</em></td>
+    <td class="analysis-cell" style="min-height:50px"></td>
+    <td class="analysis-cell" style="min-height:50px"></td>
+  </tr>
+  <tr>
+    <td><strong>家庭/社会的冲击</strong><br><em>Family/Social</em></td>
+    <td class="analysis-cell" style="min-height:50px"></td>
+    <td class="analysis-cell" style="min-height:50px"></td>
+  </tr>
+  <tr>
+    <td><strong>文化上的冲击</strong><br><em>Cultural</em></td>
+    <td class="analysis-cell" style="min-height:50px"></td>
+    <td class="analysis-cell" style="min-height:50px"></td>
+  </tr>
+  <tr>
+    <td><strong>政治命运的冲击</strong><br><em>Political</em></td>
+    <td class="analysis-cell" style="min-height:50px"></td>
+    <td class="analysis-cell" style="min-height:50px"></td>
+  </tr>
+</table>
+
+<div class="page-break"></div>
+
+<div class="header-bar">
+  <span>Year 11 Chinese &amp; Literature</span>
+  <span>议题 4.2 活动一 | Week 8</span>
+
+</div>
+
+<!-- ========== PART D ========== -->
+<h2>D 第四部分：个人反思与联系 <span class="en">Part D: Personal Reflection &amp; Connection</span></h2>
+
+<h3>6. 跨时代的"代沟"——从"那时"到"如今"</h3>
+
+<div class="scenario-box">
+  <span class="icon">🍽️</span><strong>情境一：家庭餐桌上的冲突</strong><br>
+  诗中写道：「那时父母看见了我们，常暗地为我们担忧；那时邻人看见了我们，常在我们背后冷笑。我们却不管。我们却不顾。」<br><br>
+  想一想：你是否有过类似的经历？你在接受西方教育后形成的某些价值观（个人自由、职业选择、恋爱观等），是否与父母的传统中国观念产生过矛盾？
+</div>
+
+<p><strong>请写一段话（80-100字），描述你的一次"中西文化冲击"经历，并与诗中青年的经历做比较：</strong></p>
+
+<h3>7. 对比思考：100年前 vs. 今天</h3>
+
+<table>
+  <tr>
+    <th style="width:20%">对比维度</th>
+    <th style="width:40%">诗中的"那时"（1920s青年）</th>
+    <th style="width:40%">今天的"我们"（2020s海外华裔青年）</th>
+  </tr>
+  <tr>
+    <td><strong>"国际影响"的来源</strong></td>
+    <td>西方民主科学、马克思主义、白话文运动</td>
+    <td style="min-height:40px"></td>
+  </tr>
+  <tr>
+    <td><strong>与父母的矛盾</strong></td>
+    <td>"父母暗地担忧"，"邻人背后冷笑"</td>
+    <td style="min-height:40px"></td>
+  </tr>
+  <tr>
+    <td><strong>反叛的方式</strong></td>
+    <td>"跳出窒闷的家庭"，"舍弃狭窄的家乡"</td>
+    <td style="min-height:40px"></td>
+  </tr>
+  <tr>
+    <td><strong>追求的理想</strong></td>
+    <td>"一切为了真理。一切为了正义。"</td>
+    <td style="min-height:40px"></td>
+  </tr>
+  <tr>
+    <td><strong>面临的困难</strong></td>
+    <td>"歧途与分手"、"死亡与杀戮"</td>
+    <td style="min-height:40px"></td>
+  </tr>
+</table>
+
+<!-- ========== PART E ========== -->
+<h2>E 第五部分：总结与预习 <span class="en">Part E: Summary &amp; Preview</span></h2>
+
+<h3>☑ 本课关键收获 Key Takeaways</h3>
+<div class="info-box">
+  ☑ 新文化运动和五四运动是国际思潮影响中国的关键历史节点<br>
+  ☑ 冯至的《那时》写于1947年，以中年人视角回顾五四青年的觉醒与挣扎<br>
+  ☑ 诗歌呈现了四个情感阶段：觉醒→反叛→追求→反思<br>
+  ☑ Issue 4.2的核心在于：国际影响（思想、文化、政治）→ 对中国社会的冲击（个人、家庭、国家）<br>
+  ☑ 100年前的"代沟"与今天海外华裔青年的经历有惊人的相似之处<br>
+  ☑ 下周我们将深入分析诗歌的语言技巧（象征、比喻、借代、反复、反问）
+</div>
+
+<h3>📝 预习任务 Preview for Next Week</h3>
+<div class="info-box tips">
+  <strong>下周（Week 9）我们将学习《那时》的修辞手法与HSC写作技巧。请完成以下预习：</strong><br><br>
+  1. 重读诗歌，尝试找出至少<strong>三处</strong>你认为使用了"象征手法"的地方，并用铅笔在旁边写下你认为它象征什么。<br>
+  2. 思考问题：诗人为什么反复使用"那时"这个词？它除了表示时间之外，还有什么更深的含义？
+</div>
+
+<h3>📚 核心词汇表 Key Vocabulary</h3>
+
+<table class="vocab-table">
+  <tr>
+    <th>中文</th>
+    <th>English</th>
+    <th>造句/笔记</th>
+  </tr>
+  <tr><td colspan="3" style="background:#1a3a5c;color:#fff;font-weight:600">历史概念 Historical Concepts</td></tr>
+  <tr><td>新文化运动</td><td>New Culture Movement</td><td></td></tr>
+  <tr><td>五四运动</td><td>May Fourth Movement</td><td></td></tr>
+  <tr><td>封建礼教</td><td>Feudal ethics/traditions</td><td></td></tr>
+  <tr><td>白话文</td><td>Vernacular Chinese</td><td></td></tr>
+  <tr><td>马克思主义</td><td>Marxism</td><td></td></tr>
+  <tr><td>十月革命</td><td>October Revolution</td><td></td></tr>
+  <tr><td colspan="3" style="background:#1a3a5c;color:#fff;font-weight:600">议题关键词 Issue Keywords</td></tr>
+  <tr><td>国际思潮</td><td>International intellectual trends</td><td></td></tr>
+  <tr><td>冲击</td><td>Impact / shock</td><td></td></tr>
+  <tr><td>代际冲突</td><td>Intergenerational conflict</td><td></td></tr>
+  <tr><td>思想觉醒</td><td>Intellectual awakening</td><td></td></tr>
+  <tr><td>意识形态</td><td>Ideology</td><td></td></tr>
+  <tr><td colspan="3" style="background:#1a3a5c;color:#fff;font-weight:600">诗歌词汇 Poem Vocabulary</td></tr>
+  <tr><td>窒闷</td><td>Stifling / suffocating</td><td></td></tr>
+  <tr><td>旷远</td><td>Vast and distant</td><td></td></tr>
+  <tr><td>歧途</td><td>Wrong path / divergence</td><td></td></tr>
+  <tr><td>杀戮</td><td>Slaughter / killing</td><td></td></tr>
+  <tr><td>眺望</td><td>To gaze into the distance</td><td></td></tr>
+</table>
+
+<div class="footer">
+  议题 4.2 活动一 Week 8
+</div>
+
+</body>
+</html>
