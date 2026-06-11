@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每周一练 W8 · Q1 听力（10分） | Year 11 Chinese &amp; Literature</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@600;700;900&display=swap');
+  :root{
+    --navy:#16263f; --navy2:#1f3a5f; --teal:#0d7d7d; --teal-l:#e6f4f4;
+    --gold:#c49a2c; --gold-l:#faf3df; --red:#b8392f; --red-l:#fbeae8;
+    --blue:#2f6db5; --blue-l:#eaf1fb; --ink:#22272e; --muted:#5d6b7a;
+    --bg:#f4f6f9; --card:#ffffff; --line:#dde3ea;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; font-family:'Noto Sans SC','Microsoft YaHei','PingFang SC',sans-serif; color:var(--ink); background:var(--bg); line-height:1.75; font-size:17px;}
+  .wrap{max-width:880px; margin:0 auto; padding:28px 22px 60px;}
+  .hero{background:linear-gradient(135deg,var(--navy) 0%, var(--navy2) 60%, var(--teal) 160%); color:#fff; border-radius:18px; padding:30px 32px; box-shadow:0 10px 30px rgba(22,38,63,.25);}
+  .hero .kicker{color:var(--gold); font-weight:700; letter-spacing:2px; font-size:12.5px;}
+  .hero h1{font-size:30px; margin:8px 0 4px; line-height:1.25;}
+  .hero .sub{font-size:16px; color:#dbe6f5; font-weight:300;}
+  h2{font-size:21px; color:var(--navy); margin:26px 0 10px; padding-bottom:6px; border-bottom:2px solid var(--teal);}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 22px; box-shadow:0 4px 14px rgba(30,50,80,.05); margin:14px 0;}
+  .inst{font-size:15px; color:#3c4754; margin:6px 0;}
+  .inst.en{font-style:italic; color:var(--muted);}
+  .crit{background:var(--gold-l); border:1px solid #ecdca6; border-radius:10px; padding:10px 16px; font-size:14px; color:#6b531a; margin-top:10px;}
+  audio{width:100%; margin:10px 0 4px;}
+  .audio-note{font-size:13.5px; color:var(--muted);}
+  .audio-missing{display:none; background:var(--red-l); border:1px dashed var(--red); color:var(--red); border-radius:10px; padding:10px 16px; font-size:14.5px; margin-top:8px;}
+  .qhead{display:flex; align-items:baseline; gap:10px; margin-top:8px;}
+  .qhead .qno{font-weight:900; font-size:19px; color:var(--navy);}
+  .qhead .marks{color:var(--red); font-weight:700; font-size:15px;}
+  .stem{font-family:'Noto Serif SC',serif; font-size:17.5px; margin:4px 0 2px;}
+  .stem.trad{color:#4a5562;}
+  .stem.en{font-family:'Noto Sans SC',sans-serif; font-style:italic; color:var(--muted); font-size:14.5px;}
+  textarea{width:100%; border:1.5px solid var(--line); border-radius:10px; padding:12px 14px; font-family:inherit; font-size:15.5px; line-height:1.7; resize:vertical; background:#fffdf8;}
+  textarea:focus{outline:none; border-color:var(--teal);}
+  .btn{display:inline-block; background:var(--teal); color:#fff; border:0; border-radius:24px; padding:9px 22px; font-size:15px; font-weight:700; cursor:pointer; font-family:inherit; transition:.15s;}
+  .btn:hover{opacity:.88;}
+  .btn.gold{background:var(--gold);} .btn.red{background:var(--red);} .btn.navy{background:var(--navy);}
+  .reveal{display:none; margin-top:12px; border-top:2px dashed var(--line); padding-top:12px;}
+  .reveal.open{display:block;}
+  .mg{background:var(--blue-l); border-radius:10px; padding:12px 16px; font-size:14.5px; margin-bottom:10px;}
+  .mg b{color:var(--blue);}
+  .sample{background:var(--teal-l); border-radius:10px; padding:12px 16px; font-size:15px;}
+  .sample b{color:var(--teal);}
+  .check{background:var(--gold-l); border-radius:10px; padding:12px 16px; font-size:14.5px; margin-top:10px;}
+  .check b{color:var(--gold);}
+  .check li{margin:3px 0;}
+  .timer-row{display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
+  #clock{font-size:34px; font-weight:900; color:var(--navy); font-variant-numeric:tabular-nums; min-width:120px;}
+  #clock.warn{color:var(--red); animation:blink 1s infinite;}
+  @keyframes blink{50%{opacity:.45;}}
+  .timer-note{font-size:13.5px; color:var(--muted);}
+  .tee{display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-top:8px;}
+  @media(max-width:700px){.tee{grid-template-columns:1fr;}}
+  .tee div{background:#fff; border:1px solid var(--line); border-top:4px solid var(--teal); border-radius:10px; padding:10px 14px; font-size:14px;}
+  .tee b{color:var(--teal); font-size:15.5px;}
+  .topnav{margin-bottom:14px;}
+  .topnav a{color:var(--blue); text-decoration:none; font-size:14px; border-bottom:1px dashed var(--blue);}
+  footer{margin-top:40px; padding-top:14px; border-top:1px solid var(--line); color:var(--muted); font-size:12.5px; text-align:center;}
+  @media print{.btn,audio,.timer-row,.topnav{display:none!important;} .reveal{display:block!important;} body{background:#fff;} .card{box-shadow:none;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topnav"><a href="week8.html">← 返回 Week 8 总览</a></div>
+  <div class="hero">
+    <div class="kicker">YEAR 11 CHINESE &amp; LITERATURE · ISSUE 2.3 · 每周一练 WEEK 8</div>
+    <h1>Q1 听力 · 传统价值观的现代意义</h1>
+    <div class="sub">10 marks（1 + 3 + 6）· HSC Section I Part A 题型 · 原创练习对话</div>
+  </div>
+
+  <h2>① 考试说明 Instructions</h2>
+  <div class="card">
+    <p class="inst">录音中对话将朗读<b>两遍</b>，第一遍后有<b>两分钟</b>的停顿时间让你做记录（录音里是真实的两分钟，和 HSC 一样——别快进，练的就是这个）。你也可以随时做记录。第二遍后，你有 <b>12 分钟</b>回答问题。请用<b>英文</b>作答。答题空间的大小是对答案长短的提示。</p>
+    <p class="inst" style="color:#4a5562;">錄音中對話將朗讀兩遍，第一遍後有兩分鐘的停頓時間讓你做記錄。你也可以隨時做記錄。第二遍後，你有12分鐘回答問題。請用英文作答。</p>
+    <p class="inst en">You will hear ONE conversation, read twice with a two-minute note-taking pause after the first reading. After the second reading you will have 12 minutes to answer the questions. Write your answers in ENGLISH.</p>
+    <div class="crit">Your answers will be assessed on how well you <b>communicate relevant information and ideas in comprehensible English</b>. 这个问题将考核你以下的能力：以流畅易懂的英语表达相关的内容和观点。</div>
+  </div>
+
+  <h2>② 播放录音 Listening</h2>
+  <div class="card">
+    <audio id="player" controls preload="metadata" src="week8-q1-listening.mp3"></audio>
+    <div class="audio-missing" id="nomp3">⚠ 录音文件尚未上线（week8-q1-listening.mp3）。课堂版可由老师照《每周一练》教师版朗读稿读两遍。</div>
+    <div class="audio-note">录音结构：英文旁白说明 → 第一遍朗读 → 2 分钟笔记停顿 → 第二遍朗读 → “你有12分钟作答”。第二遍结束后点下面的计时器开始作答。</div>
+    <div style="margin-top:14px;">
+      <div class="timer-row">
+        <span id="clock">12:00</span>
+        <button class="btn navy" onclick="startTimer()">▶ 开始 12 分钟作答计时</button>
+        <button class="btn gold" onclick="resetTimer()">重置</button>
+      </div>
+      <div class="timer-note">10 分钟时会变红提醒——剩 2 分钟，跟 HSC 的 warning 一样。</div>
+    </div>
+  </div>
+
+  <h2>③ 笔记区 Candidate's Notes</h2>
+  <div class="card">
+    <textarea rows="5" placeholder="听的时候随手记：现象？谁担心什么？教授讲了哪三个角度？听到了哪些技巧（数据/比喻/反问/引用…）？（笔记不计分）"></textarea>
+  </div>
+
+  <h2>④ 答题 Question 1 (10 marks)</h2>
+  <div class="card">
+    <div class="qhead"><span class="qno">(a)</span><span class="marks">1 分</span></div>
+    <p class="stem">根据对话开头，最近年轻人中出现了什么现象？</p>
+    <p class="stem trad">根據對話開頭，最近年輕人中出現了什麼現象？</p>
+    <p class="stem en">According to the beginning of the conversation, what recent phenomenon among young people is mentioned?</p>
+    <textarea rows="2" placeholder="Answer in English…"></textarea>
+    <button class="btn" onclick="this.nextElementSibling.classList.toggle('open')">✓ 对答案 (a)</button>
+    <div class="reveal">
+      <div class="mg"><b>评分标准：</b>1分——准确指出“越来越多年轻人重新关注传统文化”这一现象（如穿汉服、逛博物馆、报国学班，超过六成）。</div>
+      <div class="sample"><b>范文：</b>More and more young people are re-engaging with traditional culture — over sixty per cent according to a recent survey, with some wearing hanfu to visit museums and others enrolling in classes on traditional learning.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="qhead"><span class="qno">(b)</span><span class="marks">3 分</span></div>
+    <p class="stem">对话中，主持人对传统价值观提出了哪些疑虑？</p>
+    <p class="stem trad">對話中，主持人對傳統價值觀提出了哪些疑慮？</p>
+    <p class="stem en">What doubts about traditional values does the host raise in the conversation?</p>
+    <textarea rows="5" placeholder="Answer in English… (找全三点)"></textarea>
+    <button class="btn" onclick="this.nextElementSibling.classList.toggle('open')">✓ 对答案 (b)</button>
+    <div class="reveal">
+      <div class="mg"><b>评分标准：</b>3分——充分理解主持人的疑虑，归纳出三点并表述清楚；2分——有一定理解，归纳不全；1分——提供相关信息。</div>
+      <div class="sample"><b>范文：</b>The host raises three doubts. First, she worries that traditional values such as filial piety and courteous deference were formed hundreds or even thousands of years ago, and so may be out of step with modern life. Second, she fears that some of these values may constrain young people, citing "blind filial piety" as an example. Third, she questions whether being honest and yielding to others in today's fiercely competitive society would put young people at a disadvantage.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="qhead"><span class="qno">(c)</span><span class="marks">6 分</span></div>
+    <p class="stem">林教授在对话中是如何讲解传统价值观对现代年轻人的意义的？联系对话内容和语言特色来回答问题。</p>
+    <p class="stem trad">林教授在對話中是如何講解傳統價值觀對現代年輕人的意義的？聯繫對話內容和語言特色來回答問題。</p>
+    <p class="stem en">How does Professor Lin explain the relevance of traditional values to young people today? In your answer, refer to both the content and the language features used in the conversation.</p>
+    <div class="tee">
+      <div><b>T</b>echnique — 报技巧名<br>反问？数据？比喻？排比？引用？</div>
+      <div><b>E</b>xample — 引对话原文（英译）</div>
+      <div><b>E</b>ffect — 说效果（说服了谁、怎么说服）</div>
+    </div>
+    <textarea rows="12" style="margin-top:10px;" placeholder="Answer in English… (250–350 words；每组 TEE 循环 ≈1.5 分，目标三组完整循环＋覆盖内容点)"></textarea>
+    <button class="btn" onclick="this.nextElementSibling.classList.toggle('open')">✓ 对答案 (c)</button>
+    <div class="reveal">
+      <div class="mg"><b>评分标准：</b>6分——全面理解林教授如何讲解传统价值观的现代意义，内容与语言特色引用充分；5分——透彻理解，引用详细；4分——合理理解，能兼及内容与语言特色；2–3分——有一定理解，仅涉及其一或两者都有限；1分——提供相关信息。</div>
+      <div class="sample"><b>范文（约300词）：</b>Professor Lin explains the modern relevance of traditional values through three angles, layering persuasive language features throughout. Firstly, he uses a personal anecdote — having worked away from home for thirty years, he telephones his mother every Sunday night, and "this phone call makes her happier than the money I send home". Combined with the contrast between extended families of the past and today's nuclear families and elderly people living alone, this illustrates that while the form of filial piety has changed, the heart of respect and companionship is "more precious than ever". He reinforces this with the proverb "of all virtues, filial piety comes first", clarifying that it means "not forgetting one's roots" rather than obedience. Secondly, he cites statistics — a survey of five hundred companies in which eighty-five per cent of employers ranked integrity first among hiring criteria — to substantiate that traditional virtues are practical assets. The parallelism "they teach us honesty, teach us respect for others, teach us constant self-improvement" builds rhythmic momentum, and the famous quotation of Cai Yuanpei urging students to "refine moral conduct" lends historical and cultural authority to his argument. Finally, he poses the rhetorical question "surely we are not bringing back blind filial piety?" to concede that not everything old deserves reviving, before offering the metaphor of a great tree — "keep the roots firm, let the branches renew" — which vividly frames his conclusion that young people should "absorb the essence and discard the dross". These techniques progressively move the initially sceptical host to agreement, so much so that she resolves to visit her grandmother that weekend.</div>
+      <div class="check"><b>给自己核分（微观清单）：</b><ul>
+        <li>内容点：□ 现象（六成关注传统文化） □ 孝的形式变内核更珍贵 □ 传统品德=职场竞争力 □ 取其精华去其糟粕（各≈1分）</li>
+        <li>技巧循环（技巧+例子+效果，每组≈1.5分）：□ 个人经历 □ 对比 □ 谚语“百善孝为先” □ 数据85% □ 排比“教我们……” □ 引用蔡元培“砥砺德行” □ 反问 □ 比喻“大树/根/新芽” □ 成语</li>
+        <li>□ 语言通顺（0.5分）　<b>只报技巧名、不给例子不讲效果 = 每处掉一半分。</b></li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="card" style="border-top:4px solid var(--gold);">
+    <b>🎧 听第三遍（学习模式）：</b>对完答案后再听一遍，专门“抓技巧”——听到反问举手心里数一下，听到数据、比喻、引用各记一笔。下周课上我们用同样的耳朵去精读《守岁》（Q3 每周一练）。
+  </div>
+
+  <footer>Year 11 Chinese &amp; Literature · Issue 2.3 · Week 8 每周一练 · 2026<br>本练习为原创教学材料，题型对标 NESA HSC Chinese and Literature Section I Part A。</footer>
+</div>
+
+<script>
+// audio missing fallback
+const player=document.getElementById('player');
+player.addEventListener('error',()=>{document.getElementById('nomp3').style.display='block';});
+// 12-min timer with 10-min warning
+let t=720, iv=null;
+const clock=document.getElementById('clock');
+function fmt(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');}
+function tick(){
+  t--; clock.textContent=fmt(Math.max(t,0));
+  if(t===120){clock.classList.add('warn');}
+  if(t<=0){clearInterval(iv); iv=null; clock.textContent='00:00';}
+}
+function startTimer(){ if(iv) return; iv=setInterval(tick,1000); }
+function resetTimer(){ clearInterval(iv); iv=null; t=720; clock.classList.remove('warn'); clock.textContent='12:00'; }
+</script>
+</body>
+</html>
