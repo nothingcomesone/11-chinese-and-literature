@@ -59,7 +59,12 @@
   .topnav{margin-bottom:14px;}
   .topnav a{color:var(--blue); text-decoration:none; font-size:14px; border-bottom:1px dashed var(--blue);}
   footer{margin-top:40px; padding-top:14px; border-top:1px solid var(--line); color:var(--muted); font-size:12.5px; text-align:center;}
-  @media print{.btn,audio,.timer-row,.topnav{display:none!important;} .reveal{display:block!important;} body{background:#fff;} .card{box-shadow:none;}}
+  .idrow{display:flex; gap:12px; flex-wrap:wrap; align-items:center;}
+  .idrow input,.idrow select{border:1.5px solid var(--line); border-radius:10px; padding:8px 12px; font-family:inherit; font-size:15px; background:#fffdf8; color:var(--ink);}
+  .idrow input:focus,.idrow select:focus{outline:none; border-color:var(--teal);}
+  .idnote{font-size:13px; color:var(--muted); flex-basis:100%;}
+  #submit-status{margin-left:12px; font-size:14.5px;}
+  @media print{.btn,audio,.timer-row,.topnav,#id-card,#submit-card{display:none!important;} .reveal{display:block!important;} body{background:#fff;} .card{box-shadow:none;}}
 </style>
 </head>
 <body>
@@ -69,6 +74,19 @@
     <div class="kicker">YEAR 11 CHINESE &amp; LITERATURE · ISSUE 2.3 · 每周一练 WEEK 8</div>
     <h1>Q1 听力 · 传统价值观的现代意义</h1>
     <div class="sub">10 marks（1 + 3 + 6）· HSC Section I Part A 题型 · 原创练习对话</div>
+  </div>
+
+  <div class="card" id="id-card" style="border-top:4px solid var(--teal);">
+    <div class="idrow">
+      <b style="color:var(--navy);">👤 我是：</b>
+      <input id="sname" type="text" placeholder="姓名 Name" maxlength="30">
+      <select id="sclass">
+        <option value="">班级 Class</option>
+        <option>11CL1</option><option>11CL2</option><option>11CL3</option>
+        <option>11CL4</option><option>11CL5</option><option>11CL6</option>
+      </select>
+      <span class="idnote">只需填一次，浏览器会记住。答案边写边自动保存在<b>本机</b>；点页面底部「提交给老师」才会发送给老师。</span>
+    </div>
   </div>
 
   <h2>① 考试说明 Instructions</h2>
@@ -96,7 +114,7 @@
 
   <h2>③ 笔记区 Candidate's Notes</h2>
   <div class="card">
-    <textarea rows="5" placeholder="听的时候随手记：现象？谁担心什么？教授讲了哪三个角度？听到了哪些技巧（数据/比喻/反问/引用…）？（笔记不计分）"></textarea>
+    <textarea id="ans-notes" rows="5" placeholder="听的时候随手记：现象？谁担心什么？教授讲了哪三个角度？听到了哪些技巧（数据/比喻/反问/引用…）？（笔记不计分）"></textarea>
   </div>
 
   <h2>④ 答题 Question 1 (10 marks)</h2>
@@ -105,7 +123,7 @@
     <p class="stem">根据对话开头，最近年轻人中出现了什么现象？</p>
     <p class="stem trad">根據對話開頭，最近年輕人中出現了什麼現象？</p>
     <p class="stem en">According to the beginning of the conversation, what recent phenomenon among young people is mentioned?</p>
-    <textarea rows="2" placeholder="Answer in English…"></textarea>
+    <textarea id="ans-a" rows="2" placeholder="Answer in English…"></textarea>
     <button class="btn" onclick="this.nextElementSibling.classList.toggle('open')">✓ 对答案 (a)</button>
     <div class="reveal">
       <div class="mg"><b>评分标准：</b>1分——准确指出“越来越多年轻人重新关注传统文化”这一现象（如穿汉服、逛博物馆、报国学班，超过六成）。</div>
@@ -118,7 +136,7 @@
     <p class="stem">对话中，主持人对传统价值观提出了哪些疑虑？</p>
     <p class="stem trad">對話中，主持人對傳統價值觀提出了哪些疑慮？</p>
     <p class="stem en">What doubts about traditional values does the host raise in the conversation?</p>
-    <textarea rows="5" placeholder="Answer in English… (找全三点)"></textarea>
+    <textarea id="ans-b" rows="5" placeholder="Answer in English… (找全三点)"></textarea>
     <button class="btn" onclick="this.nextElementSibling.classList.toggle('open')">✓ 对答案 (b)</button>
     <div class="reveal">
       <div class="mg"><b>评分标准：</b>3分——充分理解主持人的疑虑，归纳出三点并表述清楚；2分——有一定理解，归纳不全；1分——提供相关信息。</div>
@@ -136,7 +154,7 @@
       <div><b>E</b>xample — 引对话原文（英译）</div>
       <div><b>E</b>ffect — 说效果（说服了谁、怎么说服）</div>
     </div>
-    <textarea rows="12" style="margin-top:10px;" placeholder="Answer in English… (250–350 words；每组 TEE 循环 ≈1.5 分，目标三组完整循环＋覆盖内容点)"></textarea>
+    <textarea id="ans-c" rows="12" style="margin-top:10px;" placeholder="Answer in English… (250–350 words；每组 TEE 循环 ≈1.5 分，目标三组完整循环＋覆盖内容点)"></textarea>
     <button class="btn" onclick="this.nextElementSibling.classList.toggle('open')">✓ 对答案 (c)</button>
     <div class="reveal">
       <div class="mg"><b>评分标准：</b>6分——全面理解林教授如何讲解传统价值观的现代意义，内容与语言特色引用充分；5分——透彻理解，引用详细；4分——合理理解，能兼及内容与语言特色；2–3分——有一定理解，仅涉及其一或两者都有限；1分——提供相关信息。</div>
@@ -151,6 +169,13 @@
 
   <div class="card" style="border-top:4px solid var(--gold);">
     <b>🎧 听第三遍（学习模式）：</b>对完答案后再听一遍，专门“抓技巧”——听到反问举手心里数一下，听到数据、比喻、引用各记一笔。下周课上我们用同样的耳朵去精读《守岁》（Q3 每周一练）。
+  </div>
+
+  <h2>⑤ 提交给老师 Submit</h2>
+  <div class="card" id="submit-card" style="border-top:4px solid var(--teal);">
+    <p class="inst">写完后点这里，把<b>笔记和三题答案</b>发送给老师。提交后还可以修改、再次提交——老师以<b>最新一次</b>为准。（提交前请确认页面上方已填姓名和班级）</p>
+    <button class="btn navy" id="submit-btn" onclick="submitAnswers()">📨 提交给老师 Submit</button>
+    <span id="submit-status"></span>
   </div>
 
   <footer>Year 11 Chinese &amp; Literature · Issue 2.3 · Week 8 每周一练 · 2026<br>本练习为原创教学材料，题型对标 NESA HSC Chinese and Literature Section I Part A。</footer>
@@ -171,6 +196,42 @@ function tick(){
 }
 function startTimer(){ if(iv) return; iv=setInterval(tick,1000); }
 function resetTimer(){ clearInterval(iv); iv=null; t=720; clock.classList.remove('warn'); clock.textContent='12:00'; }
+
+// ===== 学生身份 + 本机自动保存 + 提交给老师 =====
+const PAGE_ID='issue-2.3/q1-listening-practice';
+const FORM_URL='https://docs.google.com/forms/d/e/1FAIpQLScak_IxxCbfETQGKln4cjHuLBOqR_1iQemNDmD2GV4LOZcOrQ/formResponse';
+const ENTRY={name:'entry.2024667838',cls:'entry.811273517',page:'entry.61471556',notes:'entry.1748819433',qa:'entry.727712641',qb:'entry.696585012',qc:'entry.595391088'};
+const $id=s=>document.getElementById(s);
+// 身份（全站共用 key）+ 答案（本页 key）恢复与自动保存
+[['sname','cl_student_name'],['sclass','cl_student_class'],
+ ['ans-notes',PAGE_ID+'|notes'],['ans-a',PAGE_ID+'|a'],['ans-b',PAGE_ID+'|b'],['ans-c',PAGE_ID+'|c']
+].forEach(([id,key])=>{
+  const el=$id(id); if(!el) return;
+  try{ const v=localStorage.getItem(key); if(v) el.value=v; }catch(e){}
+  ['input','change'].forEach(ev=>el.addEventListener(ev,()=>{ try{ localStorage.setItem(key,el.value); }catch(e){} }));
+});
+// 上次提交时间提示
+(function(){ try{ const ts=localStorage.getItem(PAGE_ID+'|submitted'); if(ts){ $id('submit-status').textContent='上次提交：'+ts; $id('submit-status').style.color='var(--muted)'; } }catch(e){} })();
+async function submitAnswers(){
+  const st=$id('submit-status'), btn=$id('submit-btn');
+  const name=$id('sname').value.trim(), cls=$id('sclass').value;
+  if(!name||!cls){ st.textContent='⚠ 请先在页面上方填写姓名和班级'; st.style.color='var(--red)'; $id('id-card').scrollIntoView({behavior:'smooth'}); return; }
+  const a=$id('ans-a').value.trim(), b=$id('ans-b').value.trim(), c=$id('ans-c').value.trim();
+  if(!a&&!b&&!c){ st.textContent='⚠ 三道题都还没作答——先写答案再提交'; st.style.color='var(--red)'; return; }
+  btn.disabled=true; st.textContent='提交中…'; st.style.color='var(--muted)';
+  const body=new URLSearchParams();
+  body.set(ENTRY.name,name); body.set(ENTRY.cls,cls); body.set(ENTRY.page,PAGE_ID);
+  body.set(ENTRY.notes,$id('ans-notes').value.trim()); body.set(ENTRY.qa,a); body.set(ENTRY.qb,b); body.set(ENTRY.qc,c);
+  try{
+    await fetch(FORM_URL,{method:'POST',mode:'no-cors',body});
+    const ts=new Date().toLocaleString('zh-CN',{hour12:false});
+    try{ localStorage.setItem(PAGE_ID+'|submitted',ts); }catch(e){}
+    st.textContent='✓ 已提交（'+ts+'）。修改后可再次提交，老师以最新一次为准。'; st.style.color='var(--teal)';
+  }catch(e){
+    st.textContent='✗ 网络错误，未提交成功——答案仍保存在本机，请检查网络后重试。'; st.style.color='var(--red)';
+  }
+  setTimeout(()=>{ btn.disabled=false; },3000);
+}
 </script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e705882a63a84e8b911f8e94f491529c"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
